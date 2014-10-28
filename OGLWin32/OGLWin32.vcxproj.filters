@@ -19,6 +19,12 @@
     <Filter Include="Header Files\Shapes">
       <UniqueIdentifier>{fc2b7ba9-079b-4876-b45b-ec8118150b50}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Graphs">
+      <UniqueIdentifier>{a214904a-118d-412a-a8a4-5cb81af256b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Graphs">
+      <UniqueIdentifier>{87fa2590-6e58-4749-97bc-e976229df195}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -85,6 +91,9 @@
     </ClCompile>
     <ClCompile Include="Bar2D.cpp">
       <Filter>Source Files\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="Graph.cpp">
+      <Filter>Source Files\Graphs</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

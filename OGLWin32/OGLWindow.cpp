@@ -1,8 +1,11 @@
 #include "OGLWindow.h"
 #include "Resource.h"
 #include <gl/GL.h>
+#include <vector>
 
+#include "Bar2D.h"
 
+std::vector<Bar2D*> bars;
 
 OGLWindow::OGLWindow()
 {
@@ -116,6 +119,8 @@ BOOL OGLWindow::InitWindow(HINSTANCE hInstance, int width, int height)
 
 	//Instantiate a Renderable as OGLRectangle
 	m_rect = new OGLRectangle();
+	for (int i = 0; i < 20; ++i)
+		bars.push_back(new Bar2D(Vector2D((0.0f + i * 40) - m_width / 2, -m_height / 2)));
 
 	return TRUE;
 }
@@ -133,9 +138,12 @@ void OGLWindow::Render()
 
 	glLoadIdentity();
 	
-	prenderable->Render();
+	//prenderable->Render();
 
-	DrawLine(5.0f, Vector3f(), Vector3f(40.0f, 0.0f, 0.0f));
+	for (int i = 0; i < bars.size(); ++i)
+	{
+		bars[i]->Draw(190.0f + i * 20);
+	}
 
 	glFlush();
 

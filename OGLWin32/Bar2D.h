@@ -2,27 +2,25 @@
 #define bar2d_h
 
 #include "Vector2D.h"
-#include "Vector3f.h"
 
 class Bar2D
 {
 
 private:
-	Vector2D topLeft, bottomRight;
+	Vector2D bottomLeft;
 
 public:
 
 	Bar2D();
-	Bar2D(Vector2D, Vector2D);
+	Bar2D(Vector2D);
 
-	void Draw(Vector2D, Vector2D);
-	void Fill(Vector3f);
+	void Draw(float);
 
-	Vector2D GetTopLeft();
-	Vector2D GetBottomRight();
+	Vector2D GetBottomLeft();
 
-	void SetTopLeft(Vector2D);
-	void SetBottomRight(Vector2D);
+	void SetBottomLeft(Vector2D);
+
+	float GetWidth();
 
 };
 

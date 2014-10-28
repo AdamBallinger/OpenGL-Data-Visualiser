@@ -96,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bar2D.cpp" />
+    <ClCompile Include="Graph.cpp" />
     <ClCompile Include="OGLApplication.cpp" />
     <ClCompile Include="OGLRectangle.cpp" />
     <ClCompile Include="OGLWin32.cpp" />
