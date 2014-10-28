@@ -120,7 +120,7 @@ BOOL OGLWindow::InitWindow(HINSTANCE hInstance, int width, int height)
 	//Instantiate a Renderable as OGLRectangle
 	m_rect = new OGLRectangle();
 	for (int i = 0; i < 20; ++i)
-		bars.push_back(new Bar2D(Vector2D((0.0f + i * 40) - m_width / 2, -m_height / 2)));
+		bars.push_back(new Bar2D(Vector2D((0.0f + i * 40.0f) - (m_width / 2), - (m_height / 2))));
 
 	return TRUE;
 }
@@ -149,16 +149,6 @@ void OGLWindow::Render()
 
 	SwapBuffers(m_hdc);
 	return;
-}
-
-void OGLWindow::DrawLine(float width, Vector3f start, Vector3f end)
-{
-	glLineWidth(width);
-	glColor3f(1.0, 0.0, 0.0);
-	glBegin(GL_LINES);
-	glVertex3f(start.GetX(), start.GetY(), start.GetZ());
-	glVertex3f(end.GetX(), end.GetY(), end.GetZ());
-	glEnd();
 }
 
 void OGLWindow::Resize( int width, int height )

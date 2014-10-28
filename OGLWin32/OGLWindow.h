@@ -2,7 +2,6 @@
 
 #include <Windows.h>
 #include "OGLRectangle.h"
-#include "Vector3f.h"
 
 class OGLWindow
 {
@@ -33,7 +32,6 @@ protected:
 		void		Resize( int width, int height );
 		void		SetVisible( BOOL visible );
 		void		DestroyOGLWindow();
-		void		DrawLine(float, Vector3f, Vector3f);
 
 		BOOL		MouseLBDown ( int x, int y );
 		BOOL		MouseLBUp ( int x, int y );

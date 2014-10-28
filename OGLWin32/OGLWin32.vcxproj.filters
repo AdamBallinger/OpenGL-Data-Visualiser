@@ -69,6 +69,9 @@
     <ClInclude Include="Bar2D.h">
       <Filter>Header Files\Shapes</Filter>
     </ClInclude>
+    <ClInclude Include="Graph.h">
+      <Filter>Header Files\Graphs</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OGLWin32.cpp">
@@ -91,9 +94,6 @@
     </ClCompile>
     <ClCompile Include="Bar2D.cpp">
       <Filter>Source Files\Shapes</Filter>
-    </ClCompile>
-    <ClCompile Include="Graph.cpp">
-      <Filter>Source Files\Graphs</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

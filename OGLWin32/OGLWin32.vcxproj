@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bar2D.h" />
+    <ClInclude Include="Graph.h" />
     <ClInclude Include="Listener.h" />
     <ClInclude Include="OGLApplication.h" />
     <ClInclude Include="OGLRectangle.h" />
@@ -96,7 +97,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bar2D.cpp" />
-    <ClCompile Include="Graph.cpp" />
     <ClCompile Include="OGLApplication.cpp" />
     <ClCompile Include="OGLRectangle.cpp" />
     <ClCompile Include="OGLWin32.cpp" />
