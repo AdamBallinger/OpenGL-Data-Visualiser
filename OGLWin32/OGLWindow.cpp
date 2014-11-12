@@ -3,9 +3,13 @@
 #include <gl/GL.h>
 #include <vector>
 
+#include "BarChart.h"
 #include "Bar2D.h"
+#include "DataProcessor.h"
+#include <iostream>
 
-std::vector<Bar2D*> bars;
+BarChart* chart;
+Bar2D* bars[10];
 
 OGLWindow::OGLWindow()
 {
@@ -18,6 +22,7 @@ OGLWindow::~OGLWindow()
 	
 	//Clean up the renderable
 	delete m_rect;
+	delete chart;
 }
 
 OGLWindow::OGLWindow(HINSTANCE hInstance, int width, int height)
@@ -119,8 +124,14 @@ BOOL OGLWindow::InitWindow(HINSTANCE hInstance, int width, int height)
 
 	//Instantiate a Renderable as OGLRectangle
 	m_rect = new OGLRectangle();
-	for (int i = 0; i < 20; ++i)
-		bars.push_back(new Bar2D(Vector2D((0.0f + i * 40.0f) - (m_width / 2), - (m_height / 2))));
+
+	chart = new BarChart();
+	chart->ReadData();
+
+	for (int i = 0; i < 10; ++i)
+	{
+		bars[i] = new Bar2D(Vector2D(-398.0f + (i * 40.0f), -198.0f));
+	}
 
 	return TRUE;
 }
@@ -138,9 +149,11 @@ void OGLWindow::Render()
 
 	glLoadIdentity();
 	
+	chart->DrawAxis();
+
 	//prenderable->Render();
 
-	for (int i = 0; i < bars.size(); ++i)
+	for (int i = 0; i < 10; ++i)
 	{
 		bars[i]->Draw(190.0f + i * 20);
 	}
@@ -154,6 +167,8 @@ void OGLWindow::Render()
 void OGLWindow::Resize( int width, int height )
 {
 	glViewport( 0, 0, width, height );
+
+	std::cout << "Width: " << width << " height: " << height << std::endl;
 
 	m_width = width;
 	m_height = height;

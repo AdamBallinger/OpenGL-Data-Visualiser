@@ -25,6 +25,9 @@
     <Filter Include="Header Files\Graphs">
       <UniqueIdentifier>{87fa2590-6e58-4749-97bc-e976229df195}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Data Processing">
+      <UniqueIdentifier>{236c9384-75bf-4ca8-9b46-d0ae415da89f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -72,6 +75,12 @@
     <ClInclude Include="Graph.h">
       <Filter>Header Files\Graphs</Filter>
     </ClInclude>
+    <ClInclude Include="BarChart.h">
+      <Filter>Header Files\Graphs</Filter>
+    </ClInclude>
+    <ClInclude Include="DataProcessor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OGLWin32.cpp">
@@ -94,6 +103,12 @@
     </ClCompile>
     <ClCompile Include="Bar2D.cpp">
       <Filter>Source Files\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="BarChart.cpp">
+      <Filter>Source Files\Graphs</Filter>
+    </ClCompile>
+    <ClCompile Include="DataProcessor.cpp">
+      <Filter>Source Files\Data Processing</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

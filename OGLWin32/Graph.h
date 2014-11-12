@@ -6,19 +6,20 @@
 class Graph
 {
 
-
 private:
-	Vector2D axisOrigin;
+
+	int width, height;
 
 public:
 
-	void DrawAxis()
-	{
+	virtual void DrawAxis() = 0;
+	virtual void ReadData() = 0;
 
-	}
+	void SetGraphWidth(int _width) { width = _width; }
+	void SetGraphHeight(int _height) { height = _height; }
 
-	Vector2D GetAxisOrigin();
-
+	int GetGraphWidth() { return width; }
+	int GetGraphHeight() { return height; }
 };
 
 #endif
