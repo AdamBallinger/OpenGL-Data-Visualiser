@@ -14,12 +14,6 @@ public:
 
 	virtual void DrawAxis(float, float) = 0;
 	virtual void ReadData() = 0;
-
-	void SetGraphWidth(int _width) { width = _width; }
-	void SetGraphHeight(int _height) { height = _height; }
-
-	int GetGraphWidth() { return width; }
-	int GetGraphHeight() { return height; }
 };
 
 #endif

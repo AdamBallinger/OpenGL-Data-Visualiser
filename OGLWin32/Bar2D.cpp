@@ -22,29 +22,39 @@ Vector2D Bar2D::GetBottomLeft()
 	return bottomLeft;
 }
 
-//Draw a bar to the graph with a given height.
-void Bar2D::Draw(float height)
+void Bar2D::SetHeight(float _height)
+{
+	height = _height;
+}
+
+float Bar2D::GetHeight()
+{
+	return height;
+}
+
+void Bar2D::SetWidth(float _width)
+{
+	width = _width;
+}
+
+float Bar2D::GetWidth()
+{
+	return width;
+}
+
+//Draw a 2D bar to a bar graph.
+void Bar2D::Draw()
 {
 	glLineWidth(1.0f);
-	glBegin(GL_LINES);
+	glBegin(GL_TRIANGLE_STRIP);
 
-	glColor3f(1.0f, 1.0f, 1.0f);
-	
-	// bottom side
+	glColor3f(0.0f, 0.0f, 1.0f);
+
 	glVertex2f(GetBottomLeft().GetX(), GetBottomLeft().GetY());
-	glVertex2f(GetBottomLeft().GetX() + 40.0f, GetBottomLeft().GetY());
+	glVertex2f(GetBottomLeft().GetX() + GetWidth(), GetBottomLeft().GetY());;
 
-	// left side
-	glVertex2f(GetBottomLeft().GetX(), GetBottomLeft().GetY());
-	glVertex2f(GetBottomLeft().GetX(), GetBottomLeft().GetY() + height);
-
-	// top side
-	glVertex2f(GetBottomLeft().GetX(), GetBottomLeft().GetY() + height);
-	glVertex2f(GetBottomLeft().GetX() + 40.0f, GetBottomLeft().GetY() + height);
-
-	// right side
-	glVertex2f(GetBottomLeft().GetX() + 40.0f, GetBottomLeft().GetY() + height);
-	glVertex2f(GetBottomLeft().GetX() + 40.0f, GetBottomLeft().GetY());
+	glVertex2f(GetBottomLeft().GetX(), GetBottomLeft().GetY() + GetHeight());
+	glVertex2f(GetBottomLeft().GetX() + GetWidth(), GetBottomLeft().GetY() + GetHeight());
 
 	glEnd();
 }
