@@ -1,8 +1,6 @@
 #ifndef graph_h
 #define graph_h
 
-#include "Vector2D.h"
-
 class Graph
 {
 

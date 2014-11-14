@@ -2,13 +2,13 @@
 
 #include "Renderable.h"
 #include "Listener.h"
-#include "Vector2D.h"
+#include "Vector2f.h"
 
 class OGLRectangle : public Renderable, public Listener
 {
 	private:
-		Vector2D		m_topleft;
-		Vector2D		m_bottomright;
+		Vector2f		m_topleft;
+		Vector2f		m_bottomright;
 
 	public:
 						OGLRectangle();

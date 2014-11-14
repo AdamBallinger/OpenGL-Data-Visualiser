@@ -123,11 +123,11 @@ BOOL OGLWindow::InitWindow(HINSTANCE hInstance, int width, int height)
 	m_width = width;
 	m_height = height;
 
-	//barChart = new BarChart();
-	//barChart->ReadData();
+	barChart = new BarChart();
+	barChart->ReadData();
 
-	lineChart = new LineChart();
-	lineChart->ReadData();
+	//lineChart = new LineChart();
+	//lineChart->ReadData();
 
 	return TRUE;
 }
@@ -143,16 +143,8 @@ void OGLWindow::Render()
 
 	glLoadIdentity();
 	
-	//barChart->Draw();
-	lineChart->Draw();
-
-	glBegin(GL_TRIANGLE_FAN);
-
-	glVertex2f(0.0f, 0.0f);
-	glVertex2f(100.0f, 100.0f);
-
-	glEnd();
-
+	barChart->Draw();
+	//lineChart->Draw();
 
 	glFlush();
 

@@ -93,10 +93,10 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files\Skelenton</Filter>
     </ClInclude>
-    <ClInclude Include="Vector2D.h">
+    <ClInclude Include="Vector3f.h">
       <Filter>Header Files\Skelenton</Filter>
     </ClInclude>
-    <ClInclude Include="Vector3f.h">
+    <ClInclude Include="Vector2f.h">
       <Filter>Header Files\Skelenton</Filter>
     </ClInclude>
   </ItemGroup>
@@ -131,10 +131,10 @@
     <ClCompile Include="OGLWindow.cpp">
       <Filter>Source Files\Skelenton</Filter>
     </ClCompile>
-    <ClCompile Include="Vector2D.cpp">
+    <ClCompile Include="Vector3f.cpp">
       <Filter>Source Files\Skelenton</Filter>
     </ClCompile>
-    <ClCompile Include="Vector3f.cpp">
+    <ClCompile Include="Vector2f.cpp">
       <Filter>Source Files\Skelenton</Filter>
     </ClCompile>
   </ItemGroup>

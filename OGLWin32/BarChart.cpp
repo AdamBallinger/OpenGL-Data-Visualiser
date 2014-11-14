@@ -73,10 +73,10 @@ void BarChart::ReadData()
 
 	std::vector<std::string> testdata;
 
-	for (int i = 0; i < 7000; ++i)
+	for (int i = 0; i < 100; ++i)
 		testdata.push_back("Male");
 
-	for (int i = 0; i < 4000; ++i)
+	for (int i = 0; i < 4; ++i)
 		testdata.push_back("Female");
 
 	int maleCount = 0, femaleCount = 0;
@@ -92,12 +92,12 @@ void BarChart::ReadData()
 	Bar2D maleBar = Bar2D();
 	maleBar.SetHeight(maleCount * 500 / testdata.size()); // multiply the value of maleCount by the height of the graph then divide by the total number of data entries. This scales the bar nicely.
 	maleBar.SetWidth(500 / 2 - 2.0f); // divide width of chart by number of categories (in this case male and female so 2) then minus 2.0f as the seperator offset
-	maleBar.SetBottomLeft(Vector2D(-399.0f, -199.0f));
+	maleBar.SetBottomLeft(Vector2f(-399.0f, -199.0f));
 	bars.push_back(maleBar);
 
 	Bar2D femaleBar = Bar2D();
 	femaleBar.SetHeight(femaleCount * 500 / testdata.size());
 	femaleBar.SetWidth(500 / 2 - 2.0f);
-	femaleBar.SetBottomLeft(Vector2D(maleBar.GetBottomLeft().GetX() + maleBar.GetWidth() + 2.0f, -199.0f));
+	femaleBar.SetBottomLeft(Vector2f(maleBar.GetBottomLeft().GetX() + maleBar.GetWidth() + 2.0f, -199.0f));
 	bars.push_back(femaleBar);
 }

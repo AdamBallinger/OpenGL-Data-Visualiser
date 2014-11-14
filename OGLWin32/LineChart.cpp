@@ -41,11 +41,13 @@ void LineChart::Draw()
 	DrawAxis(800.0f, 500.0f);
 
 	glBegin(GL_LINES);
+	
+	float startX = -400.0f;
+	float startY = -200.0f;
 
 	for (int i = 0; i < points.size() - 1; ++i)
 	{
-		/*PlotPoint(points[i]);*/
-		glVertex2f(points[i], points[i + 1]);
+		
 	}
 
 	glEnd();
@@ -58,11 +60,5 @@ void LineChart::PlotPoint(float point)
 
 void LineChart::ReadData()
 {
-	points.push_back(-400.0f + 20.0f);
-	points.push_back(42.0f);
-	points.push_back(105.0f);
-	points.push_back(192.0f);
-	points.push_back(288.0f);
-	points.push_back(499.0f);
-	points.push_back(611.0f);
+	
 }

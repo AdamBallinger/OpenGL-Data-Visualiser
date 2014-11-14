@@ -4,20 +4,20 @@
 
 Bar2D::Bar2D()
 {
-	SetBottomLeft(Vector2D(0.0f, 0.0f));
+	SetBottomLeft(Vector2f(0.0f, 0.0f));
 }
 
-Bar2D::Bar2D(Vector2D bottomLeft)
+Bar2D::Bar2D(Vector2f bottomLeft)
 {
 	SetBottomLeft(bottomLeft);
 }
 
-void Bar2D::SetBottomLeft(Vector2D _bottomLeft)
+void Bar2D::SetBottomLeft(Vector2f _bottomLeft)
 {
 	bottomLeft = _bottomLeft;
 }
 
-Vector2D Bar2D::GetBottomLeft()
+Vector2f Bar2D::GetBottomLeft()
 {
 	return bottomLeft;
 }
