@@ -84,7 +84,7 @@
   <ItemGroup>
     <ClInclude Include="Bar2D.h" />
     <ClInclude Include="BarChart.h" />
-    <ClInclude Include="DataProcessor.h" />
+    <ClInclude Include="FileUtils.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="Listener.h" />
     <ClInclude Include="OGLApplication.h" />
@@ -100,7 +100,7 @@
   <ItemGroup>
     <ClCompile Include="Bar2D.cpp" />
     <ClCompile Include="BarChart.cpp" />
-    <ClCompile Include="DataProcessor.cpp" />
+    <ClCompile Include="FileUtils.cpp" />
     <ClCompile Include="OGLApplication.cpp" />
     <ClCompile Include="OGLRectangle.cpp" />
     <ClCompile Include="OGLWin32.cpp" />
@@ -110,6 +110,9 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="OGLWin32.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Notes.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

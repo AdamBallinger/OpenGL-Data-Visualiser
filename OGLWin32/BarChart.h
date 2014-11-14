@@ -16,7 +16,8 @@ public:
 
 	BarChart();
 
-	void DrawAxis();
+	void DrawAxis(float, float);
+	void Draw();
 	void ReadData();
 
 };

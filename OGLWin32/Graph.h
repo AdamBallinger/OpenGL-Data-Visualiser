@@ -12,7 +12,7 @@ private:
 
 public:
 
-	virtual void DrawAxis() = 0;
+	virtual void DrawAxis(float, float) = 0;
 	virtual void ReadData() = 0;
 
 	void SetGraphWidth(int _width) { width = _width; }

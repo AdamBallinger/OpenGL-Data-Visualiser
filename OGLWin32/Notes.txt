@@ -1,0 +1,5 @@
+PIE CHART
+------------
+% of each segment calculated by individual piece of data / sum of all data being shown * 100 to get the exact % value of a segment
+Drawn using triangle fanning?
+Store imported data values in an std::vector, add each element up to get the sum of all data. Then just calculate the segment % for each piece of data in the vector.

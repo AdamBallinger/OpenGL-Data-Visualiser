@@ -3,10 +3,13 @@
 #include <gl/GL.h>
 #include <vector>
 
+#include <iostream>
+
 #include "BarChart.h"
 #include "Bar2D.h"
 #include "DataProcessor.h"
-#include <iostream>
+
+#define PI 3.1415926535897932384626433832795;
 
 BarChart* chart;
 Bar2D* bars[10];
@@ -21,7 +24,6 @@ OGLWindow::~OGLWindow()
 	//DestroyOGLContext();
 	
 	//Clean up the renderable
-	delete m_rect;
 	delete chart;
 }
 
@@ -108,7 +110,7 @@ BOOL OGLWindow::DestroyOGLContext()
 BOOL OGLWindow::InitWindow(HINSTANCE hInstance, int width, int height)
 {
 	m_hwnd = CreateWindowEx( WS_EX_APPWINDOW | WS_EX_WINDOWEDGE,
-		L"OGLWindow", L"OGLWindow", WS_OVERLAPPEDWINDOW|WS_CLIPSIBLINGS|WS_CLIPCHILDREN,
+		L"OGLWindow", L"OpenGL Data Visualizer", WS_OVERLAPPEDWINDOW|WS_CLIPSIBLINGS|WS_CLIPCHILDREN,
 		0, 0, width, height, NULL, NULL, hInstance, NULL);
 
 	if ( ! m_hwnd )
@@ -121,9 +123,6 @@ BOOL OGLWindow::InitWindow(HINSTANCE hInstance, int width, int height)
 	
 	m_width = width;
 	m_height = height;
-
-	//Instantiate a Renderable as OGLRectangle
-	m_rect = new OGLRectangle();
 
 	chart = new BarChart();
 	chart->ReadData();
@@ -143,20 +142,24 @@ void OGLWindow::SetVisible ( BOOL visible )
 
 void OGLWindow::Render()
 {
-	Renderable* prenderable = static_cast<Renderable*>(m_rect);
-
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	glLoadIdentity();
 	
-	chart->DrawAxis();
+	chart->Draw();
 
-	//prenderable->Render();
+	//for (int i = 0; i < 10; ++i)
+	//{
+	//	bars[i]->Draw(190.0f + i * 20);
+	//}
 
-	for (int i = 0; i < 10; ++i)
-	{
-		bars[i]->Draw(190.0f + i * 20);
-	}
+	glBegin(GL_TRIANGLE_FAN);
+
+	glVertex2f(0.0f, 0.0f);
+	glVertex2f(100.0f, 100.0f);
+
+	glEnd();
+
 
 	glFlush();
 
@@ -199,14 +202,16 @@ BOOL OGLWindow::MouseLBDown ( int x, int y )
 
 BOOL OGLWindow::MouseLBUp ( int x, int y )
 {
+
 	return TRUE;
 }
 
 BOOL OGLWindow::MouseMove ( int x, int y )
 {
-	Listener *plistener = static_cast<Listener*>(m_rect);
+	/*Listener *plistener = static_cast<Listener*>(m_rect);
 
 	plistener->MouseMove( x - m_width / 2 , y - m_height / 2);
+	*/
 
 	return TRUE;
 }

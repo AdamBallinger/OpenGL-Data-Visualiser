@@ -25,8 +25,11 @@
     <Filter Include="Header Files\Graphs">
       <UniqueIdentifier>{87fa2590-6e58-4749-97bc-e976229df195}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Data Processing">
-      <UniqueIdentifier>{236c9384-75bf-4ca8-9b46-d0ae415da89f}</UniqueIdentifier>
+    <Filter Include="Header Files\Utils">
+      <UniqueIdentifier>{5afe9ecc-9ae8-49da-914e-383c98f445a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utils">
+      <UniqueIdentifier>{6a71d48c-a4cb-4e8b-926f-c00f14043ca2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -78,8 +81,8 @@
     <ClInclude Include="BarChart.h">
       <Filter>Header Files\Graphs</Filter>
     </ClInclude>
-    <ClInclude Include="DataProcessor.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="FileUtils.h">
+      <Filter>Header Files\Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -107,13 +110,16 @@
     <ClCompile Include="BarChart.cpp">
       <Filter>Source Files\Graphs</Filter>
     </ClCompile>
-    <ClCompile Include="DataProcessor.cpp">
-      <Filter>Source Files\Data Processing</Filter>
+    <ClCompile Include="FileUtils.cpp">
+      <Filter>Source Files\Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="OGLWin32.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Notes.txt" />
   </ItemGroup>
 </Project>

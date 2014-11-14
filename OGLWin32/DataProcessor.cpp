@@ -90,10 +90,20 @@ using namespace std;
 void DataProcessor::ReadCsv(std::string fileDir)
 {
 	ifstream file (fileDir);
-	string dataCategories;
-	getline(file, dataCategories);
-	stringstream categories = stringstream(dataCategories);
+	string categories;
+	getline(file, categories);
 
+	istringstream categorieStream(categories);
+
+	while (categorieStream)
+	{
+
+	}
 
 	file.close();
+}
+
+std::vector<std::string> DataProcessor::GetCategories()
+{
+	return dataCategories;
 }
