@@ -93,6 +93,7 @@
     <ClInclude Include="OGLWin32.h" />
     <ClInclude Include="OGLWindow.h" />
     <ClInclude Include="PieChart.h" />
+    <ClInclude Include="PieSectorData.h" />
     <ClInclude Include="Renderable.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="ScatterPlot.h" />

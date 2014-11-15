@@ -2,14 +2,13 @@
 #define linechart_h
 
 #include "Graph.h"
-#include "Vector2f.h"
 
 #include <vector>
 
 class LineChart : public Graph
 {
 private:
-	std::vector<Vector2f> points;
+	std::vector<float> points;
 
 public:
 
@@ -17,7 +16,6 @@ public:
 
 	void DrawAxis(float, float);
 	void Draw();
-	void PlotPoint(float);
 	void ReadData();
 
 };

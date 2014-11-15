@@ -2,15 +2,15 @@
 #define piechart_h
 
 #include "Graph.h";
+#include "PieSectorData.h"
 
-
-#define PI 3.1415926535897932384626433832795;
+#include <vector>
 
 class PieChart : public Graph
 {
 private:
 
-
+	std::vector<PieSectorData> data;
 
 public:
 

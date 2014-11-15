@@ -53,11 +53,6 @@ void LineChart::Draw()
 	glEnd();
 }
 
-void LineChart::PlotPoint(float point)
-{
-	
-}
-
 void LineChart::ReadData()
 {
 	

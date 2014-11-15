@@ -99,6 +99,9 @@
     <ClInclude Include="Vector2f.h">
       <Filter>Header Files\Skelenton</Filter>
     </ClInclude>
+    <ClInclude Include="PieSectorData.h">
+      <Filter>Header Files\Graphs</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bar2D.cpp">
