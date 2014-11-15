@@ -140,6 +140,9 @@
     <ClCompile Include="Vector2f.cpp">
       <Filter>Source Files\Skelenton</Filter>
     </ClCompile>
+    <ClCompile Include="PieSectorData.cpp">
+      <Filter>Source Files\Graphs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="OGLWin32.rc">

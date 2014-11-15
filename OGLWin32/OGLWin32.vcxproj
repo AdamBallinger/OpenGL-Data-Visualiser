@@ -111,6 +111,7 @@
     <ClCompile Include="OGLWin32.cpp" />
     <ClCompile Include="OGLWindow.cpp" />
     <ClCompile Include="PieChart.cpp" />
+    <ClCompile Include="PieSectorData.cpp" />
     <ClCompile Include="ScatterPlot.cpp" />
     <ClCompile Include="Vector2f.cpp" />
     <ClCompile Include="Vector3f.cpp" />

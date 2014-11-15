@@ -6,10 +6,12 @@
 #include <iostream>
 
 #include "BarChart.h"
+#include "PieChart.h"
 #include "LineChart.h"
 #include "DataProcessor.h"
 
 BarChart* barChart;
+PieChart* pieChart;
 LineChart* lineChart;
 
 OGLWindow::OGLWindow()
@@ -23,6 +25,7 @@ OGLWindow::~OGLWindow()
 	
 	//Clean up the renderable
 	delete barChart;
+	delete pieChart;
 	delete lineChart;
 }
 
@@ -119,12 +122,16 @@ BOOL OGLWindow::InitWindow(HINSTANCE hInstance, int width, int height)
 
 	if ( !(m_hglrc = CreateOGLContext( m_hdc )) )
 		return FALSE;
+
+	SetVSync(true);
 	
 	m_width = width;
 	m_height = height;
 
 	barChart = new BarChart();
 	barChart->ReadData();
+
+	pieChart = new PieChart();
 
 	//lineChart = new LineChart();
 	//lineChart->ReadData();
@@ -143,7 +150,8 @@ void OGLWindow::Render()
 
 	glLoadIdentity();
 	
-	barChart->Draw();
+	//barChart->Draw();
+	pieChart->Draw(0, 0, 300.0f, 360);
 	//lineChart->Draw();
 
 	glFlush();
@@ -197,4 +205,26 @@ BOOL OGLWindow::MouseMove ( int x, int y )
 	*/
 
 	return TRUE;
+}
+
+void OGLWindow::SetVSync(bool sync)
+{
+	// Function pointer for the wgl extention function we need to enable/disable
+	// vsync
+	typedef BOOL(APIENTRY *PFNWGLSWAPINTERVALPROC)(int);
+	PFNWGLSWAPINTERVALPROC wglSwapIntervalEXT = 0;
+
+	const char *extensions = (char*)glGetString(GL_EXTENSIONS);
+
+	if (strstr(extensions, "WGL_EXT_swap_control") == 0)
+	{
+		return;
+	}
+	else
+	{
+		wglSwapIntervalEXT = (PFNWGLSWAPINTERVALPROC)wglGetProcAddress("wglSwapIntervalEXT");
+
+		if (wglSwapIntervalEXT)
+			wglSwapIntervalEXT(sync);
+	}
 }

@@ -33,6 +33,8 @@ protected:
 		void		SetVisible( BOOL visible );
 		void		DestroyOGLWindow();
 
+		void		SetVSync(bool);
+
 		BOOL		MouseLBDown ( int x, int y );
 		BOOL		MouseLBUp ( int x, int y );
 		BOOL		MouseMove ( int x, int y );
