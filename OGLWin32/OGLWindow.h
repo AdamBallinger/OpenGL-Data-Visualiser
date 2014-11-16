@@ -17,6 +17,11 @@ class OGLWindow
 
 		// global scale value for all geometry
 		double global_scale;
+
+		// offset for panning.
+		bool shouldOffset;
+		double offsetX;
+		double offsetY;
 		
 		//This is not an ideal place to hold geometry data
 		BarChart * barChart;
@@ -47,4 +52,6 @@ protected:
 		BOOL		MouseRBDown(int x, int y);
 		BOOL		MouseRBUp(int x, int y);
 		BOOL		MouseMove ( int x, int y );
+		// Handles keyboard input
+		BOOL		HandleKey(WPARAM);
 };

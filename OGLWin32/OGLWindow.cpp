@@ -10,6 +10,9 @@ OGLWindow::OGLWindow()
 {
 	// Sets default scale to 0
 	global_scale = 1.0;
+	offsetX = 1.0;
+	offsetY = 1.0;
+	shouldOffset = FALSE;
 }
 
 OGLWindow::~OGLWindow()
@@ -142,6 +145,8 @@ void OGLWindow::Render()
 
 	glLoadIdentity();
 
+	glTranslated(offsetX, -offsetY, 1.0);
+
 	//barChart->Draw();
 	pieChart->Draw(0, 0, 300.0f, global_scale);
 	
@@ -180,18 +185,18 @@ void OGLWindow::InitOGLState()
 
 BOOL OGLWindow::MouseLBDown ( int x, int y )
 {
-	global_scale -= 0.010;
+	shouldOffset = TRUE;
 	return TRUE;
 }
 
 BOOL OGLWindow::MouseLBUp ( int x, int y )
 {
+	shouldOffset = FALSE;
 	return TRUE;
 }
 
 BOOL OGLWindow::MouseRBDown(int x, int y)
 {
-	global_scale += 0.010;
 	return TRUE;
 }
 
@@ -200,6 +205,8 @@ BOOL OGLWindow::MouseRBUp(int x, int y)
 	return TRUE;
 }
 
+int lastX;
+int lastY;
 BOOL OGLWindow::MouseMove ( int x, int y )
 {
 	/*Listener *plistener = static_cast<Listener*>(m_rect);
@@ -207,6 +214,54 @@ BOOL OGLWindow::MouseMove ( int x, int y )
 	plistener->MouseMove( x - m_width / 2 , y - m_height / 2);
 	*/
 
+	const int deadSpaceY = 3;
+	const int deadSpaceX = 3;
+
+	if (shouldOffset)
+	{
+		// X panning
+		if (lastX - deadSpaceX > x)
+		{
+			offsetX -= 20.0;
+		}
+		else if (lastX + deadSpaceX < x)
+		{
+			offsetX += 20.0;
+		}
+
+		// Y panning
+		if (lastY - deadSpaceY > y)
+		{
+			offsetY -= 20.0;
+		}
+		else if (lastY + deadSpaceY < y)
+		{
+			offsetY += 20.0;
+		}
+	}
+
+	lastX = x;
+	lastY = y;
+	return TRUE;
+}
+
+BOOL OGLWindow::HandleKey(WPARAM wparam)
+{
+	const byte KEY_1 = 0x31;
+	const byte KEY_2 = 0x32;
+
+	switch (wparam)
+	{
+	case KEY_1:
+		std::cout << "1" << std::endl;
+		break;
+	case KEY_2:
+		std::cout << "2" << std::endl;
+		break;
+
+	default:
+		break;
+	}
 	return TRUE;
 }
 

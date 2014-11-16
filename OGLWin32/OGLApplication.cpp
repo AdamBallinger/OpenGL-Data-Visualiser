@@ -126,6 +126,9 @@ LRESULT CALLBACK OGLApplication::WndProc(HWND hwnd, UINT msg, WPARAM wparam, LPA
 			s_oglapp->GetApplicationWindow()->DestroyOGLWindow();
 			break;
 
+		case WM_KEYDOWN:
+			s_oglapp->GetApplicationWindow()->HandleKey(wparam);
+
 		case WM_MOUSEMOVE:
 			//inform the cursor position to OGLWindow
 			s_oglapp->GetApplicationWindow()->MouseMove( GET_X_LPARAM(lparam), GET_Y_LPARAM(lparam) );
