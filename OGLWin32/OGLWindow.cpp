@@ -1,6 +1,7 @@
 #include "OGLWindow.h"
 #include "Resource.h"
 #include <gl/GL.h>
+#include <GL/freeglut.h>
 #include <vector>
 
 #include <iostream>
@@ -135,7 +136,6 @@ BOOL OGLWindow::InitWindow(HINSTANCE hInstance, int width, int height)
 
 	//lineChart = new LineChart();
 	//lineChart->ReadData();
-
 	return TRUE;
 }
 
@@ -149,9 +149,10 @@ void OGLWindow::Render()
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	glLoadIdentity();
-	
+	glShadeModel(GL_FLAT);
+
 	//barChart->Draw();
-	pieChart->Draw(0, 0, 300.0f, 360);
+	pieChart->Draw(0, 0, 300.0f);
 	//lineChart->Draw();
 
 	glFlush();

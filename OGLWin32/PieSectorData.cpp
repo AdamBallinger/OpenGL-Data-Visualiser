@@ -1,5 +1,7 @@
 #include "PieSectorData.h"
 
+#include <cmath>
+
 PieSectorData::PieSectorData()
 {
 
@@ -15,12 +17,22 @@ Vector3f PieSectorData::GetColor()
 	return sectorColor;
 }
 
-void PieSectorData::SetSegments(int _segments)
+void PieSectorData::SetData(int _data)
 {
-	segments = _segments;
+	data = _data;
 }
 
-int PieSectorData::GetSegments()
+int PieSectorData::GetData()
 {
-	return segments;
+	return data;
+}
+
+void PieSectorData::SetAngle(float _angle)
+{
+	angle = _angle;
+}
+
+float PieSectorData::GetAngle()
+{
+	return round(angle);
 }

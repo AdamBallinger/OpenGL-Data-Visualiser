@@ -10,13 +10,15 @@ class PieChart
 private:
 
 	std::vector<PieSectorData> data;
+	int dataTotal;
 
 public:
 
 	PieChart();
 
-	void Draw(float, float, float, int);
+	void Draw(float, float, float);
 	void ReadData();
 	
+	int GetDataTotal();
 };
 #endif

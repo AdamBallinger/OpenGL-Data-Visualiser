@@ -11,7 +11,8 @@ private:
 	Vector3f sectorColor;
 
 	// number of segments this data uses.
-	int segments;
+	int data;
+	float angle;
 
 public:
 
@@ -20,8 +21,11 @@ public:
 	void SetColor(Vector3f);
 	Vector3f GetColor();
 
-	void SetSegments(int);
-	int GetSegments();
+	void SetData(int);
+	int GetData();
+
+	void SetAngle(float);
+	float GetAngle();
 
 };
 #endif
