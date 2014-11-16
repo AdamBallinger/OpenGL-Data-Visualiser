@@ -15,6 +15,10 @@ class OGLWindow
 		int			m_width;
 		int			m_height;
 
+		// Constant keyboard bindings for key handling
+		// Key number 1
+		static const byte KEY_1 = 0x31;
+
 		// global scale value for all geometry
 		double global_scale;
 
@@ -22,6 +26,15 @@ class OGLWindow
 		bool shouldOffset;
 		double offsetX;
 		double offsetY;
+
+		// Constant Default offset
+		const double DEFAULT_X = 1.0;
+		const double DEFAULT_Y = 1.0;
+
+		// Constant offset speed
+		//const double X_SPEED = 20.0;
+		double X_SPEED = 20.0;
+		double Y_SPEED = 20.0;
 		
 		//This is not an ideal place to hold geometry data
 		BarChart * barChart;
@@ -47,6 +60,9 @@ protected:
 
 		void		SetVSync(bool);
 		void		ResetView();
+
+		void		SetOffsetX(double);
+		void		SetOffsetY(double);
 
 		BOOL		MouseLBDown ( int x, int y );
 		BOOL		MouseLBUp ( int x, int y );

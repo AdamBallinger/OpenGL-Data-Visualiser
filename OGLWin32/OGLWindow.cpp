@@ -222,21 +222,21 @@ BOOL OGLWindow::MouseMove ( int x, int y )
 		// X panning
 		if (lastX - deadSpaceX > x)
 		{
-			offsetX -= 20.0;
+			SetOffsetX(-X_SPEED);
 		}
 		else if (lastX + deadSpaceX < x)
 		{
-			offsetX += 20.0;
+			SetOffsetX(X_SPEED);
 		}
 
 		// Y panning
 		if (lastY - deadSpaceY > y)
 		{
-			offsetY -= 20.0;
+			SetOffsetY(-Y_SPEED);
 		}
 		else if (lastY + deadSpaceY < y)
 		{
-			offsetY += 20.0;
+			SetOffsetY(Y_SPEED);
 		}
 	}
 
@@ -247,12 +247,48 @@ BOOL OGLWindow::MouseMove ( int x, int y )
 
 BOOL OGLWindow::HandleKey(WPARAM wparam)
 {
-	const byte KEY_1 = 0x31;
-
 	switch (wparam)
 	{
-	case KEY_1:
+	case VK_SPACE:
 		ResetView();
+		break;
+
+	case VK_LEFT:
+		SetOffsetX(-X_SPEED);
+		break;
+
+	case VK_RIGHT:
+		SetOffsetX(X_SPEED);
+		break;
+
+	case VK_UP:
+		SetOffsetY(-Y_SPEED);
+		break;
+
+	case VK_DOWN:
+		SetOffsetY(Y_SPEED);
+		break;
+
+	case VK_OEM_4:
+		if (X_SPEED > 5)
+		{
+			X_SPEED -= 5;
+		}
+		if (Y_SPEED > 5)
+		{
+			Y_SPEED -= 5;
+		}
+		break;
+
+	case VK_OEM_6:
+		if (X_SPEED < 50)
+		{
+			X_SPEED += 5;
+		}
+		if (Y_SPEED < 50)
+		{
+			Y_SPEED += 5;
+		}
 		break;
 
 	default:
@@ -287,6 +323,16 @@ void OGLWindow::SetVSync(bool sync)
 void OGLWindow::ResetView()
 {
 	global_scale = 1.0;
-	offsetX = 1.0;
-	offsetY = 1.0;
+	offsetX = DEFAULT_X;
+	offsetY = DEFAULT_Y;
+}
+
+void OGLWindow::SetOffsetX(double offX)
+{
+	offsetX += offX;
+}
+
+void OGLWindow::SetOffsetY(double offY)
+{
+	offsetY += offY;
 }
