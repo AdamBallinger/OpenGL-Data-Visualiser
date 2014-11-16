@@ -80,9 +80,6 @@ protected:
 		void		SetVSync(bool);
 		void		ResetView();
 
-		void		RenderText(std::string, float, float, float, Vector3f);
-		void		RenderText(std::string, float, float, float, Vector3f, bool);
-
 		void		SetOffsetX(double);
 		void		SetOffsetY(double);
 

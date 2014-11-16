@@ -105,6 +105,9 @@
     <ClInclude Include="glfont2.h">
       <Filter>Header Files\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="FontRenderer.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bar2D.cpp">
@@ -147,6 +150,9 @@
       <Filter>Source Files\Graphs</Filter>
     </ClCompile>
     <ClCompile Include="glfont2.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="FontRenderer.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
   </ItemGroup>

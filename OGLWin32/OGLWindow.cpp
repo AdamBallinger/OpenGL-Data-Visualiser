@@ -1,19 +1,10 @@
 #include "OGLWindow.h"
-#include "Resource.h"
+#include "FontRenderer.h"
 
 #include <Windows.h>
-#include <utility>
-#include <string>
-#include <vector>
 #include <iostream>
 
 #include <gl/GL.h>
-#include <GL/GLU.h>
-#include "glfont2.h"
-
-using namespace glfont;
-
-GLFont fontRenderer;
 
 OGLWindow::OGLWindow()
 {
@@ -32,7 +23,6 @@ OGLWindow::~OGLWindow()
 	delete barChart;
 	delete pieChart;
 	delete lineChart;
-	fontRenderer.Destroy();
 }
 
 OGLWindow::OGLWindow(HINSTANCE hInstance, int width, int height) : OGLWindow::OGLWindow()
@@ -150,26 +140,26 @@ void OGLWindow::SetVisible ( BOOL visible )
 	InitOGLState();
 }
 
-void OGLWindow::RenderText(std::string text, float scale, float x, float y, Vector3f col)
-{
-	glEnable(GL_TEXTURE_2D);
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	fontRenderer.Create("Arial.glf", 1);
-
-	glMatrixMode(GL_MODELVIEW);
-	glColor3f(col.GetX(), col.GetY(), col.GetZ());
-	fontRenderer.Begin();
-	fontRenderer.DrawString(text, scale, x, y);
-
-	glDisable(GL_TEXTURE_2D);
-	glDisable(GL_BLEND);
-}
-void OGLWindow::RenderText(std::string text, float scale, float x, float y, Vector3f col, bool shadow)
-{
-	RenderText(text, scale, x + 2, y - 2, Vector3f(0.75f, 0.75f, 0.75f));
-	RenderText(text, scale, x , y, col);
-}
+//void OGLWindow::RenderText(std::string text, float scale, float x, float y, Vector3f col)
+//{
+//	glEnable(GL_TEXTURE_2D);
+//	glEnable(GL_BLEND);
+//	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+//	fontRenderer.Create("Arial.glf", 1);
+//
+//	glMatrixMode(GL_MODELVIEW);
+//	glColor3f(col.GetX(), col.GetY(), col.GetZ());
+//	fontRenderer.Begin();
+//	fontRenderer.DrawString(text, scale, x, y);
+//
+//	glDisable(GL_TEXTURE_2D);
+//	glDisable(GL_BLEND);
+//}
+//void OGLWindow::RenderText(std::string text, float scale, float x, float y, Vector3f col, bool shadow)
+//{
+//	RenderText(text, scale, x + 2, y - 2, Vector3f(0.75f, 0.75f, 0.75f));
+//	RenderText(text, scale, x , y, col);
+//}
 
 void OGLWindow::Render()
 {
@@ -179,7 +169,7 @@ void OGLWindow::Render()
 	glScaled(global_scale, global_scale, 0.0);
 	glTranslated(offsetX, -offsetY, 1.0);
 
-	RenderText("JAMIE I LUVER U", 0.5f, 0, 0, Vector3f(1.0, 0.0, 1.0), true);
+	FontRenderer::RenderText("JAMIE I LUVER U", 0.5f, 0, 0, Vector3f(1.0, 0.0, 1.0), true);
 
 	barChart->Draw();
 	//pieChart->Draw(0, 0, 300.0f);
