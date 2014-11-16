@@ -102,6 +102,9 @@
     <ClInclude Include="PieSectorData.h">
       <Filter>Header Files\Graphs</Filter>
     </ClInclude>
+    <ClInclude Include="glfont2.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bar2D.cpp">
@@ -142,6 +145,9 @@
     </ClCompile>
     <ClCompile Include="PieSectorData.cpp">
       <Filter>Source Files\Graphs</Filter>
+    </ClCompile>
+    <ClCompile Include="glfont2.cpp">
+      <Filter>Source Files\Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

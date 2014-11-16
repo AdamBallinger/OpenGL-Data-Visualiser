@@ -32,9 +32,17 @@ class OGLWindow
 		const double DEFAULT_Y = 1.0;
 
 		// Constant offset speed
-		//const double X_SPEED = 20.0;
 		double X_SPEED = 20.0;
 		double Y_SPEED = 20.0;
+
+		const int MIN_X_SPEED = 5;
+		const int MIN_Y_SPEED = 5;
+
+		const int MAX_X_SPEED = 50;
+		const int MAX_Y_SPEED = 50;
+
+		const int X_STEP_SPEED = 5;
+		const int Y_STEP_SPEED = 5;
 		
 		//This is not an ideal place to hold geometry data
 		BarChart * barChart;
@@ -60,6 +68,9 @@ protected:
 
 		void		SetVSync(bool);
 		void		ResetView();
+
+		void		RenderText(std::string, float, float, float, Vector3f);
+		void		RenderText(std::string, float, float, float, Vector3f, bool);
 
 		void		SetOffsetX(double);
 		void		SetOffsetY(double);

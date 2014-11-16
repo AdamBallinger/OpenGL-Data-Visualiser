@@ -51,7 +51,7 @@ void PieChart::Draw(float centerX, float centerY, float radius, double scale)
 	float lastAngle = 0.0f;
 	const int slicesPerSegment = 90;
 
-	glScaled(scale, scale, 0.0);
+	//glScaled(scale, scale, 0.0);
 
 	for (int i = 0; i < data.size(); ++i)
 	{

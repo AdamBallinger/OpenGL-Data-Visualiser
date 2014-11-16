@@ -85,6 +85,7 @@
     <ClInclude Include="Bar2D.h" />
     <ClInclude Include="BarChart.h" />
     <ClInclude Include="FileUtils.h" />
+    <ClInclude Include="glfont2.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="LineChart.h" />
     <ClInclude Include="Listener.h" />
@@ -105,6 +106,7 @@
     <ClCompile Include="Bar2D.cpp" />
     <ClCompile Include="BarChart.cpp" />
     <ClCompile Include="FileUtils.cpp" />
+    <ClCompile Include="glfont2.cpp" />
     <ClCompile Include="LineChart.cpp" />
     <ClCompile Include="OGLApplication.cpp" />
     <ClCompile Include="OGLRectangle.cpp" />

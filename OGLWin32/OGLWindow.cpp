@@ -1,10 +1,19 @@
 #include "OGLWindow.h"
 #include "Resource.h"
-#include <gl/GL.h>
-#include <GL/freeglut.h>
-#include <vector>
 
+#include <Windows.h>
+#include <utility>
+#include <string>
+#include <vector>
 #include <iostream>
+
+#include <gl/GL.h>
+#include <GL/GLU.h>
+#include "glfont2.h"
+
+using namespace glfont;
+
+GLFont fontRenderer;
 
 OGLWindow::OGLWindow()
 {
@@ -23,6 +32,7 @@ OGLWindow::~OGLWindow()
 	delete barChart;
 	delete pieChart;
 	delete lineChart;
+	fontRenderer.Destroy();
 }
 
 OGLWindow::OGLWindow(HINSTANCE hInstance, int width, int height) : OGLWindow::OGLWindow()
@@ -137,15 +147,45 @@ BOOL OGLWindow::InitWindow(HINSTANCE hInstance, int width, int height)
 void OGLWindow::SetVisible ( BOOL visible )
 {
 	ShowWindow ( m_hwnd, visible? SW_SHOW : SW_HIDE );
+	InitOGLState();
+}
+
+void OGLWindow::RenderText(std::string text, float scale, float x, float y, Vector3f col)
+{
+	glEnable(GL_TEXTURE_2D);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	fontRenderer.Create("Arial.glf", 1);
+
+	glMatrixMode(GL_MODELVIEW);
+	glColor3f(col.GetX(), col.GetY(), col.GetZ());
+	fontRenderer.Begin();
+	fontRenderer.DrawString(text, scale, x, y);
+
+	glDisable(GL_TEXTURE_2D);
+	glDisable(GL_BLEND);
+}
+void OGLWindow::RenderText(std::string text, float scale, float x, float y, Vector3f col, bool shadow)
+{
+	/*glMatrixMode(GL_MODELVIEW);
+	glColor3f(0.75f, 0.75f, 0.75f);
+	fontRenderer.Begin();
+	fontRenderer.DrawString(text, scale, x + 2, y - 2);
+
+	glColor3f(col.GetX(), col.GetY(), col.GetZ());
+	fontRenderer.DrawString(text, scale, x, y);*/
+	RenderText(text, scale, x + 2, y - 2, Vector3f(0.75f, 0.75f, 0.75f));
+	RenderText(text, scale, x , y, col);
 }
 
 void OGLWindow::Render()
 {
 	glClear(GL_COLOR_BUFFER_BIT);
-
 	glLoadIdentity();
 
 	glTranslated(offsetX, -offsetY, 1.0);
+
+	RenderText("JAMIE I LUVER U", 0.5f, 0, 0, Vector3f(1.0, 0.0, 1.0), true);
 
 	//barChart->Draw();
 	pieChart->Draw(0, 0, 300.0f, global_scale);
@@ -178,7 +218,6 @@ void OGLWindow::Resize( int width, int height )
 void OGLWindow::InitOGLState()
 {
 	glClearColor( 0.0f, 0.0f, 0.0f, 1.0f );
-
 	glDisable(GL_DEPTH_TEST);
 	glDisable(GL_CULL_FACE);
 }
@@ -270,24 +309,24 @@ BOOL OGLWindow::HandleKey(WPARAM wparam)
 		break;
 
 	case VK_OEM_4:
-		if (X_SPEED > 5)
+		if (X_SPEED > MIN_X_SPEED)
 		{
-			X_SPEED -= 5;
+			X_SPEED -= X_STEP_SPEED; 
 		}
-		if (Y_SPEED > 5)
+		if (Y_SPEED > MIN_Y_SPEED) 
 		{
-			Y_SPEED -= 5;
+			Y_SPEED -= Y_STEP_SPEED; 
 		}
 		break;
 
 	case VK_OEM_6:
-		if (X_SPEED < 50)
+		if (X_SPEED < MAX_X_SPEED) 
 		{
-			X_SPEED += 5;
+			X_SPEED += X_STEP_SPEED; 
 		}
-		if (Y_SPEED < 50)
+		if (Y_SPEED < MAX_Y_SPEED)
 		{
-			Y_SPEED += 5;
+			Y_SPEED += Y_STEP_SPEED; 
 		}
 		break;
 
