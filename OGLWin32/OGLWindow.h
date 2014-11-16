@@ -91,6 +91,7 @@ protected:
 		BOOL		MouseRBDown(int x, int y);
 		BOOL		MouseRBUp(int x, int y);
 		BOOL		MouseMove ( int x, int y );
+		BOOL		MouseWheelMove(int);
 		// Handles keyboard input
 		BOOL		HandleKey(WPARAM);
 };

@@ -134,6 +134,10 @@ LRESULT CALLBACK OGLApplication::WndProc(HWND hwnd, UINT msg, WPARAM wparam, LPA
 			s_oglapp->GetApplicationWindow()->MouseMove( GET_X_LPARAM(lparam), GET_Y_LPARAM(lparam) );
 			break;
 
+		case WM_MOUSEWHEEL:
+			s_oglapp->GetApplicationWindow()->MouseWheelMove(GET_WHEEL_DELTA_WPARAM(wparam));
+			break;
+
 		case WM_LBUTTONUP:
 			s_oglapp->GetApplicationWindow()->MouseLBUp( GET_X_LPARAM(lparam), GET_Y_LPARAM(lparam) );
 			break;

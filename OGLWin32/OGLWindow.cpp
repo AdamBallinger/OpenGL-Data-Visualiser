@@ -325,6 +325,20 @@ BOOL OGLWindow::HandleKey(WPARAM wparam)
 	return TRUE;
 }
 
+BOOL OGLWindow::MouseWheelMove(int mouseWheelDelta)
+{
+	
+	if (mouseWheelDelta > 0)
+	{		
+		global_scale += 0.05;
+	}
+	else if (mouseWheelDelta < 0 && global_scale > 0.35)
+	{
+		global_scale -= 0.05;
+	}
+	return TRUE;
+}
+
 void OGLWindow::SetVSync(bool sync)
 {
 	// Function pointer for the wgl extention function we need to enable/disable
