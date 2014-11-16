@@ -149,7 +149,6 @@ void OGLWindow::Render()
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	glLoadIdentity();
-	glShadeModel(GL_FLAT);
 
 	//barChart->Draw();
 	pieChart->Draw(0, 0, 300.0f);
