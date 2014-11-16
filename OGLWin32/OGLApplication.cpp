@@ -139,6 +139,13 @@ LRESULT CALLBACK OGLApplication::WndProc(HWND hwnd, UINT msg, WPARAM wparam, LPA
 			s_oglapp->GetApplicationWindow()->MouseLBDown( GET_X_LPARAM(lparam), GET_Y_LPARAM(lparam) );
 			break;
 
+		case WM_RBUTTONUP:
+			s_oglapp->GetApplicationWindow()->MouseRBUp(GET_X_LPARAM(lparam), GET_Y_LPARAM(lparam));
+
+		case WM_RBUTTONDOWN:
+			s_oglapp->GetApplicationWindow()->MouseRBDown(GET_X_LPARAM(lparam), GET_Y_LPARAM(lparam));
+			break;
+
 		case WM_DESTROY:
 			PostQuitMessage(0);
 			break;

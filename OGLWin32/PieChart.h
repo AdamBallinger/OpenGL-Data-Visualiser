@@ -16,7 +16,7 @@ public:
 
 	PieChart();
 
-	void Draw(float, float, float);
+	void Draw(float, float, float, double);
 	void ReadData();
 	
 	int GetDataTotal();

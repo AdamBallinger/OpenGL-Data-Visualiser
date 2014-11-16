@@ -46,17 +46,17 @@ PieChart::PieChart()
 	data.push_back(test7);
 }
 
-void PieChart::Draw(float centerX, float centerY, float radius)
+void PieChart::Draw(float centerX, float centerY, float radius, double scale)
 {
-	float triangles = 360.0f;
 	float lastAngle = 0.0f;
+
+	glScaled(scale, scale, scale);
 
 	for (int i = 0; i < data.size(); ++i)
 	{
 		glColor3f(data[i].GetColor().GetX(), data[i].GetColor().GetY(), data[i].GetColor().GetZ());
 
 		data[i].SetAngle((360.0f / GetDataTotal()) * data[i].GetData());
-
 		gluPartialDisk(gluNewQuadric(), 0, radius, 90, data.size(), lastAngle, data[i].GetAngle());
 
 		lastAngle += data[i].GetAngle();

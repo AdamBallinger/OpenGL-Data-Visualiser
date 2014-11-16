@@ -6,18 +6,10 @@
 
 #include <iostream>
 
-#include "BarChart.h"
-#include "PieChart.h"
-#include "LineChart.h"
-#include "DataProcessor.h"
-
-BarChart* barChart;
-PieChart* pieChart;
-LineChart* lineChart;
-
 OGLWindow::OGLWindow()
 {
-	
+	// Sets default scale to 0
+	global_scale = 1.0;
 }
 
 OGLWindow::~OGLWindow()
@@ -30,7 +22,7 @@ OGLWindow::~OGLWindow()
 	delete lineChart;
 }
 
-OGLWindow::OGLWindow(HINSTANCE hInstance, int width, int height)
+OGLWindow::OGLWindow(HINSTANCE hInstance, int width, int height) : OGLWindow::OGLWindow()
 {
 	InitWindow(hInstance, width, height);
 }
@@ -151,7 +143,8 @@ void OGLWindow::Render()
 	glLoadIdentity();
 
 	//barChart->Draw();
-	pieChart->Draw(0, 0, 300.0f);
+	pieChart->Draw(0, 0, 300.0f, global_scale);
+	
 	//lineChart->Draw();
 
 	glFlush();
@@ -187,13 +180,22 @@ void OGLWindow::InitOGLState()
 
 BOOL OGLWindow::MouseLBDown ( int x, int y )
 {
-	
 	return TRUE;
 }
 
 BOOL OGLWindow::MouseLBUp ( int x, int y )
 {
+	return TRUE;
+}
 
+BOOL OGLWindow::MouseRBDown(int x, int y)
+{
+	global_scale += 0.010;
+	return TRUE;
+}
+
+BOOL OGLWindow::MouseRBUp(int x, int y)
+{
 	return TRUE;
 }
 

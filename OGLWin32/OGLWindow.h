@@ -1,7 +1,9 @@
 #pragma once
 
 #include <Windows.h>
-#include "OGLRectangle.h"
+#include "BarChart.h"
+#include "LineChart.h"
+#include "PieChart.h"
 
 class OGLWindow
 {
@@ -12,9 +14,14 @@ class OGLWindow
 
 		int			m_width;
 		int			m_height;
+
+		// global scale value for all geometry
+		double global_scale;
 		
 		//This is not an ideal place to hold geometry data
-		OGLRectangle   *m_rect;
+		BarChart * barChart;
+		LineChart * lineChart;
+		PieChart * pieChart;
 
 protected:
 
@@ -37,5 +44,7 @@ protected:
 
 		BOOL		MouseLBDown ( int x, int y );
 		BOOL		MouseLBUp ( int x, int y );
+		BOOL		MouseRBDown(int x, int y);
+		BOOL		MouseRBUp(int x, int y);
 		BOOL		MouseMove ( int x, int y );
 };
