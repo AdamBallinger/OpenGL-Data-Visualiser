@@ -180,6 +180,7 @@ void OGLWindow::InitOGLState()
 
 BOOL OGLWindow::MouseLBDown ( int x, int y )
 {
+	global_scale -= 0.010;
 	return TRUE;
 }
 
