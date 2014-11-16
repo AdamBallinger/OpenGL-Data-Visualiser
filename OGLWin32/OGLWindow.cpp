@@ -181,8 +181,8 @@ void OGLWindow::Render()
 
 	RenderText("JAMIE I LUVER U", 0.5f, 0, 0, Vector3f(1.0, 0.0, 1.0), true);
 
-	//barChart->Draw();
-	pieChart->Draw(0, 0, 300.0f, global_scale);
+	barChart->Draw();
+	//pieChart->Draw(0, 0, 300.0f);
 	
 	//lineChart->Draw();
 
@@ -238,8 +238,6 @@ BOOL OGLWindow::MouseRBUp(int x, int y)
 	return TRUE;
 }
 
-int lastX;
-int lastY;
 BOOL OGLWindow::MouseMove ( int x, int y )
 {
 	/*Listener *plistener = static_cast<Listener*>(m_rect);
@@ -247,27 +245,24 @@ BOOL OGLWindow::MouseMove ( int x, int y )
 	plistener->MouseMove( x - m_width / 2 , y - m_height / 2);
 	*/
 
-	const int deadSpaceY = 3;
-	const int deadSpaceX = 3;
-
 	if (shouldOffset)
 	{
 		// X panning
-		if (lastX - deadSpaceX > x)
+		if (lastX - DEADSPACE_X > x)
 		{
 			SetOffsetX(-X_SPEED);
 		}
-		else if (lastX + deadSpaceX < x)
+		else if (lastX + DEADSPACE_X < x)
 		{
 			SetOffsetX(X_SPEED);
 		}
 
 		// Y panning
-		if (lastY - deadSpaceY > y)
+		if (lastY - DEADSPACE_Y > y)
 		{
 			SetOffsetY(-Y_SPEED);
 		}
-		else if (lastY + deadSpaceY < y)
+		else if (lastY + DEADSPACE_Y < y)
 		{
 			SetOffsetY(Y_SPEED);
 		}

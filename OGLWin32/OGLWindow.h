@@ -15,32 +15,43 @@ class OGLWindow
 		int			m_width;
 		int			m_height;
 
-		// Constant keyboard bindings for key handling
-		// Key number 1
-		static const byte KEY_1 = 0x31;
-
 		// global scale value for all geometry
 		double global_scale;
+
+		// Store last x and y positions of mouse for panning.
+		int lastX;
+		int lastY;
 
 		// offset for panning.
 		bool shouldOffset;
 		double offsetX;
 		double offsetY;
 
-		// Constant Default offset
-		const double DEFAULT_X = 1.0;
-		const double DEFAULT_Y = 1.0;
-
 		// Constant offset speed
 		double X_SPEED = 20.0;
 		double Y_SPEED = 20.0;
 
+		// Constant keyboard bindings for key handling
+		// Key number 1
+		static const byte KEY_1 = 0x31;
+
+		// Constant Default offset
+		const double DEFAULT_X = 1.0;
+		const double DEFAULT_Y = 1.0;
+
+		// Constand Deadspace values for camera panning
+		const double DEADSPACE_X = 3;
+		const double DEADSPACE_Y = 3;
+
+		// Constant minimum x and y panning speed.
 		const int MIN_X_SPEED = 5;
 		const int MIN_Y_SPEED = 5;
 
+		// Constant maximum x and y panning speed.
 		const int MAX_X_SPEED = 50;
 		const int MAX_Y_SPEED = 50;
 
+		// Constant step speed for panning
 		const int X_STEP_SPEED = 5;
 		const int Y_STEP_SPEED = 5;
 		
