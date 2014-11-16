@@ -5,16 +5,19 @@
 #include "Bar2D.h"
 
 #include <vector>
+#include <string>
 
 class BarChart : public Graph
 {
 
 private:
 	std::vector<Bar2D> bars;
+	std::string title;
 
 public:
 
 	BarChart();
+	BarChart(std::string);
 
 	void DrawAxis(float, float);
 	void Draw();

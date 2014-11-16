@@ -124,7 +124,7 @@ BOOL OGLWindow::InitWindow(HINSTANCE hInstance, int width, int height)
 	m_width = width;
 	m_height = height;
 
-	barChart = new BarChart();
+	barChart = new BarChart("IM A BARCHART SO IS JAMIE");
 	barChart->ReadData();
 
 	pieChart = new PieChart();
@@ -139,27 +139,6 @@ void OGLWindow::SetVisible ( BOOL visible )
 	ShowWindow ( m_hwnd, visible? SW_SHOW : SW_HIDE );
 	InitOGLState();
 }
-
-//void OGLWindow::RenderText(std::string text, float scale, float x, float y, Vector3f col)
-//{
-//	glEnable(GL_TEXTURE_2D);
-//	glEnable(GL_BLEND);
-//	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-//	fontRenderer.Create("Arial.glf", 1);
-//
-//	glMatrixMode(GL_MODELVIEW);
-//	glColor3f(col.GetX(), col.GetY(), col.GetZ());
-//	fontRenderer.Begin();
-//	fontRenderer.DrawString(text, scale, x, y);
-//
-//	glDisable(GL_TEXTURE_2D);
-//	glDisable(GL_BLEND);
-//}
-//void OGLWindow::RenderText(std::string text, float scale, float x, float y, Vector3f col, bool shadow)
-//{
-//	RenderText(text, scale, x + 2, y - 2, Vector3f(0.75f, 0.75f, 0.75f));
-//	RenderText(text, scale, x , y, col);
-//}
 
 void OGLWindow::Render()
 {

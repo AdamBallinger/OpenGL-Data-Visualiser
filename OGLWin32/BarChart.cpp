@@ -1,5 +1,6 @@
 #include "BarChart.h"
 #include "FileUtils.h"
+#include "FontRenderer.h"
 
 #include <Windows.h>
 #include <GL/GL.h>
@@ -11,6 +12,11 @@
 BarChart::BarChart()
 {
 	
+}
+
+BarChart::BarChart(std::string _title) : BarChart::BarChart()
+{
+	title = _title;
 }
 
 /*
@@ -26,6 +32,8 @@ void BarChart::DrawAxis(float width, float height)
 	float endX = startX + width;
 	float endY = startY + height;
 
+	FontRenderer::RenderText(title, 0.5f, startX, endY + 90.0f, Vector3f(0.0f, 1.0f, 1.0f), true);
+
 	glLineWidth(1.3f);
 	glBegin(GL_LINES);
 
@@ -40,6 +48,9 @@ void BarChart::DrawAxis(float width, float height)
 	glVertex2f(startX, endY);
 
 	glEnd();
+
+	FontRenderer::RenderText("X", 0.1f, startX - 15.0f, startY + 5.0f, Vector3f(1.0f, 0.0f, 0.0f));
+	FontRenderer::RenderText("Y", 0.1f, startX - 3.0f, startY - 7.0f, Vector3f(0.0f, 1.0f, 0.0f));
 }
 
 /*
