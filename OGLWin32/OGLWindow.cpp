@@ -167,13 +167,6 @@ void OGLWindow::RenderText(std::string text, float scale, float x, float y, Vect
 }
 void OGLWindow::RenderText(std::string text, float scale, float x, float y, Vector3f col, bool shadow)
 {
-	/*glMatrixMode(GL_MODELVIEW);
-	glColor3f(0.75f, 0.75f, 0.75f);
-	fontRenderer.Begin();
-	fontRenderer.DrawString(text, scale, x + 2, y - 2);
-
-	glColor3f(col.GetX(), col.GetY(), col.GetZ());
-	fontRenderer.DrawString(text, scale, x, y);*/
 	RenderText(text, scale, x + 2, y - 2, Vector3f(0.75f, 0.75f, 0.75f));
 	RenderText(text, scale, x , y, col);
 }
@@ -183,6 +176,7 @@ void OGLWindow::Render()
 	glClear(GL_COLOR_BUFFER_BIT);
 	glLoadIdentity();
 
+	glScaled(global_scale, global_scale, 0.0);
 	glTranslated(offsetX, -offsetY, 1.0);
 
 	RenderText("JAMIE I LUVER U", 0.5f, 0, 0, Vector3f(1.0, 0.0, 1.0), true);
