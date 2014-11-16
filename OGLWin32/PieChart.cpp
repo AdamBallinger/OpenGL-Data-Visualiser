@@ -49,16 +49,22 @@ PieChart::PieChart()
 void PieChart::Draw(float centerX, float centerY, float radius, double scale)
 {
 	float lastAngle = 0.0f;
+	const int slicesPerSegment = 90;
 
 	glScaled(scale, scale, 0.0);
 
 	for (int i = 0; i < data.size(); ++i)
 	{
-		glColor3f(data[i].GetColor().GetX(), data[i].GetColor().GetY(), data[i].GetColor().GetZ());
+		// Set color for the current data slice being drawn.
+		glColor3f(data[i].GetColor().GetX(), data[i].GetColor().GetY(), data[i].GetColor().GetZ()); 
 
+		// Calculate the angle the data slice uses.
 		data[i].SetAngle((360.0f / GetDataTotal()) * data[i].GetData());
-		gluPartialDisk(gluNewQuadric(), 0, radius, 90, data.size(), lastAngle, data[i].GetAngle());
 
+		// Draw the data slice
+		gluPartialDisk(gluNewQuadric(), 0, radius, slicesPerSegment, data.size(), lastAngle, data[i].GetAngle());
+
+		// Set the lastangle for the starting point of the next data slice.
 		lastAngle += data[i].GetAngle();
 	}
 }

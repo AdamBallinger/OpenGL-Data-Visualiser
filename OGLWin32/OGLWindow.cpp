@@ -248,15 +248,11 @@ BOOL OGLWindow::MouseMove ( int x, int y )
 BOOL OGLWindow::HandleKey(WPARAM wparam)
 {
 	const byte KEY_1 = 0x31;
-	const byte KEY_2 = 0x32;
 
 	switch (wparam)
 	{
 	case KEY_1:
-		std::cout << "1" << std::endl;
-		break;
-	case KEY_2:
-		std::cout << "2" << std::endl;
+		ResetView();
 		break;
 
 	default:
@@ -285,4 +281,12 @@ void OGLWindow::SetVSync(bool sync)
 		if (wglSwapIntervalEXT)
 			wglSwapIntervalEXT(sync);
 	}
+}
+
+// Resets the scale and translation of the geometry drawn to the screen.
+void OGLWindow::ResetView()
+{
+	global_scale = 1.0;
+	offsetX = 1.0;
+	offsetY = 1.0;
 }

@@ -46,6 +46,7 @@ protected:
 		void		DestroyOGLWindow();
 
 		void		SetVSync(bool);
+		void		ResetView();
 
 		BOOL		MouseLBDown ( int x, int y );
 		BOOL		MouseLBUp ( int x, int y );
