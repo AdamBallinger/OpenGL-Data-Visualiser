@@ -124,7 +124,7 @@ BOOL OGLWindow::InitWindow(HINSTANCE hInstance, int width, int height)
 	m_width = width;
 	m_height = height;
 
-	barChart = new BarChart("IM A BARCHART SO IS JAMIE");
+	barChart = new BarChart("I'm a bar chart!");
 	barChart->ReadData();
 
 	pieChart = new PieChart();
