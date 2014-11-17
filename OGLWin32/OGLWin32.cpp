@@ -33,14 +33,12 @@ int WINAPI WinMain(HINSTANCE hInstance,
 
 	//Create the application instance
 	OGLApplication* myapp = OGLApplication::CreateApplication(hInstance);
-	
+
 	exitcode = myapp->Run();
-	
+
 	myapp->DestroyApplication();
 	//Free the console window
 	FreeConsole();
-
-	ExitProcess(0);
 
 	return exitcode;
 }
