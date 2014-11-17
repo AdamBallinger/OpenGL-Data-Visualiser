@@ -11,7 +11,11 @@ class BarChart : public Graph
 {
 
 private:
+
+	// Stores each bar of data.
 	std::vector<Bar2D> bars;
+
+	// Stores the title for the chart that is rendered at the top of the chart.
 	std::string title;
 
 public:

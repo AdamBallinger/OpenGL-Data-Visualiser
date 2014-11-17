@@ -37,6 +37,12 @@
     <Filter Include="Source Files\Skelenton">
       <UniqueIdentifier>{a5b71ac0-2c51-4555-91f4-8fbc3b38dff7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\ChartData">
+      <UniqueIdentifier>{6204a163-b842-4276-8544-1ee9e8fc0fac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ChartData">
+      <UniqueIdentifier>{ad2802a9-2b3c-439e-93cb-a4bfbfa8c386}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -99,14 +105,17 @@
     <ClInclude Include="Vector2f.h">
       <Filter>Header Files\Skelenton</Filter>
     </ClInclude>
-    <ClInclude Include="PieSectorData.h">
-      <Filter>Header Files\Graphs</Filter>
-    </ClInclude>
     <ClInclude Include="glfont2.h">
       <Filter>Header Files\Utils</Filter>
     </ClInclude>
     <ClInclude Include="FontRenderer.h">
       <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="PieSectorData.h">
+      <Filter>Header Files\ChartData</Filter>
+    </ClInclude>
+    <ClInclude Include="BarChartData.h">
+      <Filter>Header Files\ChartData</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -146,14 +155,17 @@
     <ClCompile Include="Vector2f.cpp">
       <Filter>Source Files\Skelenton</Filter>
     </ClCompile>
-    <ClCompile Include="PieSectorData.cpp">
-      <Filter>Source Files\Graphs</Filter>
-    </ClCompile>
     <ClCompile Include="glfont2.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
     <ClCompile Include="FontRenderer.cpp">
       <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="PieSectorData.cpp">
+      <Filter>Source Files\ChartData</Filter>
+    </ClCompile>
+    <ClCompile Include="BarChartData.cpp">
+      <Filter>Source Files\ChartData</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

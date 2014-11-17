@@ -12,6 +12,16 @@ Bar2D::Bar2D(Vector2f bottomLeft)
 	SetBottomLeft(bottomLeft);
 }
 
+void Bar2D::SetBarData(BarChartData _data)
+{
+	data = _data;
+}
+
+BarChartData Bar2D::GetBarData()
+{
+	return data;
+}
+
 void Bar2D::SetBottomLeft(Vector2f _bottomLeft)
 {
 	bottomLeft = _bottomLeft;

@@ -84,6 +84,7 @@
   <ItemGroup>
     <ClInclude Include="Bar2D.h" />
     <ClInclude Include="BarChart.h" />
+    <ClInclude Include="BarChartData.h" />
     <ClInclude Include="FileUtils.h" />
     <ClInclude Include="FontRenderer.h" />
     <ClInclude Include="glfont2.h" />
@@ -106,6 +107,7 @@
   <ItemGroup>
     <ClCompile Include="Bar2D.cpp" />
     <ClCompile Include="BarChart.cpp" />
+    <ClCompile Include="BarChartData.cpp" />
     <ClCompile Include="FileUtils.cpp" />
     <ClCompile Include="FontRenderer.cpp" />
     <ClCompile Include="glfont2.cpp" />

@@ -1,12 +1,15 @@
 #ifndef bar2d_h
 #define bar2d_h
 
+#include "BarChartData.h"
 #include "Vector2f.h"
 
 class Bar2D
 {
 
 private:
+
+	BarChartData data;
 	Vector2f bottomLeft;
 	float height;
 	float width;
@@ -18,9 +21,11 @@ public:
 
 	void Draw();
 
-	Vector2f GetBottomLeft();
+	void SetBarData(BarChartData);
+	BarChartData GetBarData();
 
 	void SetBottomLeft(Vector2f);
+	Vector2f GetBottomLeft();
 
 	void SetHeight(float);
 	float GetHeight();
