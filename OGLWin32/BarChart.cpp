@@ -58,7 +58,7 @@ void BarChart::DrawAxis(float width, float height)
 */
 void BarChart::Draw()
 {
-	DrawAxis(500.0f, 500.0f);
+	DrawAxis(1000.0f, 500.0f);
 
 	for (int i = 0; i < bars.size(); ++i)
 	{
@@ -101,14 +101,44 @@ void BarChart::ReadData()
 	}
 
 	Bar2D maleBar = Bar2D();
-	maleBar.SetHeight(maleCount * 500 / testdata.size()); // multiply the value of maleCount by the height of the graph then divide by the total number of data entries. This scales the bar nicely.
-	maleBar.SetWidth(500 / 2 - 2.0f); // divide width of chart by number of categories (in this case male and female so 2) then minus 2.0f as the seperator offset
+	BarChartData maleData = BarChartData("Males");
+	maleData.SetColor(Vector3f(1.0f, 0.0f, 0.0f));
+	maleData.SetData(maleCount);
+	maleBar.SetWidth(500 / 2 - 2.0f);
+	maleBar.SetHeight(maleCount * 500 / testdata.size());
 	maleBar.SetBottomLeft(Vector2f(-399.0f, -199.0f));
+	maleBar.SetBarData(maleData);
 	bars.push_back(maleBar);
 
 	Bar2D femaleBar = Bar2D();
-	femaleBar.SetHeight(femaleCount * 500 / testdata.size());
+	BarChartData femaleData = BarChartData("Females");
+	femaleData.SetColor(Vector3f(1.0f, 1.0f, 0.0f));
+	femaleData.SetData(femaleCount);
 	femaleBar.SetWidth(500 / 2 - 2.0f);
-	femaleBar.SetBottomLeft(Vector2f(maleBar.GetBottomLeft().GetX() + maleBar.GetWidth() + 2.0f, -199.0f));
+	femaleBar.SetHeight(femaleCount * 500 / testdata.size());
+	femaleBar.SetBottomLeft(Vector2f(bars[bars.size() - 1].GetBottomLeft().GetX() + bars[bars.size() - 1].GetWidth() + 2.0f, -199.0f));
+	femaleBar.SetBarData(femaleData);
 	bars.push_back(femaleBar);
+
+	Bar2D altBar = Bar2D();
+	BarChartData altData = BarChartData("Alt");
+	altData.SetColor(Vector3f(1.0f, 0.0f, 1.0f));
+	altData.SetData(maleCount);
+	altBar.SetWidth(500 / 2 - 2.0f);
+	altBar.SetHeight(maleCount * 500 / testdata.size());
+	altBar.SetBottomLeft(Vector2f(bars[bars.size() - 1].GetBottomLeft().GetX() + bars[bars.size() - 1].GetWidth() + 2.0f, -199.0f));
+	altBar.SetBarData(altData);
+	bars.push_back(altBar);
+
+	//Bar2D maleBar = Bar2D();
+	//maleBar.SetHeight(maleCount * 500 / testdata.size()); // multiply the value of maleCount by the height of the graph then divide by the total number of data entries. This scales the bar nicely.
+	//maleBar.SetWidth(500 / 2 - 2.0f); // divide width of chart by number of categories (in this case male and female so 2) then minus 2.0f as the seperator offset
+	//maleBar.SetBottomLeft(Vector2f(-399.0f, -199.0f));
+	//bars.push_back(maleBar);
+
+	//Bar2D femaleBar = Bar2D();
+	//femaleBar.SetHeight(femaleCount * 500 / testdata.size());
+	//femaleBar.SetWidth(500 / 2 - 2.0f);
+	//femaleBar.SetBottomLeft(Vector2f(maleBar.GetBottomLeft().GetX() + maleBar.GetWidth() + 2.0f, -199.0f));
+	//bars.push_back(femaleBar);
 }

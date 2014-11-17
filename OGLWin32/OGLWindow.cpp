@@ -8,6 +8,8 @@
 
 OGLWindow::OGLWindow()
 {
+	// Default chart
+	currentChart = BARCHART;
 	// Sets default scale to 0
 	global_scale = 1.0;
 	offsetX = 1.0;
@@ -129,8 +131,8 @@ BOOL OGLWindow::InitWindow(HINSTANCE hInstance, int width, int height)
 
 	pieChart = new PieChart();
 
-	//lineChart = new LineChart();
-	//lineChart->ReadData();
+	lineChart = new LineChart();
+	lineChart->ReadData();
 	return TRUE;
 }
 
@@ -148,13 +150,30 @@ void OGLWindow::Render()
 	glScaled(global_scale, global_scale, 0.0);
 	glTranslated(offsetX, -offsetY, 1.0);
 
-	FontRenderer::RenderText("JAMIE I LUVER U", 0.5f, 0, 0, Vector3f(1.0, 0.0, 1.0), true);
+	// Control which chart is rendered from the tool bar
+	switch (currentChart)
+	{
+	case BARCHART:
+		barChart->Draw();
+		break;
 
-	barChart->Draw();
-	//pieChart->Draw(0, 0, 300.0f);
+	case PIECHART:
+		pieChart->Draw(0, 0, 300.0f);
+		break;
+
+	case LINECHART:
+		//lineChart->Draw();
+		break;
+
+	case SCATTERPLOT:
+		//scatterPlot->Draw();
+		break;
+
+	default:
+		barChart->Draw();
+		break;
+	}
 	
-	//lineChart->Draw();
-
 	glFlush();
 
 	SwapBuffers(m_hdc);
@@ -346,4 +365,14 @@ void OGLWindow::SetOffsetX(double offX)
 void OGLWindow::SetOffsetY(double offY)
 {
 	offsetY += offY;
+}
+
+void OGLWindow::SetChart(CHART chart)
+{
+	currentChart = chart;
+}
+
+OGLWindow::CHART OGLWindow::GetChart()
+{
+	return currentChart;
 }

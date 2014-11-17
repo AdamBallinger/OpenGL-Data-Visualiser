@@ -5,6 +5,11 @@ BarChartData::BarChartData()
 
 }
 
+BarChartData::BarChartData(std::string _title)
+{
+	SetDataName(_title);
+}
+
 void BarChartData::SetDataName(std::string _dataName)
 {
 	dataName = _dataName;

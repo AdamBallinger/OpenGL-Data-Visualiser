@@ -1,6 +1,10 @@
 #include "Bar2D.h"
+#include "FontRenderer.h"
+
 #include <Windows.h>
 #include <GL/GL.h>
+
+#include <iostream>
 
 Bar2D::Bar2D()
 {
@@ -58,7 +62,7 @@ void Bar2D::Draw()
 	glLineWidth(1.0f);
 	glBegin(GL_TRIANGLE_STRIP);
 
-	glColor3f(0.0f, 0.0f, 1.0f);
+	glColor3f(GetBarData().GetColor().GetX(), GetBarData().GetColor().GetY(), GetBarData().GetColor().GetZ());
 
 	glVertex2f(GetBottomLeft().GetX(), GetBottomLeft().GetY());
 	glVertex2f(GetBottomLeft().GetX() + GetWidth(), GetBottomLeft().GetY());;
@@ -67,4 +71,7 @@ void Bar2D::Draw()
 	glVertex2f(GetBottomLeft().GetX() + GetWidth(), GetBottomLeft().GetY() + GetHeight());
 
 	glEnd();
+
+	// Render the name of the data the bar is representing under it.
+	FontRenderer::RenderText(GetBarData().GetDataName(), 0.2f, GetBottomLeft().GetX() + GetWidth() / 2 - 30.0f, GetBottomLeft().GetY() - 10.0f, Vector3f(0.75f, 0.75f, 0.75f));
 }

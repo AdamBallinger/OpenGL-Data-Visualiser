@@ -15,9 +15,9 @@
 #pragma comment (lib, "opengl32.lib")
 #pragma comment (lib, "glu32.lib")
 
-int APIENTRY _tWinMain(HINSTANCE hInstance,
+int WINAPI WinMain(HINSTANCE hInstance,
                      HINSTANCE hPrevInstance,
-                     LPTSTR    lpCmdLine,
+                     LPSTR    lpCmdLine,
                      int       nCmdShow)
 {
 	int exitcode = 0;

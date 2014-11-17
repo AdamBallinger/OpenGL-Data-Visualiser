@@ -16,6 +16,7 @@ private:
 public:
 
 	BarChartData();
+	BarChartData(std::string);
 
 	void SetDataName(std::string);
 	std::string GetDataName();

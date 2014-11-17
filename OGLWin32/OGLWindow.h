@@ -68,6 +68,12 @@ protected:
 		void InitOGLState();
 
 	public:
+
+		// Current chart that should be rendered to the screen.
+		enum CHART { BARCHART, PIECHART, LINECHART, SCATTERPLOT };
+
+		CHART currentChart;
+
 					OGLWindow();
 					OGLWindow(HINSTANCE hInstance, int width, int height);
 					~OGLWindow();
@@ -79,6 +85,9 @@ protected:
 
 		void		SetVSync(bool);
 		void		ResetView();
+
+		void		SetChart(CHART);
+		CHART		GetChart();
 
 		void		SetOffsetX(double);
 		void		SetOffsetY(double);

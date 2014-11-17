@@ -32,7 +32,7 @@ BOOL OGLApplication::MyRegisterClass(HINSTANCE hinst)
 	wcex.hIcon			= LoadIcon(hinst, MAKEINTRESOURCE(IDI_OGLWIN32));
 	wcex.hCursor		= LoadCursor(NULL, IDC_ARROW);
 	wcex.hbrBackground	= NULL;
-	wcex.lpszMenuName	= NULL;
+	wcex.lpszMenuName	= MAKEINTRESOURCE(IDC_OGLWIN32);
 	wcex.lpszClassName	= L"OGLWindow";
 	wcex.hIconSm		= LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 	
@@ -124,6 +124,31 @@ LRESULT CALLBACK OGLApplication::WndProc(HWND hwnd, UINT msg, WPARAM wparam, LPA
 
 		case WM_CLOSE:
 			s_oglapp->GetApplicationWindow()->DestroyOGLWindow();
+			break;
+
+		case WM_COMMAND:
+			switch (LOWORD(wparam))
+			{
+			case IDM_EXIT:
+				s_oglapp->GetApplicationWindow()->DestroyOGLWindow();
+				break;
+
+			case ID_CHARTS_BARCHART:
+				s_oglapp->GetApplicationWindow()->SetChart(OGLWindow::BARCHART);
+				break;
+
+			case ID_CHARTS_PIECHART:
+				s_oglapp->GetApplicationWindow()->SetChart(OGLWindow::PIECHART);
+				break;
+
+			case ID_CHARTS_LINECHART:
+				s_oglapp->GetApplicationWindow()->SetChart(OGLWindow::LINECHART);
+				break;
+
+			case ID_CHARTS_SCATTERPLOT:
+				s_oglapp->GetApplicationWindow()->SetChart(OGLWindow::SCATTERPLOT);
+				break;
+			}
 			break;
 
 		case WM_KEYDOWN:
