@@ -1,11 +1,9 @@
 #ifndef linechart_h
 #define linechart_h
 
-#include "Graph.h"
-
 #include <vector>
 
-class LineChart : public Graph
+class LineChart
 {
 private:
 	std::vector<float> points;

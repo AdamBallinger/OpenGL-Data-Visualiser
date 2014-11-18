@@ -21,7 +21,7 @@ void LineChart::DrawAxis(float width, float height)
 	float endY = startY + height;
 
 	glLineWidth(1.3f);
-	glBegin(GL_LINES);
+	glBegin(GL_LINE_STRIP);
 
 	// Draw X Axis
 	glColor3f(1.0f, 0.0f, 0.0f);
@@ -44,11 +44,6 @@ void LineChart::Draw()
 	
 	float startX = -400.0f;
 	float startY = -200.0f;
-
-	for (int i = 0; i < points.size() - 1; ++i)
-	{
-		
-	}
 
 	glEnd();
 }

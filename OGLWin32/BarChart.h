@@ -1,15 +1,13 @@
 #ifndef barchart_h
 #define barchart_h
 
-#include "Graph.h"
 #include "Bar2D.h"
 
 #include <vector>
 #include <string>
 
-class BarChart : public Graph
+class BarChart
 {
-
 private:
 
 	// Stores each bar of data.

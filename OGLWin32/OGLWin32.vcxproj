@@ -89,8 +89,8 @@
     <ClInclude Include="FileUtils.h" />
     <ClInclude Include="FontRenderer.h" />
     <ClInclude Include="glfont2.h" />
-    <ClInclude Include="Graph.h" />
     <ClInclude Include="LineChart.h" />
+    <ClInclude Include="LineChartData.h" />
     <ClInclude Include="Listener.h" />
     <ClInclude Include="OGLApplication.h" />
     <ClInclude Include="OGLRectangle.h" />

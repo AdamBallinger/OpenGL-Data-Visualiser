@@ -42,18 +42,6 @@ class OGLWindow
 		// Constand Deadspace values for camera panning
 		const double DEADSPACE_X = 3;
 		const double DEADSPACE_Y = 3;
-
-		// Constant minimum x and y panning speed.
-		const int MIN_X_SPEED = 5;
-		const int MIN_Y_SPEED = 5;
-
-		// Constant maximum x and y panning speed.
-		const int MAX_X_SPEED = 50;
-		const int MAX_Y_SPEED = 50;
-
-		// Constant step speed for panning
-		const int X_STEP_SPEED = 5;
-		const int Y_STEP_SPEED = 5;
 		
 		//This is not an ideal place to hold geometry data
 		BarChart * barChart;
@@ -87,7 +75,6 @@ protected:
 		void		ResetView();
 
 		void		SetChart(CHART);
-		CHART		GetChart();
 
 		void		SetOffsetX(double);
 		void		SetOffsetY(double);

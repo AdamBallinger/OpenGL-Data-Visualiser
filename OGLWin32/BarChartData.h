@@ -16,8 +16,11 @@ private:
 public:
 
 	BarChartData();
+
+	// Initialize the data with the name of the data displayed under each bar in the chart.
 	BarChartData(std::string);
 
+	// Sets the name rendered under each bar.
 	void SetDataName(std::string);
 	std::string GetDataName();
 

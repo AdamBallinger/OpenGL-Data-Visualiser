@@ -19,9 +19,6 @@ OGLWindow::OGLWindow()
 
 OGLWindow::~OGLWindow()
 {
-	//DestroyOGLContext();
-	
-	//Clean up the renderable
 	delete barChart;
 	delete pieChart;
 	delete lineChart;
@@ -162,7 +159,7 @@ void OGLWindow::Render()
 		break;
 
 	case LINECHART:
-		//lineChart->Draw();
+		lineChart->Draw();
 		break;
 
 	case SCATTERPLOT:
@@ -228,31 +225,26 @@ BOOL OGLWindow::MouseRBUp(int x, int y)
 
 BOOL OGLWindow::MouseMove ( int x, int y )
 {
-	/*Listener *plistener = static_cast<Listener*>(m_rect);
-
-	plistener->MouseMove( x - m_width / 2 , y - m_height / 2);
-	*/
-
 	if (shouldOffset)
 	{
 		// X panning
 		if (lastX - DEADSPACE_X > x)
 		{
-			SetOffsetX(-X_SPEED);
+			SetOffsetX(-lastX + x);
 		}
 		else if (lastX + DEADSPACE_X < x)
 		{
-			SetOffsetX(X_SPEED);
+			SetOffsetX(x - lastX);
 		}
 
 		// Y panning
 		if (lastY - DEADSPACE_Y > y)
 		{
-			SetOffsetY(-Y_SPEED);
+			SetOffsetY(-lastY + y);
 		}
 		else if (lastY + DEADSPACE_Y < y)
 		{
-			SetOffsetY(Y_SPEED);
+			SetOffsetY(y - lastY);
 		}
 	}
 
@@ -285,28 +277,6 @@ BOOL OGLWindow::HandleKey(WPARAM wparam)
 		SetOffsetY(Y_SPEED);
 		break;
 
-	case VK_OEM_4:
-		if (X_SPEED > MIN_X_SPEED)
-		{
-			X_SPEED -= X_STEP_SPEED; 
-		}
-		if (Y_SPEED > MIN_Y_SPEED) 
-		{
-			Y_SPEED -= Y_STEP_SPEED; 
-		}
-		break;
-
-	case VK_OEM_6:
-		if (X_SPEED < MAX_X_SPEED) 
-		{
-			X_SPEED += X_STEP_SPEED; 
-		}
-		if (Y_SPEED < MAX_Y_SPEED)
-		{
-			Y_SPEED += Y_STEP_SPEED; 
-		}
-		break;
-
 	default:
 		break;
 	}
@@ -315,7 +285,6 @@ BOOL OGLWindow::HandleKey(WPARAM wparam)
 
 BOOL OGLWindow::MouseWheelMove(int mouseWheelDelta)
 {
-	
 	if (mouseWheelDelta > 0)
 	{		
 		global_scale += 0.05;
@@ -370,9 +339,4 @@ void OGLWindow::SetOffsetY(double offY)
 void OGLWindow::SetChart(CHART chart)
 {
 	currentChart = chart;
-}
-
-OGLWindow::CHART OGLWindow::GetChart()
-{
-	return currentChart;
 }

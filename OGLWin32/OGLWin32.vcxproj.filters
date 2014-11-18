@@ -57,9 +57,6 @@
     <ClInclude Include="Bar2D.h">
       <Filter>Header Files\Shapes</Filter>
     </ClInclude>
-    <ClInclude Include="Graph.h">
-      <Filter>Header Files\Graphs</Filter>
-    </ClInclude>
     <ClInclude Include="BarChart.h">
       <Filter>Header Files\Graphs</Filter>
     </ClInclude>
@@ -115,6 +112,9 @@
       <Filter>Header Files\ChartData</Filter>
     </ClInclude>
     <ClInclude Include="BarChartData.h">
+      <Filter>Header Files\ChartData</Filter>
+    </ClInclude>
+    <ClInclude Include="LineChartData.h">
       <Filter>Header Files\ChartData</Filter>
     </ClInclude>
   </ItemGroup>
