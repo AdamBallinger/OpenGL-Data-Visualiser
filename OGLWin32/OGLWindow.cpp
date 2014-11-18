@@ -9,7 +9,7 @@
 OGLWindow::OGLWindow()
 {
 	// Default chart
-	currentChart = BARCHART;
+	currentChart = LINECHART;
 	// Sets default scale to 0
 	global_scale = 1.0;
 	offsetX = 1.0;
@@ -128,7 +128,7 @@ BOOL OGLWindow::InitWindow(HINSTANCE hInstance, int width, int height)
 
 	pieChart = new PieChart();
 
-	lineChart = new LineChart();
+	lineChart = new LineChart("I'm a line chart!");
 	lineChart->ReadData();
 	return TRUE;
 }

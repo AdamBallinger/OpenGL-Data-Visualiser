@@ -9,15 +9,15 @@ class LineChartData
 {
 private:
 
-	int data;
+	double data;
 	std::string dataTime;
 
 public:
 
 	LineChartData();
 
-	void SetData(int);
-	int GetData();
+	void SetData(double);
+	double GetData();
 
 	void SetDataTime(std::string);
 	std::string GetDataTime();

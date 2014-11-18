@@ -167,6 +167,9 @@
     <ClCompile Include="BarChartData.cpp">
       <Filter>Source Files\ChartData</Filter>
     </ClCompile>
+    <ClCompile Include="LineChartData.cpp">
+      <Filter>Source Files\ChartData</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="OGLWin32.rc">

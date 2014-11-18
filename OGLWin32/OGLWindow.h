@@ -31,17 +31,13 @@ class OGLWindow
 		double X_SPEED = 20.0;
 		double Y_SPEED = 20.0;
 
-		// Constant keyboard bindings for key handling
-		// Key number 1
-		static const byte KEY_1 = 0x31;
-
 		// Constant Default offset
 		const double DEFAULT_X = 1.0;
 		const double DEFAULT_Y = 1.0;
 
-		// Constand Deadspace values for camera panning
-		const double DEADSPACE_X = 3;
-		const double DEADSPACE_Y = 3;
+		// Constant keyboard bindings for key handling
+		// Key number 1
+		static const byte KEY_1 = 0x31;
 		
 		//This is not an ideal place to hold geometry data
 		BarChart * barChart;

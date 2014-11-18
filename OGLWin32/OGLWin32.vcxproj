@@ -113,6 +113,7 @@
     <ClCompile Include="FontRenderer.cpp" />
     <ClCompile Include="glfont2.cpp" />
     <ClCompile Include="LineChart.cpp" />
+    <ClCompile Include="LineChartData.cpp" />
     <ClCompile Include="OGLApplication.cpp" />
     <ClCompile Include="OGLRectangle.cpp" />
     <ClCompile Include="OGLWin32.cpp" />
