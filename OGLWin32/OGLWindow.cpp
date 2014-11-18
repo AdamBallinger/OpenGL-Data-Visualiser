@@ -145,6 +145,8 @@ void OGLWindow::Render()
 	glLoadIdentity();
 
 	glScaled(global_scale, global_scale, 0.0);
+
+	//glOrtho(-0.5f * m_width * global_scale, 0.5f * m_width * global_scale, -0.5f * m_height * global_scale, 0.5f * m_height * global_scale, -1.0f, 1.0f);
 	glTranslated(offsetX, -offsetY, 1.0);
 
 	// Control which chart is rendered from the tool bar
@@ -199,6 +201,7 @@ void OGLWindow::InitOGLState()
 	glClearColor( 0.0f, 0.0f, 0.0f, 1.0f );
 	glDisable(GL_DEPTH_TEST);
 	glDisable(GL_CULL_FACE);
+	glShadeModel(GL_FLAT);
 }
 
 BOOL OGLWindow::MouseLBDown ( int x, int y )
