@@ -228,21 +228,21 @@ BOOL OGLWindow::MouseMove ( int x, int y )
 	if (shouldOffset)
 	{
 		// X panning
-		if (lastX - DEADSPACE_X > x)
+		if (lastX > x)
 		{
 			SetOffsetX(-lastX + x);
 		}
-		else if (lastX + DEADSPACE_X < x)
+		else if (lastX < x)
 		{
 			SetOffsetX(x - lastX);
 		}
 
 		// Y panning
-		if (lastY - DEADSPACE_Y > y)
+		if (lastY > y)
 		{
 			SetOffsetY(-lastY + y);
 		}
-		else if (lastY + DEADSPACE_Y < y)
+		else if (lastY < y)
 		{
 			SetOffsetY(y - lastY);
 		}
