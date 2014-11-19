@@ -19,8 +19,9 @@ private:
 
 	double highestDataValue;
 
-	const float START_X = -400.0f;
-	const float START_Y = -200.0f;
+	// Defines the 0, 0 origin for the axis of the chart.
+	const float START_X = -550.0f;
+	const float START_Y = -400.0f;
 
 	const float WIDTH = 1200.0f;
 	const float HEIGHT = 800.0f;
