@@ -124,7 +124,7 @@ void BarChart::ReadData()
 	{
 		bars[i].SetWidth(WIDTH / bars.size() - 2.0f);
 
-		// Check if its the 1st bar so we can set it the X of it to the starting x of the axis so other bars position correctly after it.
+		// Check if its the 1st bar so we can set the X of it to the starting x of the axis so other bars position correctly after it.
 		if (i == 0)
 		{
 			bars[i].SetBottomLeft(Vector2f(START_X + 1.0f, START_Y + 1.0f));
