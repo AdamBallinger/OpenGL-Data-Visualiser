@@ -60,7 +60,7 @@ void BarChart::Draw()
 {
 	DrawAxis(1000.0f, 500.0f);
 
-	for (int i = 0; i < bars.size(); ++i)
+	for (size_t i = 0; i < bars.size(); ++i)
 	{
 		bars[i].Draw();
 	}
@@ -84,15 +84,15 @@ void BarChart::ReadData()
 
 	std::vector<std::string> testdata;
 
-	for (int i = 0; i < 100; ++i)
+	for (size_t i = 0; i < 100; ++i)
 		testdata.push_back("Male");
 
-	for (int i = 0; i < 4; ++i)
+	for (size_t i = 0; i < 4; ++i)
 		testdata.push_back("Female");
 
 	int maleCount = 0, femaleCount = 0;
 
-	for (int i = 0; i < testdata.size(); ++i)
+	for (size_t i = 0; i < testdata.size(); ++i)
 	{
 		if (testdata[i] == "Male")
 			maleCount++;
@@ -105,7 +105,7 @@ void BarChart::ReadData()
 	maleData.SetColor(Vector3f(1.0f, 0.0f, 0.0f));
 	maleData.SetData(maleCount);
 	maleBar.SetWidth(500 / 2 - 2.0f);
-	maleBar.SetHeight(maleCount * 500 / testdata.size());
+	maleBar.SetHeight(maleCount * 500.0f / testdata.size());
 	maleBar.SetBottomLeft(Vector2f(-399.0f, -199.0f));
 	maleBar.SetBarData(maleData);
 	bars.push_back(maleBar);
@@ -114,8 +114,8 @@ void BarChart::ReadData()
 	BarChartData femaleData = BarChartData("Females");
 	femaleData.SetColor(Vector3f(1.0f, 1.0f, 0.0f));
 	femaleData.SetData(femaleCount);
-	femaleBar.SetWidth(500 / 2 - 2.0f);
-	femaleBar.SetHeight(femaleCount * 500 / testdata.size());
+	femaleBar.SetWidth(500.0f / 2 - 2.0f);
+	femaleBar.SetHeight(femaleCount * 500.0f / testdata.size());
 	femaleBar.SetBottomLeft(Vector2f(bars[bars.size() - 1].GetBottomLeft().GetX() + bars[bars.size() - 1].GetWidth() + 2.0f, -199.0f));
 	femaleBar.SetBarData(femaleData);
 	bars.push_back(femaleBar);
@@ -124,8 +124,8 @@ void BarChart::ReadData()
 	BarChartData altData = BarChartData("Alt");
 	altData.SetColor(Vector3f(1.0f, 0.0f, 1.0f));
 	altData.SetData(maleCount);
-	altBar.SetWidth(500 / 2 - 2.0f);
-	altBar.SetHeight(maleCount * 500 / testdata.size());
+	altBar.SetWidth(500.0f / 2.0f - 2.0f);
+	altBar.SetHeight(maleCount * 500.0f / testdata.size());
 	altBar.SetBottomLeft(Vector2f(bars[bars.size() - 1].GetBottomLeft().GetX() + bars[bars.size() - 1].GetWidth() + 2.0f, -199.0f));
 	altBar.SetBarData(altData);
 	bars.push_back(altBar);
