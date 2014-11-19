@@ -5,6 +5,7 @@
 #include <GL/GL.h>
 
 #include <iostream>
+#include <sstream>
 
 LineChart::LineChart()
 {
@@ -49,8 +50,16 @@ void LineChart::DrawAxis(float width, float height)
 
 	glEnd();
 
-	FontRenderer::RenderText("Y : 0", 0.1f, START_X - 60.0f, START_Y + 5.0f, Vector3f(0.0f, 1.0f, 0.0f));
-	FontRenderer::RenderText("X : " + data[0].GetDataTime(), 0.1f, START_X - 9.0f, START_Y - 7.0f, Vector3f(1.0f, 0.0f, 0.0f));
+	// Draw lowest Y value at y 0 for the axis
+	FontRenderer::RenderText("Y : 0", 0.3f, START_X - 80.0f, START_Y + 15.0f, Vector3f(0.0f, 1.0f, 0.0f));
+	std::ostringstream highestValue;
+	highestValue << GetHighestDataValue();
+	// Draw highest Y value at top of y for the axis
+	FontRenderer::RenderText("Y: " + highestValue.str(), 0.3f, START_X - 120.0f, endY + 15.0f, Vector3f(0.0f, 1.0f, 0.0f));
+	// Draw start X value at x 0 for the axis
+	FontRenderer::RenderText("X : " + data[0].GetDataTime(), 0.3f, START_X - 9.0f, START_Y - 7.0f, Vector3f(1.0f, 0.0f, 0.0f));
+	// Draw end X value at end of the x axis
+	FontRenderer::RenderText("X : " + data[data.size() - 1].GetDataTime(), 0.3f, endX - 10.0f, START_Y - 7.0f, Vector3f(1.0f, 0.0f, 0.0f));
 }
 
 double LineChart::GetHighestDataValue()
@@ -117,37 +126,37 @@ void LineChart::ReadData()
 
 	LineChartData test6 = LineChartData();
 	test6.SetData(3.520);
-	test6.SetDataTime("17:28:00");
+	test6.SetDataTime("17:29:00");
 	data.push_back(test6);
 
 	LineChartData test7 = LineChartData();
 	test7.SetData(3.702);
-	test7.SetDataTime("17:28:00");
+	test7.SetDataTime("17:30:00");
 	data.push_back(test7);
 
 	LineChartData test8 = LineChartData();
 	test8.SetData(3.700);
-	test8.SetDataTime("17:28:00");
+	test8.SetDataTime("17:31:00");
 	data.push_back(test8);
 
 	LineChartData test9 = LineChartData();
 	test9.SetData(3.668);
-	test9.SetDataTime("17:28:00");
+	test9.SetDataTime("17:32:00");
 	data.push_back(test9);
 
 	LineChartData test10 = LineChartData();
 	test10.SetData(3.662);
-	test10.SetDataTime("17:28:00");
+	test10.SetDataTime("17:33:00");
 	data.push_back(test10);
 
 	LineChartData test11 = LineChartData();
 	test11.SetData(4.448);
-	test11.SetDataTime("17:28:00");
+	test11.SetDataTime("17:34:00");
 	data.push_back(test11);
 
 	LineChartData test12 = LineChartData();
 	test12.SetData(5.412);
-	test12.SetDataTime("17:28:00");
+	test12.SetDataTime("17:35:00");
 	data.push_back(test12);
 
 	// Get and store the highest value of data loaded
