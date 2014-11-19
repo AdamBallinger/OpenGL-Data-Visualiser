@@ -9,6 +9,11 @@ using namespace glfont;
 
 GLFont fontRenderer;
 
+void FontRenderer::Init()
+{
+	fontRenderer.Create("Arial.glf", 1);
+}
+
 /*
 	Renders text to the screen from a bitmap file.
 	text - Text being rendered.
@@ -21,8 +26,7 @@ void FontRenderer::RenderText(std::string text, float scale, float x, float y, V
 {
 	glEnable(GL_TEXTURE_2D);
 	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	fontRenderer.Create("Arial.glf", 1);
+	//fontRenderer.Create("Arial.glf", 1);
 
 	glMatrixMode(GL_MODELVIEW);
 	glColor3f(col.GetX(), col.GetY(), col.GetZ());

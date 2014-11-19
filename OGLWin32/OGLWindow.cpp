@@ -9,9 +9,9 @@
 OGLWindow::OGLWindow()
 {
 	// Default chart
-	currentChart = LINECHART;
-	// Sets default scale to 0
-	global_scale = 1.0;
+	currentChart = SCATTERPLOT;
+	// Sets default scale (zoom)
+	global_scale = DEFAULT_SCALE;
 	offsetX = 1.0;
 	offsetY = 1.0;
 	shouldOffset = FALSE;
@@ -22,6 +22,7 @@ OGLWindow::~OGLWindow()
 	delete barChart;
 	delete pieChart;
 	delete lineChart;
+	delete scatterPlot;
 }
 
 OGLWindow::OGLWindow(HINSTANCE hInstance, int width, int height) : OGLWindow::OGLWindow()
@@ -130,6 +131,9 @@ BOOL OGLWindow::InitWindow(HINSTANCE hInstance, int width, int height)
 
 	lineChart = new LineChart("I'm a line chart!");
 	lineChart->ReadData();
+
+	scatterPlot = new ScatterPlot();
+	scatterPlot->ReadData();
 	return TRUE;
 }
 
@@ -144,10 +148,11 @@ void OGLWindow::Render()
 	glClear(GL_COLOR_BUFFER_BIT);
 	glLoadIdentity();
 
+	// Scale the rendered geometry
 	glScaled(global_scale, global_scale, 0.0);
 
-	//glOrtho(-0.5f * m_width * global_scale, 0.5f * m_width * global_scale, -0.5f * m_height * global_scale, 0.5f * m_height * global_scale, -1.0f, 1.0f);
-	glTranslated(offsetX, -offsetY, 1.0);
+	// Offset the geometry by x and y offset values from point 0, 0
+	glTranslated(offsetX, -offsetY, 0.0);
 
 	// Control which chart is rendered from the tool bar
 	switch (currentChart)
@@ -165,7 +170,7 @@ void OGLWindow::Render()
 		break;
 
 	case SCATTERPLOT:
-		//scatterPlot->Draw();
+		scatterPlot->Draw();
 		break;
 
 	default:
@@ -199,9 +204,17 @@ void OGLWindow::Resize( int width, int height )
 void OGLWindow::InitOGLState()
 {
 	glClearColor( 0.0f, 0.0f, 0.0f, 1.0f );
-	glDisable(GL_DEPTH_TEST);
-	glDisable(GL_CULL_FACE);
+	glEnable(GL_DEPTH);
+	glEnable(GL_CULL_FACE);
 	glShadeModel(GL_FLAT);
+
+	// Load the font file the FontRenderer uses to save performance. Enables GL_TEXTURE_2D & GL_BLEND as glfont requires them to be enabled when font is being created.
+	glEnable(GL_TEXTURE_2D);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	FontRenderer::Init();
+	glDisable(GL_TEXTURE_2D);
+	glDisable(GL_BLEND);
 }
 
 BOOL OGLWindow::MouseLBDown ( int x, int y )
@@ -324,7 +337,7 @@ void OGLWindow::SetVSync(bool sync)
 // Resets the scale and translation of the geometry drawn to the screen.
 void OGLWindow::ResetView()
 {
-	global_scale = 1.0;
+	global_scale = DEFAULT_SCALE;
 	offsetX = DEFAULT_X;
 	offsetY = DEFAULT_Y;
 }

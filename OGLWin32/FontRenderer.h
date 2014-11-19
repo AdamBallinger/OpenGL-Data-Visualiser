@@ -9,6 +9,8 @@ class FontRenderer
 {
 public:
 
+	static void Init();
+
 	static void RenderText(std::string, float, float, float, Vector3f);
 	static void RenderText(std::string, float, float, float, Vector3f, bool);
 };

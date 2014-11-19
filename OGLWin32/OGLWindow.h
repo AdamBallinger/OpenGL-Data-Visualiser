@@ -4,6 +4,7 @@
 #include "BarChart.h"
 #include "LineChart.h"
 #include "PieChart.h"
+#include "ScatterPlot.h"
 
 class OGLWindow
 {
@@ -27,15 +28,18 @@ class OGLWindow
 		double offsetX;
 		double offsetY;
 
-		// Constant offset speed
+		// offset speed
 		double X_SPEED = 20.0;
 		double Y_SPEED = 20.0;
 
-		// Constant Default offset
+		// Default offset
 		const double DEFAULT_X = 1.0;
 		const double DEFAULT_Y = 1.0;
 
-		// Constant keyboard bindings for key handling
+		// Default Scale
+		const double DEFAULT_SCALE = 0.75;
+
+		// keyboard bindings for key handling
 		// Key number 1
 		static const byte KEY_1 = 0x31;
 		
@@ -43,6 +47,7 @@ class OGLWindow
 		BarChart * barChart;
 		LineChart * lineChart;
 		PieChart * pieChart;
+		ScatterPlot * scatterPlot;
 
 protected:
 
