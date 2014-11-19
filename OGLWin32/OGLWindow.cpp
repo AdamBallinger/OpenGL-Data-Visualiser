@@ -9,7 +9,7 @@
 OGLWindow::OGLWindow()
 {
 	// Default chart
-	currentChart = SCATTERPLOT;
+	currentChart = BARCHART;
 	// Sets default scale (zoom)
 	global_scale = DEFAULT_SCALE;
 	offsetX = 1.0;
@@ -129,7 +129,7 @@ BOOL OGLWindow::InitWindow(HINSTANCE hInstance, int width, int height)
 
 	pieChart = new PieChart();
 
-	lineChart = new LineChart("I'm a line chart!");
+	lineChart = new LineChart("Global Active Power Usage");
 	lineChart->ReadData();
 
 	scatterPlot = new ScatterPlot();
@@ -323,7 +323,7 @@ void OGLWindow::SetVSync(bool sync)
 
 	if (strstr(extensions, "WGL_EXT_swap_control") == 0)
 	{
-		return;am
+		return;
 	}
 	else
 	{
