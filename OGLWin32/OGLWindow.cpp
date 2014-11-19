@@ -323,7 +323,7 @@ void OGLWindow::SetVSync(bool sync)
 
 	if (strstr(extensions, "WGL_EXT_swap_control") == 0)
 	{
-		return;
+		return;am
 	}
 	else
 	{

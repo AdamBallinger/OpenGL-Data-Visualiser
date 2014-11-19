@@ -80,6 +80,7 @@ void ScatterPlot::DrawAxis3D(float width, float height, float depth)
 	glVertex3f(100.0f, -100.0f, 100.0f);    // Bottom Left Of The Quad (Right)
 	glVertex3f(100.0f, -100.0f, -100.0f);    // Bottom Right Of The Quad (Right)
 	glEnd();
+
 	glFlush();
 }
 
