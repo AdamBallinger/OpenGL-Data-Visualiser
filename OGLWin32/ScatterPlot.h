@@ -14,7 +14,8 @@ public:
 	void SetIs3D(bool);
 	bool GetIs3D();
 
-	void DrawAxis(float, float);
+	void DrawAxis2D(float, float);
+	void DrawAxis3D(float, float, float);
 	void Draw();
 	void Draw3D();
 	void ReadData();

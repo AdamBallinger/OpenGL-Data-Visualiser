@@ -42,6 +42,8 @@ Temporary Items
 .apdisk
 */Debug
 */Release
-Debug
 Release
+Debug
 OGLWin32.opensdf
+
+Release\*

@@ -43,6 +43,12 @@
     <Filter Include="Source Files\ChartData">
       <UniqueIdentifier>{ad2802a9-2b3c-439e-93cb-a4bfbfa8c386}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Math">
+      <UniqueIdentifier>{8c5930b3-228a-4411-a0c5-9308fb1603f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Math">
+      <UniqueIdentifier>{e3b8e94e-9d0c-41bb-b69a-c42580941cd4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -96,12 +102,6 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files\Skelenton</Filter>
     </ClInclude>
-    <ClInclude Include="Vector3f.h">
-      <Filter>Header Files\Skelenton</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector2f.h">
-      <Filter>Header Files\Skelenton</Filter>
-    </ClInclude>
     <ClInclude Include="glfont2.h">
       <Filter>Header Files\Utils</Filter>
     </ClInclude>
@@ -116,6 +116,15 @@
     </ClInclude>
     <ClInclude Include="LineChartData.h">
       <Filter>Header Files\ChartData</Filter>
+    </ClInclude>
+    <ClInclude Include="ScatterPlotData.h">
+      <Filter>Header Files\ChartData</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3f.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2f.h">
+      <Filter>Header Files\Math</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -149,12 +158,6 @@
     <ClCompile Include="OGLWindow.cpp">
       <Filter>Source Files\Skelenton</Filter>
     </ClCompile>
-    <ClCompile Include="Vector3f.cpp">
-      <Filter>Source Files\Skelenton</Filter>
-    </ClCompile>
-    <ClCompile Include="Vector2f.cpp">
-      <Filter>Source Files\Skelenton</Filter>
-    </ClCompile>
     <ClCompile Include="glfont2.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
@@ -170,13 +173,19 @@
     <ClCompile Include="LineChartData.cpp">
       <Filter>Source Files\ChartData</Filter>
     </ClCompile>
+    <ClCompile Include="ScatterPlotData.cpp">
+      <Filter>Source Files\ChartData</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector3f.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2f.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="OGLWin32.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Notes.txt" />
   </ItemGroup>
 </Project>
