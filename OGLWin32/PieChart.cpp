@@ -1,5 +1,6 @@
 #include "PieChart.h"
 #include "FileUtils.h"
+#include "FontRenderer.h"
 
 #include <Windows.h>
 #include <GL\GL.h>
@@ -48,6 +49,8 @@ PieChart::PieChart()
 
 void PieChart::Draw(float centerX, float centerY, float radius)
 {
+	FontRenderer::RenderText("I'm a Pie Chart!", 0.5f, -175.0f, radius + 100.0f, Vector3f(0.0f, 1.0f, 1.0f), true);
+
 	float lastAngle = 0.0f;
 	const int slicesPerSegment = 90;
 
