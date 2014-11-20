@@ -71,6 +71,7 @@ void BarChart::Draw()
 
 /*
 * Reads data from a file.
+* For the bar chart, we will be displaying the total number of males and females from the file adult_test_data.csv
 */
 void BarChart::ReadData()
 { 
@@ -79,45 +80,121 @@ void BarChart::ReadData()
 	if (FileUtils::FileExists(fileDir))
 	{
 		std::cout << "Loading: " << fileDir << std::endl;
+
+		std::ifstream fs(fileDir);
+
+		std::string categories;
+
+		// Get the categories of the csv file first.
+		getline(fs, categories);
+
+		// isstringstream allows us to break down the categories line after each ','
+		std::istringstream categoriesStream(categories);
+
+		// store temporarily each category broken down from the categoriesStream
+		std::string category;
+
+		// Store the number of males read from the file.
+		int maleCount = 0;
+
+		// Store the number of females read from the file.
+		int femaleCount = 0;
+
+		while (categoriesStream)
+		{
+			// Loop through each category until we fine the "Gender" category.
+			getline(categoriesStream, category, ',');
+			if (category == "Gender")
+			{
+				break;
+			}
+		}
+
+		// Now loops through every line in the csv file to count up how many males / females there are.
+		while (fs)
+		{
+			std::string line;
+			getline(fs, line);
+			std::istringstream lineStream(line);
+
+			while (lineStream)
+			{
+				std::string value;
+				getline(lineStream, value, ',');
+
+				if (value == " Male")
+				{
+					maleCount++;
+				}
+				else if (value == " Female")
+				{
+					femaleCount++;
+				}
+			}
+
+			
+		}
+		fs.close();
+		std::cout << "Males: " << maleCount << "  Females: " << femaleCount << std::endl;
+		std::cout << "Data finished loading" << std::endl;
+
+		// Store the total amount of males and females so the height of the bars can be scaled to fit the screen.
+		int total = maleCount + femaleCount;
+
+		Bar2D maleBar = Bar2D();
+		BarChartData maleData = BarChartData("Males");
+		maleData.SetColor(Vector3f(1.0f, 0.0f, 0.0f));
+		maleData.SetData(maleCount);
+		maleBar.SetHeight(maleCount * HEIGHT / total);
+		maleBar.SetBarData(maleData);
+		bars.push_back(maleBar);
+
+		Bar2D femaleBar = Bar2D();
+		BarChartData femaleData = BarChartData("Females");
+		femaleData.SetColor(Vector3f(1.0f, 1.0f, 0.0f));
+		femaleData.SetData(femaleCount);
+		femaleBar.SetHeight(femaleCount * HEIGHT / total);
+		femaleBar.SetBarData(femaleData);
+		bars.push_back(femaleBar);
 	}
 	else
 	{
 		std::cout << "Failed to load csv file: " << fileDir << std::endl;
 	}
 
-	std::vector<std::string> testdata;
+	//std::vector<std::string> testdata;
 
-	for (size_t i = 0; i < 300; ++i)
-		testdata.push_back("Male");
+	//for (size_t i = 0; i < 300; ++i)
+	//	testdata.push_back("Male");
 
-	for (size_t i = 0; i < 100; ++i)
-		testdata.push_back("Female");
+	//for (size_t i = 0; i < 100; ++i)
+	//	testdata.push_back("Female");
 
-	int maleCount = 0, femaleCount = 0;
+	//int maleCount = 0, femaleCount = 0;
 
-	for (size_t i = 0; i < testdata.size(); ++i)
-	{
-		if (testdata[i] == "Male")
-			maleCount++;
-		else if (testdata[i] == "Female")
-			femaleCount++;
-	}
+	//for (size_t i = 0; i < testdata.size(); ++i)
+	//{
+	//	if (testdata[i] == "Male")
+	//		maleCount++;
+	//	else if (testdata[i] == "Female")
+	//		femaleCount++;
+	//}
 
-	Bar2D maleBar = Bar2D();
-	BarChartData maleData = BarChartData("Males");
-	maleData.SetColor(Vector3f(1.0f, 0.0f, 0.0f));
-	maleData.SetData(maleCount);
-	maleBar.SetHeight(maleCount * HEIGHT / testdata.size());
-	maleBar.SetBarData(maleData);
-	bars.push_back(maleBar);
+	//Bar2D maleBar = Bar2D();
+	//BarChartData maleData = BarChartData("Males");
+	//maleData.SetColor(Vector3f(1.0f, 0.0f, 0.0f));
+	//maleData.SetData(maleCount);
+	//maleBar.SetHeight(maleCount * HEIGHT / testdata.size());
+	//maleBar.SetBarData(maleData);
+	//bars.push_back(maleBar);
 
-	Bar2D femaleBar = Bar2D();
-	BarChartData femaleData = BarChartData("Females");
-	femaleData.SetColor(Vector3f(1.0f, 1.0f, 0.0f));
-	femaleData.SetData(femaleCount);
-	femaleBar.SetHeight(femaleCount * HEIGHT / testdata.size());
-	femaleBar.SetBarData(femaleData);
-	bars.push_back(femaleBar);
+	//Bar2D femaleBar = Bar2D();
+	//BarChartData femaleData = BarChartData("Females");
+	//femaleData.SetColor(Vector3f(1.0f, 1.0f, 0.0f));
+	//femaleData.SetData(femaleCount);
+	//femaleBar.SetHeight(femaleCount * HEIGHT / testdata.size());
+	//femaleBar.SetBarData(femaleData);
+	//bars.push_back(femaleBar);
 
 	// Set both the width and position of each bar and get the total amount of data
 	for (size_t i = 0; i < bars.size(); ++i)
