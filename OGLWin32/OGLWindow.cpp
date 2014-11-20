@@ -9,7 +9,7 @@
 OGLWindow::OGLWindow()
 {
 	// Default chart
-	currentChart = BARCHART;
+	currentChart = SCATTERPLOT;
 	// Sets default scale (zoom)
 	global_scale = DEFAULT_SCALE;
 	offsetX = 1.0;
@@ -124,10 +124,11 @@ BOOL OGLWindow::InitWindow(HINSTANCE hInstance, int width, int height)
 	m_width = width;
 	m_height = height;
 
-	barChart = new BarChart("I'm a bar chart!");
+	barChart = new BarChart("Total Number of Males and Females");
 	barChart->ReadData();
 
-	pieChart = new PieChart();
+	pieChart = new PieChart("Marital-Status");
+	pieChart->ReadData();
 
 	lineChart = new LineChart("Global Active Power Usage");
 	lineChart->ReadData();

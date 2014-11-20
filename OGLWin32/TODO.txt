@@ -1,0 +1,3 @@
+Data for all charts should load data from a centralised data importer class which we can pull data from.
+
+For expandability of the system, passing in a vector<std::string> somehow to "filter" specific categories and data would be good.

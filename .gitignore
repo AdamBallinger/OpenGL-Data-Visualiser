@@ -47,3 +47,4 @@ Debug
 OGLWin32.opensdf
 
 Release\*
+*.csv
