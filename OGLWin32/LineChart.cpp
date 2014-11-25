@@ -52,16 +52,24 @@ void LineChart::DrawAxis(float width, float height)
 
 	glEnd();
 
+	// Check if data exists before rendering the axis information (Will crash if no data exists)
+	if (data.empty())
+		return;
+
 	// Draw lowest Y value at y 0 for the axis
 	FontRenderer::RenderText("Y : 0", 0.3f, START_X - 80.0f, START_Y + 15.0f, Vector3f(0.0f, 1.0f, 0.0f));
+
 	std::ostringstream highestValue;
 	highestValue << GetHighestDataValue();
 	// Draw highest Y value at top of y for the axis
 	FontRenderer::RenderText("Y: " + highestValue.str(), 0.3f, START_X - 120.0f, endY + 15.0f, Vector3f(0.0f, 1.0f, 0.0f));
+
 	// Draw start X value at x 0 for the axis
 	FontRenderer::RenderText("X : " + data[0].GetDataTime(), 0.3f, START_X - 9.0f, START_Y - 7.0f, Vector3f(1.0f, 0.0f, 0.0f));
+
 	// Draw end X value at end of the x axis
 	FontRenderer::RenderText("X : " + data[data.size() - 1].GetDataTime(), 0.3f, endX - 10.0f, START_Y - 7.0f, Vector3f(1.0f, 0.0f, 0.0f));
+	
 }
 
 double LineChart::GetHighestDataValue()

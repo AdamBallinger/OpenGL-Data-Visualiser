@@ -75,7 +75,7 @@ void PieChart::Draw(float centerX, float centerY, float radius)
 		data[i].SetAngle((360.0f / GetDataTotal()) * data[i].GetData());
 
 		// Draw the data slice
-		gluPartialDisk(gluNewQuadric(), 0, radius - 1, slicesPerSegment, data.size(), lastAngle, data[i].GetAngle());
+		gluPartialDisk(gluNewQuadric(), 0, radius, slicesPerSegment, 1, lastAngle, data[i].GetAngle());
 
 		// Set the lastangle for the starting point of the next data slice.
 		lastAngle += data[i].GetAngle();

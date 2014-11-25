@@ -145,8 +145,12 @@ LRESULT CALLBACK OGLApplication::WndProc(HWND hwnd, UINT msg, WPARAM wparam, LPA
 				s_oglapp->GetApplicationWindow()->SetChart(OGLWindow::LINECHART);
 				break;
 
-			case ID_CHARTS_SCATTERPLOT:
-				s_oglapp->GetApplicationWindow()->SetChart(OGLWindow::SCATTERPLOT);
+			case ID_CHARTS_SCATTERPLOT_2D:
+				s_oglapp->GetApplicationWindow()->SetChart(OGLWindow::SCATTERPLOT2D);
+				break;
+
+			case ID_CHARTS_SCATTERPLOT_3D:
+				s_oglapp->GetApplicationWindow()->SetChart(OGLWindow::SCATTERPLOT3D);
 				break;
 			}
 			break;

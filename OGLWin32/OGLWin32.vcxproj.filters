@@ -126,6 +126,9 @@
     <ClInclude Include="ScatterPlot2D.h">
       <Filter>Header Files\Graphs</Filter>
     </ClInclude>
+    <ClInclude Include="ScatterPlot3D.h">
+      <Filter>Header Files\Graphs</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bar2D.cpp">
@@ -180,6 +183,9 @@
       <Filter>Source Files\ChartData</Filter>
     </ClCompile>
     <ClCompile Include="ScatterPlot2D.cpp">
+      <Filter>Source Files\Graphs</Filter>
+    </ClCompile>
+    <ClCompile Include="ScatterPlot3D.cpp">
       <Filter>Source Files\Graphs</Filter>
     </ClCompile>
   </ItemGroup>

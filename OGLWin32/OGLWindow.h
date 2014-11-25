@@ -5,6 +5,7 @@
 #include "LineChart.h"
 #include "PieChart.h"
 #include "ScatterPlot2D.h"
+#include "ScatterPlot3D.h"
 
 class OGLWindow
 {
@@ -47,7 +48,8 @@ class OGLWindow
 		BarChart * barChart;
 		LineChart * lineChart;
 		PieChart * pieChart;
-		ScatterPlot2D * scatterPlot;
+		ScatterPlot2D * scatterPlot2D;
+		ScatterPlot3D * scatterPlot3D;
 
 protected:
 
@@ -59,7 +61,7 @@ protected:
 	public:
 
 		// Current chart that should be rendered to the screen.
-		enum CHART { BARCHART, PIECHART, LINECHART, SCATTERPLOT };
+		enum CHART { BARCHART, PIECHART, LINECHART, SCATTERPLOT2D, SCATTERPLOT3D };
 
 		CHART currentChart;
 

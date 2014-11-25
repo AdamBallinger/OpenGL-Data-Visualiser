@@ -2,14 +2,14 @@
 #include "FontRenderer.h"
 
 #include <Windows.h>
-#include <iostream>
-
 #include <gl/GL.h>
+
+#include <iostream>
 
 OGLWindow::OGLWindow()
 {
 	// Default chart
-	currentChart = SCATTERPLOT;
+	currentChart = SCATTERPLOT3D;
 	// Sets default scale (zoom)
 	global_scale = DEFAULT_SCALE;
 	offsetX = 1.0;
@@ -19,10 +19,12 @@ OGLWindow::OGLWindow()
 
 OGLWindow::~OGLWindow()
 {
+	// Delete the charts from memory.
 	delete barChart;
 	delete pieChart;
 	delete lineChart;
-	delete scatterPlot;
+	delete scatterPlot2D;
+	delete scatterPlot3D;
 }
 
 OGLWindow::OGLWindow(HINSTANCE hInstance, int width, int height) : OGLWindow::OGLWindow()
@@ -128,13 +130,17 @@ BOOL OGLWindow::InitWindow(HINSTANCE hInstance, int width, int height)
 	//barChart->ReadData();
 
 	pieChart = new PieChart("Marital-Status");
-	//pieChart->ReadData();
+	pieChart->ReadData();
 
 	lineChart = new LineChart("Global Active Power Usage");
 	//lineChart->ReadData();
 
-	scatterPlot = new ScatterPlot2D();
-	scatterPlot->ReadData();
+	scatterPlot2D = new ScatterPlot2D("Ice Cream Sales and Temperature");
+	scatterPlot2D->ReadData();
+
+	scatterPlot3D = new ScatterPlot3D("Ice Cream Sales, Temperature and Age");
+	scatterPlot3D->ReadData();
+
 	return TRUE;
 }
 
@@ -170,8 +176,12 @@ void OGLWindow::Render()
 		lineChart->Draw();
 		break;
 
-	case SCATTERPLOT:
-		scatterPlot->Draw();
+	case SCATTERPLOT2D:
+		scatterPlot2D->Draw();
+		break;
+
+	case SCATTERPLOT3D:
+		scatterPlot3D->Draw();
 		break;
 
 	default:
@@ -194,7 +204,7 @@ void OGLWindow::Resize( int width, int height )
 	
 	glMatrixMode( GL_PROJECTION );
 	glLoadIdentity();
-	glOrtho( -0.5*width, 0.5*width, -0.5*height, 0.5*height, -1.0, 1.0);
+	glOrtho( -0.5*width, 0.5*width, -0.5*height, 0.5*height, -800.0f, 800.0f);
 	
 	glMatrixMode( GL_MODELVIEW );
 	glLoadIdentity();
@@ -205,7 +215,8 @@ void OGLWindow::Resize( int width, int height )
 void OGLWindow::InitOGLState()
 {
 	glClearColor( 0.0f, 0.0f, 0.0f, 1.0f );
-	glEnable(GL_DEPTH);
+	glEnable(GL_DEPTH_TEST);
+	glDepthFunc(GL_ALWAYS);
 	glEnable(GL_CULL_FACE);
 	glShadeModel(GL_FLAT);
 

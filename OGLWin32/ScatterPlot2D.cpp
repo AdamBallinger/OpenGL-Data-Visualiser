@@ -13,6 +13,12 @@ ScatterPlot2D::ScatterPlot2D()
 {
 	SetHighestSalesValue(0);
 	SetHighestTemperatureValue(0);
+	SetLowestTemperatureValue(0);
+}
+
+ScatterPlot2D::ScatterPlot2D(std::string _title)
+{
+	title = _title;
 }
 
 void ScatterPlot2D::SetHighestSalesValue(double _data)
@@ -35,11 +41,28 @@ double ScatterPlot2D::GetHighestTemperatureValue()
 	return highestTemperatureValue;
 }
 
+void ScatterPlot2D::SetLowestTemperatureValue(double _data)
+{
+	lowestTemperatureValue = _data;
+}
+
+double ScatterPlot2D::GetLowestTemperatureValue()
+{
+	return lowestTemperatureValue;
+}
+
+std::string ScatterPlot2D::GetTitle()
+{
+	return title;
+}
+
 void ScatterPlot2D::DrawAxis(float width, float height)
 {
 	// end points for each axis.
 	float endX = START_X + width;
 	float endY = START_Y + height;
+
+	FontRenderer::RenderText(GetTitle(), 0.5f, START_X, endY + 90.0f, Vector3f(0.0f, 1.0f, 1.0f), true);
 
 	glLineWidth(1.3f);
 	glBegin(GL_LINES);
@@ -55,6 +78,28 @@ void ScatterPlot2D::DrawAxis(float width, float height)
 	glVertex2f(START_X, endY);
 
 	glEnd();
+
+	// Check if data exists before rendering the axis information (Invalid values are rendered otherwise).
+	if (data.empty())
+		return;
+
+	// Draw lowest Y value at y 0 for the axis
+	FontRenderer::RenderText("Y : $0", 0.3f, START_X - 95.0f, START_Y + 15.0f, Vector3f(0.0f, 1.0f, 0.0f));
+
+	std::ostringstream highestValue;
+	highestValue << GetHighestSale();
+	// Draw highest Y value at top of y for the axis
+	FontRenderer::RenderText("Y: $" + highestValue.str(), 0.3f, START_X - 120.0f, endY + 15.0f, Vector3f(0.0f, 1.0f, 0.0f));
+
+	// Draw start X value at x 0 for the axis
+	std::ostringstream lowestTemp;
+	lowestTemp << GetLowestTemperatureValue();
+	FontRenderer::RenderText("X : " + lowestTemp.str(), 0.3f, START_X - 9.0f, START_Y - 7.0f, Vector3f(1.0f, 0.0f, 0.0f));
+
+	// Draw end X value at end of the x axis
+	std::ostringstream highestTemp;
+	highestTemp << GetHighestTemperatureValue();
+	FontRenderer::RenderText("X : " + highestTemp.str(), 0.3f, endX - 10.0f, START_Y - 7.0f, Vector3f(1.0f, 0.0f, 0.0f));
 }
 
 /*
@@ -74,6 +119,7 @@ void ScatterPlot2D::Draw()
 		double y = data[i].GetSalesData() / GetHighestSale() * HEIGHT + START_Y;
 
 		glColor3f(1.0f, 0.5f, 0.5f);
+		// Draw a cross
 		glVertex2d(x, y);
 		glVertex2d(x + 8, y + 8);
 		glVertex2d(x, y);
@@ -108,14 +154,17 @@ void ScatterPlot2D::ReadData()
 
 		while (fs)
 		{
+			// break if there are no lines left to read.
 			if (fs.eof())
 			{
 				break;
 			}
 
 			std::vector<std::string> lineSplit;
+
 			std::string line;
 			getline(fs, line);
+
 			std::istringstream lineStream(line);		
 			std::string linePiece;
 
@@ -143,6 +192,17 @@ void ScatterPlot2D::ReadData()
 			if (data[i].GetTemperatureData() > GetHighestTemperatureValue())
 			{
 				SetHighestTemperatureValue(data[i].GetTemperatureData());
+			}
+		}
+
+		SetLowestTemperatureValue(GetHighestTemperatureValue());
+
+		// Set the value of the lowest temperature
+		for (size_t i = 0; i < data.size(); ++i)
+		{
+			if (data[i].GetTemperatureData() < GetLowestTemperatureValue())
+			{
+				SetLowestTemperatureValue(data[i].GetTemperatureData());
 			}
 		}
 	}
