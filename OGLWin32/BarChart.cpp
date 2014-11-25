@@ -131,8 +131,6 @@ void BarChart::ReadData()
 					femaleCount++;
 				}
 			}
-
-			
 		}
 		fs.close();
 		std::cout << "Males: " << maleCount << "  Females: " << femaleCount << std::endl;

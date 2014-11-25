@@ -75,7 +75,7 @@ void PieChart::Draw(float centerX, float centerY, float radius)
 		data[i].SetAngle((360.0f / GetDataTotal()) * data[i].GetData());
 
 		// Draw the data slice
-		gluPartialDisk(gluNewQuadric(), 0, radius, slicesPerSegment, data.size(), lastAngle, data[i].GetAngle());
+		gluPartialDisk(gluNewQuadric(), 0, radius - 1, slicesPerSegment, data.size(), lastAngle, data[i].GetAngle());
 
 		// Set the lastangle for the starting point of the next data slice.
 		lastAngle += data[i].GetAngle();
@@ -125,6 +125,7 @@ void PieChart::ReadData()
 			getline(fs, line);
 			std::istringstream lineStream(line);
 
+			// Go through each part of the line until we reach the marigal status column and then increment the appropriate count.
 			while (lineStream)
 			{
 				std::string value;
@@ -172,6 +173,7 @@ void PieChart::ReadData()
 		// Insert the different marital status counts into PieSectorData classes to turn the data into visible sectors of the pie chart.
 		PieSectorData pieData = PieSectorData();
 		
+		// Set a random color for each pie slice.
 		Vector3f randColor = Vector3f((float)rand() / (float)RAND_MAX, (float)rand() / (float)RAND_MAX, (float)rand() / (float)RAND_MAX);
 		pieData.SetColor(randColor);
 		pieData.SetData(neverMarried);

@@ -125,15 +125,15 @@ BOOL OGLWindow::InitWindow(HINSTANCE hInstance, int width, int height)
 	m_height = height;
 
 	barChart = new BarChart("Total Number of Males and Females");
-	barChart->ReadData();
+	//barChart->ReadData();
 
 	pieChart = new PieChart("Marital-Status");
-	pieChart->ReadData();
+	//pieChart->ReadData();
 
 	lineChart = new LineChart("Global Active Power Usage");
-	lineChart->ReadData();
+	//lineChart->ReadData();
 
-	scatterPlot = new ScatterPlot();
+	scatterPlot = new ScatterPlot2D();
 	scatterPlot->ReadData();
 	return TRUE;
 }

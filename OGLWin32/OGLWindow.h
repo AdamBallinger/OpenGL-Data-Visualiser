@@ -4,7 +4,7 @@
 #include "BarChart.h"
 #include "LineChart.h"
 #include "PieChart.h"
-#include "ScatterPlot.h"
+#include "ScatterPlot2D.h"
 
 class OGLWindow
 {
@@ -47,7 +47,7 @@ class OGLWindow
 		BarChart * barChart;
 		LineChart * lineChart;
 		PieChart * pieChart;
-		ScatterPlot * scatterPlot;
+		ScatterPlot2D * scatterPlot;
 
 protected:
 

@@ -101,8 +101,8 @@
     <ClInclude Include="PieSectorData.h" />
     <ClInclude Include="Renderable.h" />
     <ClInclude Include="Resource.h" />
-    <ClInclude Include="ScatterPlot.h" />
-    <ClInclude Include="ScatterPlotData.h" />
+    <ClInclude Include="ScatterPlot2D.h" />
+    <ClInclude Include="ScatterPlotData2D.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Vector2f.h" />
     <ClInclude Include="Vector3f.h" />
@@ -122,8 +122,8 @@
     <ClCompile Include="OGLWindow.cpp" />
     <ClCompile Include="PieChart.cpp" />
     <ClCompile Include="PieSectorData.cpp" />
-    <ClCompile Include="ScatterPlot.cpp" />
-    <ClCompile Include="ScatterPlotData.cpp" />
+    <ClCompile Include="ScatterPlot2D.cpp" />
+    <ClCompile Include="ScatterPlotData2D.cpp" />
     <ClCompile Include="Vector2f.cpp" />
     <ClCompile Include="Vector3f.cpp" />
   </ItemGroup>

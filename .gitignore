@@ -48,3 +48,4 @@ OGLWin32.opensdf
 
 Release\*
 *.csv
+Release/adult_test_data.csv

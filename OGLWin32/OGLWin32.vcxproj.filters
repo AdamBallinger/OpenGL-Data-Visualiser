@@ -75,9 +75,6 @@
     <ClInclude Include="LineChart.h">
       <Filter>Header Files\Graphs</Filter>
     </ClInclude>
-    <ClInclude Include="ScatterPlot.h">
-      <Filter>Header Files\Graphs</Filter>
-    </ClInclude>
     <ClInclude Include="Listener.h">
       <Filter>Header Files\Skelenton</Filter>
     </ClInclude>
@@ -117,14 +114,17 @@
     <ClInclude Include="LineChartData.h">
       <Filter>Header Files\ChartData</Filter>
     </ClInclude>
-    <ClInclude Include="ScatterPlotData.h">
-      <Filter>Header Files\ChartData</Filter>
-    </ClInclude>
     <ClInclude Include="Vector3f.h">
       <Filter>Header Files\Math</Filter>
     </ClInclude>
     <ClInclude Include="Vector2f.h">
       <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="ScatterPlotData2D.h">
+      <Filter>Header Files\ChartData</Filter>
+    </ClInclude>
+    <ClInclude Include="ScatterPlot2D.h">
+      <Filter>Header Files\Graphs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -141,9 +141,6 @@
       <Filter>Source Files\Graphs</Filter>
     </ClCompile>
     <ClCompile Include="LineChart.cpp">
-      <Filter>Source Files\Graphs</Filter>
-    </ClCompile>
-    <ClCompile Include="ScatterPlot.cpp">
       <Filter>Source Files\Graphs</Filter>
     </ClCompile>
     <ClCompile Include="OGLApplication.cpp">
@@ -173,14 +170,17 @@
     <ClCompile Include="LineChartData.cpp">
       <Filter>Source Files\ChartData</Filter>
     </ClCompile>
-    <ClCompile Include="ScatterPlotData.cpp">
-      <Filter>Source Files\ChartData</Filter>
-    </ClCompile>
     <ClCompile Include="Vector3f.cpp">
       <Filter>Source Files\Math</Filter>
     </ClCompile>
     <ClCompile Include="Vector2f.cpp">
       <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="ScatterPlotData2D.cpp">
+      <Filter>Source Files\ChartData</Filter>
+    </ClCompile>
+    <ClCompile Include="ScatterPlot2D.cpp">
+      <Filter>Source Files\Graphs</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -157,7 +157,7 @@ void LineChart::ReadData()
 
 		// Limit the number of lines to read from the file. 2million is a bit much 
 		int lineLimit = 60;
-		int currentLine = 1;
+		int currentLine = 0;
 
 		LineChartData dataPoint = LineChartData();
 
@@ -166,7 +166,7 @@ void LineChart::ReadData()
 		{
 			std::vector<std::string> lineSplit;
 
-			if (currentLine >= lineLimit)
+			if (currentLine > lineLimit)
 			{
 				break;
 			}
@@ -194,8 +194,7 @@ void LineChart::ReadData()
 				data.push_back(dataPoint);
 				
 				// READING SOMETHING NOT AFK
-			}
-			
+			}		
 		}
 
 		fs.close();
