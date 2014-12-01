@@ -1,4 +1,5 @@
 #include "ScatterPlot3D.h"
+#include "OGLWindow.h"
 
 #include <Windows.h>
 #include <GL/GL.h>
@@ -26,12 +27,6 @@ void ScatterPlot3D::DrawAxis(float width, float height, float depth)
 {
 	float endX = START_X + width;
 	float endY = START_Y + height;
-
-	glBegin(GL_LINES);
-
-
-
-	glEnd();
 }
 
 void ScatterPlot3D::Draw()

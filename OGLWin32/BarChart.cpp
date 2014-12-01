@@ -154,61 +154,11 @@ void BarChart::ReadData()
 		bar.SetBarData(barData);
 		bar.SetHeight(femaleCount * HEIGHT / total);
 		bars.push_back(bar);
-
-		//Bar2D maleBar = Bar2D();
-		//BarChartData maleData = BarChartData("Males");
-		//maleData.SetColor(Vector3f(1.0f, 0.0f, 0.0f));
-		//maleData.SetData(maleCount);
-		//maleBar.SetHeight(maleCount * HEIGHT / total);
-		//maleBar.SetBarData(maleData);
-		//bars.push_back(maleBar);
-
-		/*Bar2D femaleBar = Bar2D();
-		BarChartData femaleData = BarChartData("Females");
-		femaleData.SetColor(Vector3f(1.0f, 1.0f, 0.0f));
-		femaleData.SetData(femaleCount);
-		femaleBar.SetHeight(femaleCount * HEIGHT / total);
-		femaleBar.SetBarData(femaleData);
-		bars.push_back(femaleBar);*/
 	}
 	else
 	{
 		std::cout << "Failed to load csv file: " << fileDir << std::endl;
 	}
-
-	//std::vector<std::string> testdata;
-
-	//for (size_t i = 0; i < 300; ++i)
-	//	testdata.push_back("Male");
-
-	//for (size_t i = 0; i < 100; ++i)
-	//	testdata.push_back("Female");
-
-	//int maleCount = 0, femaleCount = 0;
-
-	//for (size_t i = 0; i < testdata.size(); ++i)
-	//{
-	//	if (testdata[i] == "Male")
-	//		maleCount++;
-	//	else if (testdata[i] == "Female")
-	//		femaleCount++;
-	//}
-
-	//Bar2D maleBar = Bar2D();
-	//BarChartData maleData = BarChartData("Males");
-	//maleData.SetColor(Vector3f(1.0f, 0.0f, 0.0f));
-	//maleData.SetData(maleCount);
-	//maleBar.SetHeight(maleCount * HEIGHT / testdata.size());
-	//maleBar.SetBarData(maleData);
-	//bars.push_back(maleBar);
-
-	//Bar2D femaleBar = Bar2D();
-	//BarChartData femaleData = BarChartData("Females");
-	//femaleData.SetColor(Vector3f(1.0f, 1.0f, 0.0f));
-	//femaleData.SetData(femaleCount);
-	//femaleBar.SetHeight(femaleCount * HEIGHT / testdata.size());
-	//femaleBar.SetBarData(femaleData);
-	//bars.push_back(femaleBar);
 
 	// Set both the width and position of each bar and get the total amount of data
 	for (size_t i = 0; i < bars.size(); ++i)
@@ -226,16 +176,4 @@ void BarChart::ReadData()
 		}
 		dataTotal += bars[i].GetBarData().GetData();
 	}
-
-	//Bar2D maleBar = Bar2D();
-	//maleBar.SetHeight(maleCount * 500 / testdata.size()); // multiply the value of maleCount by the height of the graph then divide by the total number of data entries. This scales the bar nicely.
-	//maleBar.SetWidth(WIDTH / bars.size() - 2.0f); // divide width of chart by number of bars (in this case male and female so 2) then minus 2.0f as the seperator offset
-	//maleBar.SetBottomLeft(Vector2f(-399.0f, -199.0f));
-	//bars.push_back(maleBar);
-
-	//Bar2D femaleBar = Bar2D();
-	//femaleBar.SetHeight(femaleCount * 500 / testdata.size());
-	//femaleBar.SetWidth(WIDTH / bars.size() - 2.0f);
-	//femaleBar.SetBottomLeft(Vector2f(maleBar.GetBottomLeft().GetX() + maleBar.GetWidth() + 2.0f, -199.0f));
-	//bars.push_back(femaleBar);
 }

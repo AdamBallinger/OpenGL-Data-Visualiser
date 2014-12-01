@@ -51,7 +51,7 @@ class OGLWindow
 		ScatterPlot2D * scatterPlot2D;
 		ScatterPlot3D * scatterPlot3D;
 
-protected:
+    protected:
 
 		HGLRC CreateOGLContext (HDC hdc);
 		BOOL DestroyOGLContext();

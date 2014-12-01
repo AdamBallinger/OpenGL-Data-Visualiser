@@ -130,13 +130,13 @@ BOOL OGLWindow::InitWindow(HINSTANCE hInstance, int width, int height)
 	//barChart->ReadData();
 
 	pieChart = new PieChart("Marital-Status");
-	pieChart->ReadData();
+	//pieChart->ReadData();
 
 	lineChart = new LineChart("Global Active Power Usage");
-	//lineChart->ReadData();
+	lineChart->ReadData();
 
 	scatterPlot2D = new ScatterPlot2D("Ice Cream Sales and Temperature");
-	scatterPlot2D->ReadData();
+	//scatterPlot2D->ReadData();
 
 	scatterPlot3D = new ScatterPlot3D("Ice Cream Sales, Temperature and Age");
 	scatterPlot3D->ReadData();
@@ -153,6 +153,7 @@ void OGLWindow::SetVisible ( BOOL visible )
 void OGLWindow::Render()
 {
 	glClear(GL_COLOR_BUFFER_BIT);
+	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
 	// Scale the rendered geometry
@@ -226,7 +227,7 @@ void OGLWindow::InitOGLState()
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	FontRenderer::Init();
 	glDisable(GL_TEXTURE_2D);
-	glDisable(GL_BLEND);
+	//glDisable(GL_BLEND);
 }
 
 BOOL OGLWindow::MouseLBDown ( int x, int y )
