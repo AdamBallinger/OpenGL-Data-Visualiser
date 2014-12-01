@@ -139,21 +139,37 @@ void BarChart::ReadData()
 		// Store the total amount of males and females so the height of the bars can be scaled to fit the screen.
 		int total = maleCount + femaleCount;
 
-		Bar2D maleBar = Bar2D();
-		BarChartData maleData = BarChartData("Males");
-		maleData.SetColor(Vector3f(1.0f, 0.0f, 0.0f));
-		maleData.SetData(maleCount);
-		maleBar.SetHeight(maleCount * HEIGHT / total);
-		maleBar.SetBarData(maleData);
-		bars.push_back(maleBar);
+		Bar2D bar = Bar2D();
+		BarChartData barData = BarChartData();
+		barData.SetDataName("Males");
+		barData.SetData(maleCount);
+		barData.SetColor(Vector3f(1.0f, 0.0f, 1.0f));
+		bar.SetBarData(barData);
+		bar.SetHeight(maleCount * HEIGHT / total);
+		bars.push_back(bar);
 
-		Bar2D femaleBar = Bar2D();
+		barData.SetDataName("Females");
+		barData.SetData(femaleCount);
+		barData.SetColor(Vector3f(0.0f, 1.0f, 1.0f));
+		bar.SetBarData(barData);
+		bar.SetHeight(femaleCount * HEIGHT / total);
+		bars.push_back(bar);
+
+		//Bar2D maleBar = Bar2D();
+		//BarChartData maleData = BarChartData("Males");
+		//maleData.SetColor(Vector3f(1.0f, 0.0f, 0.0f));
+		//maleData.SetData(maleCount);
+		//maleBar.SetHeight(maleCount * HEIGHT / total);
+		//maleBar.SetBarData(maleData);
+		//bars.push_back(maleBar);
+
+		/*Bar2D femaleBar = Bar2D();
 		BarChartData femaleData = BarChartData("Females");
 		femaleData.SetColor(Vector3f(1.0f, 1.0f, 0.0f));
 		femaleData.SetData(femaleCount);
 		femaleBar.SetHeight(femaleCount * HEIGHT / total);
 		femaleBar.SetBarData(femaleData);
-		bars.push_back(femaleBar);
+		bars.push_back(femaleBar);*/
 	}
 	else
 	{
