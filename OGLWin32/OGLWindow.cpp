@@ -2,7 +2,8 @@
 #include "FontRenderer.h"
 
 #include <Windows.h>
-#include <gl/GL.h>
+#include <GL/GL.h>
+#include <GL/GLU.h>
 
 #include <iostream>
 
@@ -152,12 +153,11 @@ void OGLWindow::SetVisible ( BOOL visible )
 
 void OGLWindow::Render()
 {
-	glClear(GL_COLOR_BUFFER_BIT);
-	glMatrixMode(GL_MODELVIEW);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
 
 	// Scale the rendered geometry
-	glScaled(global_scale, global_scale, 0.0);
+	glScaled(global_scale, global_scale, global_scale);
 
 	// Offset the geometry by x and y offset values from point 0, 0
 	glTranslated(offsetX, -offsetY, 0.0);
@@ -182,6 +182,7 @@ void OGLWindow::Render()
 		break;
 
 	case SCATTERPLOT3D:
+		//gluLookAt(m_width / 2, m_height / 2, 1, m_width / 2, m_height / 2, 0, 0, 1, 0);
 		scatterPlot3D->Draw();
 		break;
 
@@ -198,28 +199,26 @@ void OGLWindow::Render()
 
 void OGLWindow::Resize( int width, int height )
 {
-	glViewport( 0, 0, width, height );
-
 	m_width = width;
 	m_height = height;
-	
+
 	glMatrixMode( GL_PROJECTION );
 	glLoadIdentity();
-	glOrtho( -0.5*width, 0.5*width, -0.5*height, 0.5*height, -800.0f, 800.0f);
+	glOrtho( -0.5*width, 0.5*width, -0.5*height, 0.5*height, 1000.0f, -1000.0f);
 	
 	glMatrixMode( GL_MODELVIEW );
-	glLoadIdentity();
+	glViewport(0, 0, width, height);
 
 	return;
 }
 
 void OGLWindow::InitOGLState()
 {
-	glClearColor( 0.0f, 0.0f, 0.0f, 1.0f );
-	glEnable(GL_DEPTH_TEST);
-	glDepthFunc(GL_ALWAYS);
-	glEnable(GL_CULL_FACE);
+	glClearColor( 0.1f, 0.1f, 0.1f, 1.0f );
 	glShadeModel(GL_FLAT);
+	glClearDepth(1.0f);
+	glEnable(GL_DEPTH_TEST);
+	glDepthFunc(GL_LEQUAL);
 
 	// Load the font file the FontRenderer uses to save performance. Enables GL_TEXTURE_2D & GL_BLEND as glfont requires them to be enabled when font is being created.
 	glEnable(GL_TEXTURE_2D);
@@ -227,7 +226,6 @@ void OGLWindow::InitOGLState()
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	FontRenderer::Init();
 	glDisable(GL_TEXTURE_2D);
-	//glDisable(GL_BLEND);
 }
 
 BOOL OGLWindow::MouseLBDown ( int x, int y )
@@ -327,8 +325,6 @@ BOOL OGLWindow::MouseWheelMove(int mouseWheelDelta)
 
 void OGLWindow::SetVSync(bool sync)
 {
-	// Function pointer for the wgl extention function we need to enable/disable
-	// vsync
 	typedef BOOL(APIENTRY *PFNWGLSWAPINTERVALPROC)(int);
 	PFNWGLSWAPINTERVALPROC wglSwapIntervalEXT = 0;
 
@@ -367,5 +363,7 @@ void OGLWindow::SetOffsetY(double offY)
 
 void OGLWindow::SetChart(CHART chart)
 {
+	// Reset the view to default zoom and pan when changing charts
+	ResetView();
 	currentChart = chart;
 }

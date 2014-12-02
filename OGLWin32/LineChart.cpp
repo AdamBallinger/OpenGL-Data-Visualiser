@@ -200,8 +200,6 @@ void LineChart::ReadData()
 				dataPoint.SetData(stod(lineSplit[dataIndex]));
 
 				data.push_back(dataPoint);
-				
-				// READING SOMETHING NOT AFK
 			}		
 		}
 

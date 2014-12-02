@@ -15,8 +15,9 @@ private:
 	const float HEIGHT = 500.0f;
 	const float DEPTH = 500.0f;
 
-	const float START_X = -400.0f;
-	const float START_Y = -200.0f;
+	const float START_X = 0.0f;
+	const float START_Y = 0.0f;
+	const float START_Z = 0.0f;
 
 public:
 
