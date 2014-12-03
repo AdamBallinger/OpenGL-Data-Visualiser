@@ -161,14 +161,15 @@ void OGLWindow::Render()
 	if (is2DView)
 	{
 		// Scale the rendered geometry
-		glScaled(global_scale, global_scale, global_scale);
+		glScaled(global_scale, global_scale, 0.0);
 
 		// Offset the geometry by x and y offset values from point 0, 0
 		glTranslated(offsetX, -offsetY, 0.0);
 	}
 	else
 	{
-		gluLookAt(1, 1, 1, 0, 0, 0, 0, 1, 0);
+		gluLookAt(1, 0.35, 1, 0, 0, 0, 0, 1, 0);
+		// Use the scale variable to rate around the Y axis when rendering in 3D
 		glRotatef(global_scale, 0.0f, 1.0f, 0.0f);
 		glTranslated(offsetX, -offsetY, 0.0f);
 	}
@@ -232,7 +233,6 @@ void OGLWindow::Create3DView()
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glOrtho(-0.5*m_width, 0.5*m_width, -0.5*m_height, 0.5*m_height, -1000.0f, 1000.0f);
-	//gluPerspective(60.0, m_width / m_height, 1.0, 1000.0);
 	glMatrixMode(GL_MODELVIEW);
 
 	glClearDepth(1.0f);
