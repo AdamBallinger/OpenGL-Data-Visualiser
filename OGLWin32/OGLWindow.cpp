@@ -9,8 +9,6 @@
 
 OGLWindow::OGLWindow()
 {
-	// Default chart
-	currentChart = SCATTERPLOT3D;
 	// Sets default scale (zoom)
 	global_scale = DEFAULT_SCALE;
 	offsetX = 1.0;
@@ -128,19 +126,22 @@ BOOL OGLWindow::InitWindow(HINSTANCE hInstance, int width, int height)
 	m_height = height;
 
 	barChart = new BarChart("Total Number of Males and Females");
-	//barChart->ReadData();
+	barChart->ReadData();
 
 	pieChart = new PieChart("Marital-Status");
-	//pieChart->ReadData();
+	pieChart->ReadData();
 
 	lineChart = new LineChart("Global Active Power Usage");
 	lineChart->ReadData();
 
 	scatterPlot2D = new ScatterPlot2D("Ice Cream Sales and Temperature");
-	//scatterPlot2D->ReadData();
+	scatterPlot2D->ReadData();
 
 	scatterPlot3D = new ScatterPlot3D("Ice Cream Sales, Temperature and Age");
 	scatterPlot3D->ReadData();
+
+	// Default chart
+	SetChart(SCATTERPLOT3D);
 
 	return TRUE;
 }
@@ -154,13 +155,23 @@ void OGLWindow::SetVisible ( BOOL visible )
 void OGLWindow::Render()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
-	// Scale the rendered geometry
-	glScaled(global_scale, global_scale, global_scale);
+	if (is2DView)
+	{
+		// Scale the rendered geometry
+		glScaled(global_scale, global_scale, global_scale);
 
-	// Offset the geometry by x and y offset values from point 0, 0
-	glTranslated(offsetX, -offsetY, 0.0);
+		// Offset the geometry by x and y offset values from point 0, 0
+		glTranslated(offsetX, -offsetY, 0.0);
+	}
+	else
+	{
+		gluLookAt(1, 1, 1, 0, 0, 0, 0, 1, 0);
+		glRotatef(global_scale, 0.0f, 1.0f, 0.0f);
+		glTranslated(offsetX, -offsetY, 0.0f);
+	}
 
 	// Control which chart is rendered from the tool bar
 	switch (currentChart)
@@ -182,7 +193,6 @@ void OGLWindow::Render()
 		break;
 
 	case SCATTERPLOT3D:
-		//gluLookAt(m_width / 2, m_height / 2, 1, m_width / 2, m_height / 2, 0, 0, 1, 0);
 		scatterPlot3D->Draw();
 		break;
 
@@ -199,26 +209,41 @@ void OGLWindow::Render()
 
 void OGLWindow::Resize( int width, int height )
 {
+	glViewport(0, 0, width, height);
+
 	m_width = width;
 	m_height = height;
 
+	return;
+}
+
+void OGLWindow::Create2DView()
+{
+	glViewport(0, 0, m_width, m_height);
 	glMatrixMode( GL_PROJECTION );
 	glLoadIdentity();
-	glOrtho( -0.5*width, 0.5*width, -0.5*height, 0.5*height, 1000.0f, -1000.0f);
-	
+	glOrtho(-0.5*m_width, 0.5*m_width, -0.5*m_height, 0.5*m_height, -1.0f, 1.0f);
 	glMatrixMode( GL_MODELVIEW );
-	glViewport(0, 0, width, height);
+}
 
-	return;
+void OGLWindow::Create3DView()
+{
+	glViewport(0, 0, m_width, m_height);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	glOrtho(-0.5*m_width, 0.5*m_width, -0.5*m_height, 0.5*m_height, -1000.0f, 1000.0f);
+	//gluPerspective(60.0, m_width / m_height, 1.0, 1000.0);
+	glMatrixMode(GL_MODELVIEW);
+
+	glClearDepth(1.0f);
+	glEnable(GL_DEPTH_TEST);
+	glDepthFunc(GL_LEQUAL);
 }
 
 void OGLWindow::InitOGLState()
 {
 	glClearColor( 0.1f, 0.1f, 0.1f, 1.0f );
 	glShadeModel(GL_FLAT);
-	glClearDepth(1.0f);
-	glEnable(GL_DEPTH_TEST);
-	glDepthFunc(GL_LEQUAL);
 
 	// Load the font file the FontRenderer uses to save performance. Enables GL_TEXTURE_2D & GL_BLEND as glfont requires them to be enabled when font is being created.
 	glEnable(GL_TEXTURE_2D);
@@ -288,38 +313,38 @@ BOOL OGLWindow::HandleKey(WPARAM wparam)
 		ResetView();
 		break;
 
-	case VK_LEFT:
-		SetOffsetX(-X_SPEED);
-		break;
-
-	case VK_RIGHT:
-		SetOffsetX(X_SPEED);
-		break;
-
-	case VK_UP:
-		SetOffsetY(-Y_SPEED);
-		break;
-
-	case VK_DOWN:
-		SetOffsetY(Y_SPEED);
-		break;
-
 	default:
 		break;
 	}
 	return TRUE;
 }
 
+// Change the zoom dependant on the current view mode (2D or 3D)
 BOOL OGLWindow::MouseWheelMove(int mouseWheelDelta)
 {
-	if (mouseWheelDelta > 0)
-	{		
-		global_scale += 0.05;
-	}
-	else if (mouseWheelDelta < 0 && global_scale > 0.35)
+	if (is2DView)
 	{
-		global_scale -= 0.05;
+		if (mouseWheelDelta > 0)
+		{
+			global_scale += 0.05;
+		}
+		else if (mouseWheelDelta < 0 && global_scale > 0.35)
+		{
+			global_scale -= 0.05;
+		}
 	}
+	else
+	{
+		if (mouseWheelDelta > 0)
+		{
+			global_scale += 3.5;
+		}
+		else if (mouseWheelDelta < 0)
+		{
+			global_scale -= 3.5;
+		}
+	}
+	
 	return TRUE;
 }
 
@@ -365,5 +390,15 @@ void OGLWindow::SetChart(CHART chart)
 {
 	// Reset the view to default zoom and pan when changing charts
 	ResetView();
+	if (chart == SCATTERPLOT3D)
+	{
+		Create3DView();
+		is2DView = false;
+	}
+	else
+	{
+		Create2DView();
+		is2DView = true;
+	}
 	currentChart = chart;
 }

@@ -29,16 +29,19 @@ class OGLWindow
 		double offsetX;
 		double offsetY;
 
-		// offset speed
+		// offset speed for arrow keys
 		double X_SPEED = 20.0;
 		double Y_SPEED = 20.0;
+
+		// Flag to check if the current view is in 2D or 3D.
+		bool is2DView;
 
 		// Default offset
 		const double DEFAULT_X = 1.0;
 		const double DEFAULT_Y = 1.0;
 
 		// Default Scale
-		const double DEFAULT_SCALE = 0.75;
+		const double DEFAULT_SCALE = 0.6;
 
 		// keyboard bindings for key handling
 		// Key number 1
@@ -78,6 +81,9 @@ class OGLWindow
 		void		ResetView();
 
 		void		SetChart(CHART);
+
+		void		Create3DView();
+		void        Create2DView();
 
 		void		SetOffsetX(double);
 		void		SetOffsetY(double);

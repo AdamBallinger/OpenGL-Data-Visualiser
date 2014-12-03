@@ -1,9 +1,16 @@
 #include "ScatterPlot3D.h"
 #include "OGLWindow.h"
+#include "FontRenderer.h"
+#include "FileUtils.h"
 
 #include <Windows.h>
 #include <GL/GL.h>
 #include <GL/GLU.h>
+
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <string>
 
 ScatterPlot3D::ScatterPlot3D()
 {
@@ -31,47 +38,20 @@ void ScatterPlot3D::DrawAxis(float width, float height, float depth)
 
 	glLineWidth(2.5f);
 	glBegin(GL_LINES);
-
 	// Draw X Axis
 	glColor3f(1.0f, 0.0f, 0.0f);
-	glVertex2f(START_X, START_Y);
-	glVertex2f(endX, -endY / 2);
+	glVertex3f(START_X, START_Y, START_Z);
+	glVertex3f(endX, START_Y, START_Z);
 
 	// Draw Y Axis
 	glColor3f(0.0f, 1.0f, 0.0f);
-	glVertex2f(START_X, START_Y);
-	glVertex2f(START_X, endY);
+	glVertex3f(START_X, START_Y, START_Z);
+	glVertex3f(START_X, endY, START_Z);
 
 	// Draw Z Axis
 	glColor3f(0.0f, 0.0f, 1.0f);
-	glVertex2f(START_Z, START_Y);
-	glVertex2f(-endZ, -endY / 2);
-
-	// Draw connecting lines between axis'
-	// Draw line from top of Y along X axis
-	glColor3f(1.0f, 1.0f, 1.0f);
-	glVertex2f(START_X, endY);
-	glVertex2f(endX, endY / 2);
-
-	// Draw line connecting from above to end of the X axis
-	glVertex2f(endX, endY - endY / 2);
-	glVertex2f(endX, -endY / 2);
-
-	// Draw line from top of Y along the Z axis
-	glVertex2f(START_X, endZ);
-	glVertex2f(-endZ, endY / 2);
-
-	// Draw line connecting from above to end of Z axis
-	glVertex2f(-endZ, endY / 2);
-	glVertex2f(-endZ, -endY / 2);
-
-	// Draw line from end of Z axis heading down the X axis
-	glVertex2f(-endZ, -endY / 2);
-	glVertex2f(START_X, -endY);
-
-	// Draw line from end of Z axis heading down the Z axis
-	glVertex2f(endX, -endY / 2);
-	glVertex2f(START_X, -endY);
+	glVertex3f(START_X, START_Y, START_Z);
+	glVertex3f(START_X, START_Y, endZ);
 
 	glEnd();
 }
@@ -79,9 +59,116 @@ void ScatterPlot3D::DrawAxis(float width, float height, float depth)
 void ScatterPlot3D::Draw()
 {
 	DrawAxis(WIDTH, HEIGHT, DEPTH);
+
+	glPointSize(5.0f);
+	glBegin(GL_POINTS);
+
+	for (size_t i = 0; i < data.size(); i++)
+	{
+		double x = data[i].GetXData() * WIDTH / GetHighestValueX();
+		double y = data[i].GetYData() * HEIGHT / GetHighestValueY();
+		double z = data[i].GetZData() * DEPTH / GetHighestValueZ();
+
+		glColor3f(1.0f, 1.0f, 1.0f);
+		glVertex3d(x, y, z);
+	}
+
+	glEnd();
+}
+
+void ScatterPlot3D::SetHighestValueX(double _highestValueX)
+{
+	highestValueX = _highestValueX;
+}
+
+double ScatterPlot3D::GetHighestValueX()
+{
+	return highestValueX;
+}
+
+void ScatterPlot3D::SetHighestValueY(double _highestValueY)
+{
+	highestValueY = _highestValueY;
+}
+
+double ScatterPlot3D::GetHighestValueY()
+{
+	return highestValueY;
+}
+
+void ScatterPlot3D::SetHighestValueZ(double _highestValueZ)
+{
+	highestValueZ = _highestValueZ;
+}
+
+double ScatterPlot3D::GetHighestValueZ()
+{
+	return highestValueZ;
 }
 
 void ScatterPlot3D::ReadData()
 {
+	std::string fileDir = "scatter3d.csv";
+	
+	if (FileUtils::FileExists(fileDir))
+	{
+		std::cout << "[ScatterPlot3D] Loading csv file: " << fileDir << std::endl;
 
+		std::ifstream fs(fileDir);
+
+		// Ignore first line (data headers)
+		std::string categories;
+		getline(fs, categories);
+
+		while (fs)
+		{
+			if (fs.eof())
+			{
+				break;
+			}
+
+			std::vector<std::string> lineData;
+			std::string line;
+			getline(fs, line);
+			std::istringstream lineStream(line);
+
+			while (lineStream)
+			{
+				std::string piece;
+				getline(lineStream, piece, ',');
+				lineData.push_back(piece);
+			}
+
+			ScatterPlotData3D scatterData = ScatterPlotData3D();
+			scatterData.SetXData(stod(lineData[0]));
+			scatterData.SetYData(stod(lineData[1]));
+			scatterData.SetZData(stod(lineData[2]));
+			data.push_back(scatterData);
+		}
+		fs.close();
+		std::cout << "[ScatterPlot3D] Finished reading csv file" << std::endl;
+	}
+	else
+	{
+		std::cout << "[ScatterPlot3D] Couldn't load csv file: " << fileDir << std::endl;
+	}
+
+
+	for (size_t i = 0; i < data.size(); ++i)
+	{
+		if (data[i].GetXData() > GetHighestValueX())
+		{
+			SetHighestValueX(data[i].GetXData());
+		}
+
+		if (data[i].GetYData() > GetHighestValueY())
+		{
+			SetHighestValueY(data[i].GetYData());
+		}
+
+		if (data[i].GetZData() > GetHighestValueZ())
+		{
+			SetHighestValueZ(data[i].GetZData());
+		}
+	}
 }

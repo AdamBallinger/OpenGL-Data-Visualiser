@@ -13,40 +13,7 @@
 
 PieChart::PieChart()
 {
-	/*PieSectorData test1 = PieSectorData();
-	test1.SetColor(Vector3f(1.0f, 0.0f, 0.0f));
-	test1.SetData(680);
-	data.push_back(test1);
 
-	PieSectorData test2 = PieSectorData();
-	test2.SetColor(Vector3f(0.0f, 1.0f, 0.0f));
-	test2.SetData(450);
-	data.push_back(test2);
-
-	PieSectorData test3 = PieSectorData();
-	test3.SetColor(Vector3f(0.0f, 0.0f, 1.0f));
-	test3.SetData(700);
-	data.push_back(test3);
-
-	PieSectorData test4 = PieSectorData();
-	test4.SetColor(Vector3f(0.0f, 1.0f, 1.0f));
-	test4.SetData(1000);
-	data.push_back(test4);
-
-	PieSectorData test5 = PieSectorData();
-	test5.SetColor(Vector3f(1.0f, 0.0f, 1.0f));
-	test5.SetData(310);
-	data.push_back(test5);
-
-	PieSectorData test6 = PieSectorData();
-	test6.SetColor(Vector3f(0.4f, 0.3f, 1.0f));
-	test6.SetData(1300);
-	data.push_back(test6);
-
-	PieSectorData test7 = PieSectorData();
-	test7.SetColor(Vector3f(0.2f, 0.8f, 1.0f));
-	test7.SetData(2000);
-	data.push_back(test7);*/
 }
 
 PieChart::PieChart(std::string _title)
@@ -164,10 +131,6 @@ void PieChart::ReadData()
 			}
 		}
 		fs.close();
-
-		std::cout << "Never Married: " << neverMarried << "  Married-civ-spouse: " << marriedCivSpouse << "  Widowed: " << widowed << std::endl;
-		std::cout << "Divorced: " << divorced << "  Separated: " << separated << "  Married-spouse-absent: " << marriedSpouseAbsent << std::endl;
-		std::cout << "Total: " << dataTotal << std::endl;
 		std::cout << "[PieChart] Data finished loading" << std::endl;
 
 		// Insert the different marital status counts into PieSectorData classes to turn the data into visible sectors of the pie chart.

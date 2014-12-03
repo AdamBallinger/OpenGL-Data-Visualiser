@@ -161,8 +161,6 @@ void LineChart::ReadData()
 
 		}
 
-		std::cout << "Time index: " << timeIndex << "  Data index: " << dataIndex << std::endl;
-
 		// Limit the number of lines to read from the file. 2million is a bit much 
 		int lineLimit = 60;
 		int currentLine = 0;
