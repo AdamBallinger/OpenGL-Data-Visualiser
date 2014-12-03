@@ -46,7 +46,7 @@ class OGLWindow
 		// keyboard bindings for key handling
 		// Key number 1
 		static const byte KEY_1 = 0x31;
-		
+
 		//This is not an ideal place to hold geometry data
 		BarChart * barChart;
 		LineChart * lineChart;

@@ -72,8 +72,18 @@ void ScatterPlot3D::Draw()
 		glColor3f(1.0f, 1.0f, 1.0f);
 		glVertex3d(x, y, z);
 	}
-
 	glEnd();
+
+	FontRenderer::RenderText(GetTitle(), 0.3f, 20.0f, HEIGHT + 20.0f, Vector3f(0.0f, 1.0f, 1.0f), true);
+	FontRenderer::RenderText("X", 0.25f, WIDTH + 10.0f, 10.0f, Vector3f(1.0f, 0.0f, 0.0f));
+	FontRenderer::RenderText("Y", 0.25f, -10.0f, HEIGHT + 40.0f, Vector3f(0.0f, 1.0f, 0.0f));
+
+	// Translate the text for the Z axis along the Z axis then rotate it 90 degrees to face inwards to the chart
+	glPushMatrix();
+	glTranslatef(0.0f, 0.0f, DEPTH + 15.0f);
+	glRotatef(90.0f, 0.0f, 1.0f, 0.0f);
+	FontRenderer::RenderText("Z", 0.25f, 0.0f, 0.0f, Vector3f(0.0f, 0.0f, 1.0f));
+	glPopMatrix();
 }
 
 void ScatterPlot3D::SetHighestValueX(double _highestValueX)
