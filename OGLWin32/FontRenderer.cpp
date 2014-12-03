@@ -41,6 +41,11 @@ void FontRenderer::RenderText(std::string text, float scale, float x, float y, V
 */
 void FontRenderer::RenderText(std::string text, float scale, float x, float y, Vector3f col, bool shadow)
 {
+	// Translate the shadow of the text backwards on the Z axis to prevent Z-clipping with the two layers.
+	glPushMatrix();
+	glTranslatef(0.0f, 0.0f, -1.5f);
 	RenderText(text, scale, x + 2, y - 2, Vector3f(0.75f, 0.75f, 0.75f));
+	glPopMatrix();
+
 	RenderText(text, scale, x, y, col);
 }
