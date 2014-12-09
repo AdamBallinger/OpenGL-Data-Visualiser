@@ -210,10 +210,17 @@ void OGLWindow::Render()
 
 void OGLWindow::Resize( int width, int height )
 {
-	glViewport(0, 0, width, height);
-
 	m_width = width;
 	m_height = height;
+
+	if (is2DView)
+	{
+		Create2DView();
+	}
+	else
+	{
+		Create3DView();
+	}
 
 	return;
 }
