@@ -27,7 +27,6 @@ void FontRenderer::RenderText(std::string text, float scale, float x, float y, V
 	glEnable(GL_TEXTURE_2D);
 	glEnable(GL_BLEND);
 
-	glMatrixMode(GL_MODELVIEW);
 	glColor3f(col.GetX(), col.GetY(), col.GetZ());
 	fontRenderer.Begin();
 	fontRenderer.DrawString(text, scale, x, y);

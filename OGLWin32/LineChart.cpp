@@ -80,15 +80,16 @@ double LineChart::GetHighestDataValue()
 void LineChart::Draw()
 {
 	DrawAxis(WIDTH, HEIGHT);
-
+	
 	glLineWidth(2.0f);
 	glBegin(GL_LINE_STRIP);
 
 	for (size_t i = 0; i < data.size(); ++i)
-	{
-		glColor3f(0.75f, 0.75f, 0.75f);
+	{	
 		double x = i * WIDTH / data.size() + START_X;
 		double y = (data[i].GetData() / GetHighestDataValue() * HEIGHT) + START_Y;
+
+		glColor3f(0.75f, 0.75f, 0.75f);
 		glVertex2d(x, y); 
 
 		// Draw a cross over each point of data.
@@ -98,12 +99,8 @@ void LineChart::Draw()
 		glVertex2d(x, y);
 		glVertex2d(x - 8, y + 8);
 		glVertex2d(x + 8, y - 8);
-		glVertex2d(x, y);
-
-		// FOR X GET THE STARTING X + THE CURRENT INDEX * BY THE WIDTH OF THE AXIS / BY THE AMOUNT OF DATA IN THE DATA ARRAY
-		// FOR Y DIVIDE THE CURRENT DATA BY THE HIGHEST VALUE OF DATA * THE HEIGHT OF THE Y AXIS + THE START Y OF THE AXIS
+		glVertex2d(x, y);	
 	}
-
 	glEnd();
 }
 
