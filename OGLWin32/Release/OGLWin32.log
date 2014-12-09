@@ -1,32 +1,9 @@
-﻿Build started 03/12/2014 14:35:24.
+﻿Build started 09/12/2014 01:21:26.
      1>Project "C:\Users\Adam\Documents\Visual Studio 2013\Projects\OpenGL-Data-Visualiser\OGLWin32\OGLWin32.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Bar2D.cpp BarChart.cpp BarChartData.cpp FileUtils.cpp FontRenderer.cpp glfont2.cpp LineChart.cpp LineChartData.cpp OGLApplication.cpp OGLRectangle.cpp OGLWin32.cpp OGLWindow.cpp PieChart.cpp PieSectorData.cpp ScatterPlot2D.cpp ScatterPlot3D.cpp ScatterPlotData2D.cpp ScatterPlotData3D.cpp Vector2f.cpp Vector3f.cpp
-         Bar2D.cpp
-         BarChart.cpp
-         BarChartData.cpp
-         FileUtils.cpp
-         FontRenderer.cpp
-         glfont2.cpp
-         LineChart.cpp
-         LineChartData.cpp
-         OGLApplication.cpp
-     1>OGLApplication.cpp(117): warning C4101: 'wmId' : unreferenced local variable
-     1>OGLApplication.cpp(117): warning C4101: 'wmEvent' : unreferenced local variable
-         OGLRectangle.cpp
-         OGLWin32.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt OGLWindow.cpp
          OGLWindow.cpp
      1>OGLWindow.cpp(173): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
-         PieChart.cpp
-         PieSectorData.cpp
-         ScatterPlot2D.cpp
-         ScatterPlot3D.cpp
-         ScatterPlotData2D.cpp
-         ScatterPlotData3D.cpp
-         Vector2f.cpp
-         Vector3f.cpp
-       ResourceCompile:
-         C:\Program Files (x86)\Windows Kits\8.1\bin\x86\rc.exe /D _UNICODE /D UNICODE /l"0x0409" /nologo /fo"Release\OGLWin32.res" OGLWin32.rc 
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Adam\Documents\Visual Studio 2013\Projects\OpenGL-Data-Visualiser\Release\OGLWin32.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Adam\Documents\Visual Studio 2013\Projects\OpenGL-Data-Visualiser\Release\OGLWin32.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Adam\Documents\Visual Studio 2013\Projects\OpenGL-Data-Visualiser\Release\OGLWin32.lib" /MACHINE:X86 /SAFESEH Release\OGLWin32.res
          Release\Bar2D.obj
@@ -56,4 +33,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:07.26
+Time Elapsed 00:00:01.47
