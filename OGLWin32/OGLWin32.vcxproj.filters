@@ -90,9 +90,6 @@
     <ClInclude Include="OGLWindow.h">
       <Filter>Header Files\Skelenton</Filter>
     </ClInclude>
-    <ClInclude Include="Renderable.h">
-      <Filter>Header Files\Skelenton</Filter>
-    </ClInclude>
     <ClInclude Include="Resource.h">
       <Filter>Header Files\Skelenton</Filter>
     </ClInclude>

@@ -9,6 +9,9 @@ using namespace glfont;
 
 GLFont fontRenderer;
 
+/*
+* Load in the font file to render characters from.
+*/
 void FontRenderer::Init()
 {
 	fontRenderer.Create("Arial.glf", 1);

@@ -25,12 +25,16 @@ private:
 	// Store the different points of the graph
 	std::vector<ScatterPlotData2D> data;
 
-	// Size of axis
+	// Defines the width of the chart axis.
 	const float WIDTH = 500.0f;
+
+	// Defines the height of the chart axis.
 	const float HEIGHT = 500.0f;
 
-	// Position of axis 0,0
+	// Defines the starting X coordinate for the chart axis.
 	const float START_X = -400.0f;
+
+	// Defines the starting Y coordinate for the chart axis.
 	const float START_Y = -200.0f;
 
 public:

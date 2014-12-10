@@ -5,8 +5,13 @@ class ScatterPlotData3D
 {
 private:
 
+	// Store the data value for the X axis.
 	double xData;
+
+	// Store the data value for the Y axis.
 	double yData;
+
+	// Store the data value for the Z axis.
 	double zData;
 
 public:

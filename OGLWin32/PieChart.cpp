@@ -13,10 +13,10 @@
 
 PieChart::PieChart()
 {
-
+	dataTotal = 0;
 }
 
-PieChart::PieChart(std::string _title)
+PieChart::PieChart(std::string _title) : PieChart::PieChart()
 {
 	title = _title;
 }

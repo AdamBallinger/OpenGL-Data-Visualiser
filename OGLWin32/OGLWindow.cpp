@@ -141,7 +141,7 @@ BOOL OGLWindow::InitWindow(HINSTANCE hInstance, int width, int height)
 	scatterPlot3D->ReadData();
 
 	// Default chart
-	SetChart(SCATTERPLOT3D);
+	SetChart(BARCHART);
 
 	return TRUE;
 }

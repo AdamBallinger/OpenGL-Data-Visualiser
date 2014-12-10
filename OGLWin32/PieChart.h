@@ -10,9 +10,13 @@ class PieChart
 {
 private:
 
+	// Stores the data for each individual pie slice.
 	std::vector<PieSectorData> data;
-	int dataTotal = 0;
 
+	// Stores the total sum of data read.
+	int dataTotal;
+
+	// Stores the title of the chart.
 	std::string title;
 
 public:

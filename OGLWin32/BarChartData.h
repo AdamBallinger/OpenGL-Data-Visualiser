@@ -9,8 +9,13 @@ class BarChartData
 {
 private:
 
+	// Stores the name of the data this bar represents.
 	std::string dataName;
+
+	// Stores the data value this bar represents.
 	int dataValue;
+
+	// Stores the color of the bar.
 	Vector3f dataColor;
 
 public:

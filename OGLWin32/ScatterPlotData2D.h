@@ -5,10 +5,10 @@ class ScatterPlotData2D
 {
 private:
 
-	// Store the temperature data
+	// Store the temperature data.
 	double temperatureData;
 
-	// Store the sales value data
+	// Store the sales value data.
 	double salesData;
 
 public:

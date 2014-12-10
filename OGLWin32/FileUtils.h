@@ -8,7 +8,6 @@ class FileUtils
 
 public:
 	static bool FileExists(std::string);
-
 };
 
 #endif

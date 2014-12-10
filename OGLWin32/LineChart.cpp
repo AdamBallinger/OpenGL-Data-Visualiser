@@ -72,11 +72,17 @@ void LineChart::DrawAxis(float width, float height)
 	
 }
 
+/*
+* Returns the highest data value read.
+*/
 double LineChart::GetHighestDataValue()
 {
 	return highestDataValue;
 }
 
+/*
+* Draws the data to the screen.
+*/
 void LineChart::Draw()
 {
 	DrawAxis(WIDTH, HEIGHT);
@@ -89,6 +95,7 @@ void LineChart::Draw()
 		double x = i * WIDTH / data.size() + START_X;
 		double y = (data[i].GetData() / GetHighestDataValue() * HEIGHT) + START_Y;
 
+		// Set color for the lines and draw line point.
 		glColor3f(0.75f, 0.75f, 0.75f);
 		glVertex2d(x, y); 
 
@@ -104,9 +111,12 @@ void LineChart::Draw()
 	glEnd();
 }
 
+/*
+* Reads the csv file and parses it into the data vector to be plotted.
+*/
 void LineChart::ReadData()
 {
-
+	// The directory of the csv file to be read.
 	std::string fileDir = "household_power_consumption.csv";
 
 	if (FileUtils::FileExists(fileDir))
@@ -117,10 +127,12 @@ void LineChart::ReadData()
 
 		std::string categories;
 
+		// Read the headers for the csv file.
 		getline(fs, categories);
 
 		std::istringstream categoriesStream(categories);
 
+		// Store the index in the line where both Time and desired data are located.
 		int timeIndex = 0;
 		int dataIndex = 0;
 

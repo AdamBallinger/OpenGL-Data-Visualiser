@@ -19,6 +19,9 @@ BarChart::BarChart(std::string _title) : BarChart::BarChart()
 	title = _title;
 }
 
+/*
+* Returns the total sum of data read.
+*/
 int BarChart::GetDataTotal()
 {
 	return dataTotal;

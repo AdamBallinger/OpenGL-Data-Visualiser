@@ -9,7 +9,10 @@ class LineChartData
 {
 private:
 
+	// Stores the value of the data ( Y axis ).
 	double data;
+
+	// Stores the time value for the data ( X axis ).
 	std::string dataTime;
 
 public:

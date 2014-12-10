@@ -16,18 +16,31 @@ private:
 	// Set the title of the chart
 	std::string title;
 
-	// Store the highest values for the X, Y and Z axis from the imported data.
+	// Store the highest value on the X axis from the imported data.
 	double highestValueX;
+
+	// Stores the highest value on the Y axis from the imported data.
 	double highestValueY;
+
+	// Stores the highest value on the Z axis from the imported data.
 	double highestValueZ;
 
-	// Set the dimensional values of the 3D axis.
+	// Defines the width of the chart axis.
 	const float WIDTH = 250.0f;
+
+	// Defines the height of the chart axis.
 	const float HEIGHT = 250.0f;
+
+	// Defines the depth of the chart axis.
 	const float DEPTH = 250.0f;
 
+	// Defines the stating X coordinate of the chart axis.
 	const float START_X = 0.0f;
+
+	// Defines the starting Y coordinate of the chart axis.
 	const float START_Y = 0.0f;
+
+	// Defines the starting Z coordinate of the chart axis.
 	const float START_Z = 0.0f;
 
 public:

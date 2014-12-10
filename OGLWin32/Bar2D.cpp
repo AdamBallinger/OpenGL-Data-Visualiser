@@ -56,7 +56,7 @@ float Bar2D::GetWidth()
 	return width;
 }
 
-//Draw a 2D bar to a bar graph.
+// Draw a 2D bar to a bar graph.
 void Bar2D::Draw()
 {
 	glLineWidth(1.0f);
