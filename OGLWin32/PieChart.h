@@ -19,6 +19,12 @@ private:
 	// Stores the title of the chart.
 	std::string title;
 
+	// Defines the starting X coordinate for the pie legend.
+	const float LEGEND_START_X = 400.0f;
+
+	// Defines the starting Y coordinate for the pie legend.
+	const float LEGEND_START_Y = 250.0f;
+
 public:
 
 	PieChart();
@@ -27,6 +33,7 @@ public:
 	std::string GetTitle();
 
 	void Draw(float, float, float);
+	void DrawLegend();
 	void ReadData();
 	
 	int GetDataTotal();

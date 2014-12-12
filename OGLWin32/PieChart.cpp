@@ -33,6 +33,8 @@ void PieChart::Draw(float centerX, float centerY, float radius)
 	float lastAngle = 0.0f;
 	const int slicesPerSegment = 90;
 
+	GLUquadric *glQuadric = gluNewQuadric();
+
 	for (size_t i = 0; i < data.size(); ++i)
 	{
 		// Set color for the current data slice being drawn.
@@ -42,10 +44,31 @@ void PieChart::Draw(float centerX, float centerY, float radius)
 		data[i].SetAngle((360.0f / GetDataTotal()) * data[i].GetData());
 
 		// Draw the data slice
-		gluPartialDisk(gluNewQuadric(), 0, radius, slicesPerSegment, 1, lastAngle, data[i].GetAngle());
+		gluPartialDisk(glQuadric, 0, radius, slicesPerSegment, 1, lastAngle, data[i].GetAngle());
 
 		// Set the lastangle for the starting point of the next data slice.
 		lastAngle += data[i].GetAngle();
+	}
+
+	delete glQuadric;
+	DrawLegend();
+}
+
+void PieChart::DrawLegend()
+{
+	glPointSize(50.0f);
+
+	for (size_t i = 0; i < data.size(); ++i)
+	{
+		float x = LEGEND_START_X;
+		float y = LEGEND_START_Y - i * 100.0f;
+
+		FontRenderer::RenderText(data[i].GetName(), 0.3f, x + 60.0f, y + 15.0f, Vector3f(0.75f, 0.75f, 0.75f));
+
+		glBegin(GL_POINTS);
+		glColor3f(data[i].GetColor().GetX(), data[i].GetColor().GetY(), data[i].GetColor().GetZ());
+		glVertex2f(x, y);
+		glEnd();
 	}
 }
 
@@ -140,31 +163,37 @@ void PieChart::ReadData()
 		Vector3f randColor = Vector3f((float)rand() / (float)RAND_MAX, (float)rand() / (float)RAND_MAX, (float)rand() / (float)RAND_MAX);
 		pieData.SetColor(randColor);
 		pieData.SetData(neverMarried);
+		pieData.SetName("Never-married");
 		data.push_back(pieData);
 
 		randColor = Vector3f((float)rand() / (float)RAND_MAX, (float)rand() / (float)RAND_MAX, (float)rand() / (float)RAND_MAX);
 		pieData.SetColor(randColor);
 		pieData.SetData(marriedCivSpouse);
+		pieData.SetName("Married-civ-spouse");
 		data.push_back(pieData);
 
 		randColor = Vector3f((float)rand() / (float)RAND_MAX, (float)rand() / (float)RAND_MAX, (float)rand() / (float)RAND_MAX);
 		pieData.SetColor(randColor);
 		pieData.SetData(widowed);
+		pieData.SetName("Widowed");
 		data.push_back(pieData);
 
 		randColor = Vector3f((float)rand() / (float)RAND_MAX, (float)rand() / (float)RAND_MAX, (float)rand() / (float)RAND_MAX);
 		pieData.SetColor(randColor);
 		pieData.SetData(divorced);
+		pieData.SetName("Divorced");
 		data.push_back(pieData);
 
 		randColor = Vector3f((float)rand() / (float)RAND_MAX, (float)rand() / (float)RAND_MAX, (float)rand() / (float)RAND_MAX);
 		pieData.SetColor(randColor);
 		pieData.SetData(separated);
+		pieData.SetName("Separated");
 		data.push_back(pieData);
 
 		randColor = Vector3f((float)rand() / (float)RAND_MAX, (float)rand() / (float)RAND_MAX, (float)rand() / (float)RAND_MAX);
 		pieData.SetColor(randColor);
 		pieData.SetData(marriedSpouseAbsent);
+		pieData.SetName("Married-spouse-absent");
 		data.push_back(pieData);
 	}
 	else

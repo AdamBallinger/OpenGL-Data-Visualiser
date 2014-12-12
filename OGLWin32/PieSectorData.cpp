@@ -17,6 +17,16 @@ Vector3f PieSectorData::GetColor()
 	return sectorColor;
 }
 
+void PieSectorData::SetName(std::string _dataName)
+{
+	dataName = _dataName;
+}
+
+std::string PieSectorData::GetName()
+{
+	return dataName;
+}
+
 void PieSectorData::SetData(int _data)
 {
 	data = _data;
