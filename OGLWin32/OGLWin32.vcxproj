@@ -85,7 +85,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bar2D.h" />
+    <ClInclude Include="Bar3D.h" />
     <ClInclude Include="BarChart.h" />
+    <ClInclude Include="BarChart3D.h" />
     <ClInclude Include="BarChartData.h" />
     <ClInclude Include="FileUtils.h" />
     <ClInclude Include="FontRenderer.h" />
@@ -110,7 +112,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bar2D.cpp" />
+    <ClCompile Include="Bar3D.cpp" />
     <ClCompile Include="BarChart.cpp" />
+    <ClCompile Include="BarChart3D.cpp" />
     <ClCompile Include="BarChartData.cpp" />
     <ClCompile Include="FileUtils.cpp" />
     <ClCompile Include="FontRenderer.cpp" />

@@ -51,6 +51,7 @@ public:
 	void DrawAxis(float, float, float);
 	void Draw();
 	void ReadData();
+	void MouseClick(int, int);
 
 	void SetHighestValueX(double);
 	double GetHighestValueX();

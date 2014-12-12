@@ -22,8 +22,10 @@ private:
 	float endX;
 	float endY;
 
-	// Defines the 0, 0 origin for the axis of the chart.
+	// Defines the starting X coordinate for the chart axis.
 	const float START_X = -550.0f;
+
+	// Defines the starting Y coordinate for the chart axis.
 	const float START_Y = -400.0f;
 
 	const float HEIGHT = 500.0f;

@@ -69,7 +69,7 @@ void ScatterPlot3D::Draw()
 		double y = data[i].GetYData() * HEIGHT / GetHighestValueY();
 		double z = data[i].GetZData() * DEPTH / GetHighestValueZ();
 
-		glColor3f(1.0f, 1.0f, 1.0f);
+		glColor3f(x / WIDTH, y / HEIGHT, z / DEPTH);
 		glVertex3d(x, y, z);
 	}
 	glEnd();
@@ -84,6 +84,11 @@ void ScatterPlot3D::Draw()
 	glRotatef(90.0f, 0.0f, 1.0f, 0.0f);
 	FontRenderer::RenderText("Z", 0.25f, 0.0f, 0.0f, Vector3f(0.0f, 0.0f, 1.0f));
 	glPopMatrix();
+}
+
+void ScatterPlot3D::MouseClick(int mx, int my)
+{
+	
 }
 
 void ScatterPlot3D::SetHighestValueX(double _highestValueX)

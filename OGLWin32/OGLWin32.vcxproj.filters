@@ -129,6 +129,12 @@
     <ClInclude Include="ScatterPlotData3D.h">
       <Filter>Header Files\ChartData</Filter>
     </ClInclude>
+    <ClInclude Include="BarChart3D.h">
+      <Filter>Header Files\Graphs</Filter>
+    </ClInclude>
+    <ClInclude Include="Bar3D.h">
+      <Filter>Header Files\Shapes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bar2D.cpp">
@@ -190,6 +196,12 @@
     </ClCompile>
     <ClCompile Include="ScatterPlotData3D.cpp">
       <Filter>Source Files\ChartData</Filter>
+    </ClCompile>
+    <ClCompile Include="BarChart3D.cpp">
+      <Filter>Source Files\Graphs</Filter>
+    </ClCompile>
+    <ClCompile Include="Bar3D.cpp">
+      <Filter>Source Files\Shapes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
