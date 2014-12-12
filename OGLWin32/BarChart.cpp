@@ -82,7 +82,7 @@ void BarChart::ReadData()
 
 	if (FileUtils::FileExists(fileDir))
 	{
-		std::cout << "[Bar Chart] Loading: " << fileDir << std::endl;
+		std::cout << "[BarChart2D] Loading: " << fileDir << std::endl;
 
 		std::ifstream fs(fileDir);
 
@@ -136,7 +136,7 @@ void BarChart::ReadData()
 			}
 		}
 		fs.close();
-		std::cout << "Data finished loading" << std::endl;
+		std::cout << "[BarChart2D] Data finished loading" << std::endl;
 
 		// Store the total amount of males and females so the height of the bars can be scaled to fit the screen.
 		int total = maleCount + femaleCount;
@@ -159,7 +159,7 @@ void BarChart::ReadData()
 	}
 	else
 	{
-		std::cout << "[Bar Chart] Failed to load csv file: " << fileDir << std::endl;
+		std::cout << "[BarChart2D] Failed to load csv file: " << fileDir << std::endl;
 	}
 
 	// Set both the width and position of each bar and get the total amount of data
