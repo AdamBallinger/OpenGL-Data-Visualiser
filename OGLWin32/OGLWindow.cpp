@@ -25,6 +25,7 @@ OGLWindow::~OGLWindow()
 	delete lineChart;
 	delete scatterPlot2D;
 	delete scatterPlot3D;
+	delete spiderChart;
 }
 
 OGLWindow::OGLWindow(HINSTANCE hInstance, int width, int height) : OGLWindow::OGLWindow()
@@ -144,8 +145,11 @@ BOOL OGLWindow::InitWindow(HINSTANCE hInstance, int width, int height)
 	scatterPlot3D = new ScatterPlot3D("Ice Cream Sales, Temperature and Age");
 	scatterPlot3D->ReadData();
 
+	spiderChart = new SpiderChart("Spider Chart");
+	spiderChart->ReadData();
+
 	// Default chart
-	SetChart(SCATTERPLOT3D);
+	SetChart(SPIDERCHART);
 
 	return TRUE;
 }
@@ -203,6 +207,10 @@ void OGLWindow::Render()
 
 	case SCATTERPLOT3D:
 		scatterPlot3D->Draw();
+		break;
+
+	case SPIDERCHART:
+		spiderChart->Draw();
 		break;
 
 	default:

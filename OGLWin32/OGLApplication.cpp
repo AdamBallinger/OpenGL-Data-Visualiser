@@ -156,6 +156,10 @@ LRESULT CALLBACK OGLApplication::WndProc(HWND hwnd, UINT msg, WPARAM wparam, LPA
 			case ID_CHARTS_SCATTERPLOT_3D:
 				s_oglapp->GetApplicationWindow()->SetChart(OGLWindow::SCATTERPLOT3D);
 				break;
+
+			case ID_CHARTS_SPIDERCHART:
+				s_oglapp->GetApplicationWindow()->SetChart(OGLWindow::SPIDERCHART);
+				break;
 			}
 			break;
 
