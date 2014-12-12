@@ -135,6 +135,12 @@
     <ClInclude Include="Bar3D.h">
       <Filter>Header Files\Shapes</Filter>
     </ClInclude>
+    <ClInclude Include="SpiderChart.h">
+      <Filter>Header Files\Graphs</Filter>
+    </ClInclude>
+    <ClInclude Include="SpiderChartData.h">
+      <Filter>Header Files\ChartData</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bar2D.cpp">
@@ -202,6 +208,12 @@
     </ClCompile>
     <ClCompile Include="Bar3D.cpp">
       <Filter>Source Files\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="SpiderChart.cpp">
+      <Filter>Source Files\Graphs</Filter>
+    </ClCompile>
+    <ClCompile Include="SpiderChartData.cpp">
+      <Filter>Source Files\ChartData</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

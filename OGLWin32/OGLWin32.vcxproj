@@ -106,6 +106,8 @@
     <ClInclude Include="ScatterPlot3D.h" />
     <ClInclude Include="ScatterPlotData2D.h" />
     <ClInclude Include="ScatterPlotData3D.h" />
+    <ClInclude Include="SpiderChart.h" />
+    <ClInclude Include="SpiderChartData.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Vector2f.h" />
     <ClInclude Include="Vector3f.h" />
@@ -131,6 +133,8 @@
     <ClCompile Include="ScatterPlot3D.cpp" />
     <ClCompile Include="ScatterPlotData2D.cpp" />
     <ClCompile Include="ScatterPlotData3D.cpp" />
+    <ClCompile Include="SpiderChart.cpp" />
+    <ClCompile Include="SpiderChartData.cpp" />
     <ClCompile Include="Vector2f.cpp" />
     <ClCompile Include="Vector3f.cpp" />
   </ItemGroup>
