@@ -20,6 +20,7 @@ OGLWindow::~OGLWindow()
 {
 	// Delete the charts from memory.
 	delete barChart;
+	delete barChart3D;
 	delete pieChart;
 	delete lineChart;
 	delete scatterPlot2D;
@@ -128,6 +129,9 @@ BOOL OGLWindow::InitWindow(HINSTANCE hInstance, int width, int height)
 	barChart = new BarChart("Total Number of Males and Females");
 	barChart->ReadData();
 
+	barChart3D = new BarChart3D();
+	barChart3D->ReadData();
+
 	pieChart = new PieChart("Marital-Status");
 	pieChart->ReadData();
 
@@ -141,7 +145,7 @@ BOOL OGLWindow::InitWindow(HINSTANCE hInstance, int width, int height)
 	scatterPlot3D->ReadData();
 
 	// Default chart
-	SetChart(BARCHART);
+	SetChart(SCATTERPLOT3D);
 
 	return TRUE;
 }
@@ -155,7 +159,7 @@ void OGLWindow::SetVisible ( BOOL visible )
 void OGLWindow::Render()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glMatrixMode(GL_MODELVIEW);
+
 	glLoadIdentity();
 
 	if (is2DView)
@@ -168,7 +172,7 @@ void OGLWindow::Render()
 	}
 	else
 	{
-		gluLookAt(1, 0.35, 1, 0, 0, 0, 0, 1, 0);
+		gluLookAt(1, 0.35, 3, 0, 0, 0, 0, 1, 0);
 		// Use the scale variable to rate around the Y axis when rendering in 3D
 		glRotatef(global_scale, 0.0f, 1.0f, 0.0f);
 		glTranslated(offsetX, -offsetY, 0.0f);
@@ -179,6 +183,10 @@ void OGLWindow::Render()
 	{
 	case BARCHART:
 		barChart->Draw();
+		break;
+
+	case BARCHART3D:
+		barChart3D->Draw();
 		break;
 
 	case PIECHART:
@@ -249,7 +257,7 @@ void OGLWindow::Create3DView()
 
 void OGLWindow::InitOGLState()
 {
-	glClearColor( 0.1f, 0.1f, 0.1f, 1.0f );
+	glClearColor( 0.2f, 0.2f, 0.2f, 1.0f );
 	glShadeModel(GL_FLAT);
 
 	// Load the font file the FontRenderer uses to save performance. Enables GL_TEXTURE_2D & GL_BLEND as glfont requires them to be enabled when font is being created.
@@ -268,6 +276,7 @@ BOOL OGLWindow::MouseLBDown ( int x, int y )
 
 BOOL OGLWindow::MouseLBUp ( int x, int y )
 {
+	scatterPlot3D->MouseClick(x, y);
 	shouldOffset = FALSE;
 	return TRUE;
 }
@@ -397,7 +406,7 @@ void OGLWindow::SetChart(CHART chart)
 {
 	// Reset the view to default zoom and pan when changing charts
 	ResetView();
-	if (chart == SCATTERPLOT3D)
+	if (chart == SCATTERPLOT3D || chart == BARCHART3D)
 	{
 		Create3DView();
 		is2DView = false;

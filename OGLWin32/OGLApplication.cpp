@@ -137,6 +137,10 @@ LRESULT CALLBACK OGLApplication::WndProc(HWND hwnd, UINT msg, WPARAM wparam, LPA
 				s_oglapp->GetApplicationWindow()->SetChart(OGLWindow::BARCHART);
 				break;
 
+			case ID_CHARTS_BARCHART3D:
+				s_oglapp->GetApplicationWindow()->SetChart(OGLWindow::BARCHART3D);
+				break;
+
 			case ID_CHARTS_PIECHART:
 				s_oglapp->GetApplicationWindow()->SetChart(OGLWindow::PIECHART);
 				break;

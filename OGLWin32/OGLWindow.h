@@ -2,6 +2,7 @@
 
 #include <Windows.h>
 #include "BarChart.h"
+#include "BarChart3D.h"
 #include "LineChart.h"
 #include "PieChart.h"
 #include "ScatterPlot2D.h"
@@ -49,6 +50,7 @@ class OGLWindow
 
 		//This is not an ideal place to hold geometry data
 		BarChart * barChart;
+		BarChart3D * barChart3D;
 		LineChart * lineChart;
 		PieChart * pieChart;
 		ScatterPlot2D * scatterPlot2D;
@@ -64,7 +66,7 @@ class OGLWindow
 	public:
 
 		// Current chart that should be rendered to the screen.
-		enum CHART { BARCHART, PIECHART, LINECHART, SCATTERPLOT2D, SCATTERPLOT3D };
+		enum CHART { BARCHART, BARCHART3D, PIECHART, LINECHART, SCATTERPLOT2D, SCATTERPLOT3D };
 
 		CHART currentChart;
 
