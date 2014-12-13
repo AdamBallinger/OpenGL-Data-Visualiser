@@ -145,11 +145,11 @@ BOOL OGLWindow::InitWindow(HINSTANCE hInstance, int width, int height)
 	scatterPlot3D = new ScatterPlot3D("Ice Cream Sales, Temperature and Age");
 	scatterPlot3D->ReadData();
 
-	spiderChart = new SpiderChart("Spider Chart");
+	spiderChart = new SpiderChart("Employment Status");
 	spiderChart->ReadData();
 
 	// Default chart
-	SetChart(SPIDERCHART);
+	SetChart(BARCHART);
 
 	return TRUE;
 }

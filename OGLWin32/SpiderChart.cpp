@@ -20,6 +20,11 @@ SpiderChart::SpiderChart(std::string _title) : SpiderChart::SpiderChart()
 	title = _title;
 }
 
+std::string SpiderChart::GetTitle()
+{
+	return title;
+}
+
 int SpiderChart::GetHighestValue()
 {
 	return highestValue;
@@ -29,7 +34,6 @@ void SpiderChart::DrawAxis(float axis_size)
 {
 	float axisAngle = 360.0f / (float)data.size();
 
-	glPushMatrix();
 	for (size_t i = 0; i < data.size(); ++i)
 	{
 		glRotatef(axisAngle, 0.0f, 0.0f, 1.0f);
@@ -43,7 +47,8 @@ void SpiderChart::DrawAxis(float axis_size)
 
 		glEnd();
 	}
-	glPopMatrix();
+
+	FontRenderer::RenderText(GetTitle(), 0.5f, -AXIS_SIZE / 2, AXIS_SIZE + 100.0f, Vector3f(0.0f, 1.0f, 1.0f));
 }
 
 void SpiderChart::Draw()
@@ -52,17 +57,24 @@ void SpiderChart::Draw()
 
 	float angle = 360.0f / (float)data.size();
 	
-	glColor3f(1.0f, 0.0f, 0.0f);
-	glBegin(GL_LINE_LOOP);
-	glVertex2f(data[0].GetData() * AXIS_SIZE / GetHighestValue(), 0.0f);
-	for (size_t i = 1; i < data.size(); ++i)
+	for (size_t i = 0; i < data.size(); ++i)
 	{
 		float x = data[i].GetData() * AXIS_SIZE / GetHighestValue();
-		float y = 10.0f;
-		glRotatef(angle, 0.0f, 0.0f, 1.0f);
-		glVertex2f(x, y);	
+		float y = 0.0f;
+
+		glPushMatrix();
+		glTranslatef(AXIS_SIZE + 30.0f, 0.0f, 0.0f);
+		glRotatef(-angle * i, 0.0f, 0.0f, 1.0f); // Rotate the font around the negative angle multiplied by the current i value to correct the text's orientation.
+		FontRenderer::RenderText(data[i].GetName(), 0.3f, 0.0f, 20.0f, Vector3f(1.0f, 0.0f, 0.0f));
+		glPopMatrix();
+
+		glColor3f(1.0f, 0.0f, 1.0f);
+		glPointSize(8.0f);
+		glBegin(GL_POINTS);
+		glVertex2f(x, y);
+		glEnd();
+		glRotatef(angle, 0.0f, 0.0f, 1.0f); // Rotate on the Z axis for the next point to be drawn.
 	}
-	glEnd();
 }
 
 void SpiderChart::ReadData()

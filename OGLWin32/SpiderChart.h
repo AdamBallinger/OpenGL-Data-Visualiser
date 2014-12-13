@@ -30,6 +30,8 @@ public:
 	void Draw();
 	void ReadData();
 
+	std::string GetTitle();
+
 	int GetHighestValue();
 
 };

@@ -33,7 +33,6 @@ private:
 
 public:
 
-	BarChart();
 	BarChart(std::string);
 
 	int GetDataTotal();

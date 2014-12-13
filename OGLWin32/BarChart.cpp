@@ -9,12 +9,7 @@
 #include <fstream>
 #include <sstream>
 
-BarChart::BarChart()
-{
-	
-}
-
-BarChart::BarChart(std::string _title) : BarChart::BarChart()
+BarChart::BarChart(std::string _title) 
 {
 	title = _title;
 }
@@ -66,9 +61,9 @@ void BarChart::Draw()
 {
 	DrawAxis(WIDTH, HEIGHT);
 
-	for (size_t i = 0; i < bars.size(); ++i)
+	for (auto i : bars)
 	{
-		bars[i].Draw();
+		i.Draw();
 	}
 }
 
