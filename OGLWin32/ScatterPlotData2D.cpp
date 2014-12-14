@@ -2,25 +2,26 @@
 
 ScatterPlotData2D::ScatterPlotData2D()
 {
-
+	temperatureData = 0;
+	salesData = 0;
 }
 
-void ScatterPlotData2D::SetTemperatureData(double _data)
+void ScatterPlotData2D::SetTemperatureData(float _data)
 {
 	temperatureData = _data;
 }
 
-double ScatterPlotData2D::GetTemperatureData()
+float ScatterPlotData2D::GetTemperatureData()
 {
 	return temperatureData;
 }
 
-void ScatterPlotData2D::SetSalesData(double _data)
+void ScatterPlotData2D::SetSalesData(float _data)
 {
 	salesData = _data;
 }
 
-double ScatterPlotData2D::GetSalesData()
+float ScatterPlotData2D::GetSalesData()
 {
 	return salesData;
 }

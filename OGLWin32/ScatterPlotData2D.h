@@ -6,20 +6,20 @@ class ScatterPlotData2D
 private:
 
 	// Store the temperature data.
-	double temperatureData;
+	float temperatureData;
 
 	// Store the sales value data.
-	double salesData;
+	float salesData;
 
 public:
 
 	ScatterPlotData2D();
 
-	void SetTemperatureData(double);
-	double GetTemperatureData();
+	void SetTemperatureData(float);
+	float GetTemperatureData();
 
-	void SetSalesData(double);
-	double GetSalesData();
+	void SetSalesData(float);
+	float GetSalesData();
 
 };
 

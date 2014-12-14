@@ -14,13 +14,13 @@ private:
 	std::string title;
 
 	// Store the value of the highest sale
-	double highestSalesValue;
+	float highestSalesValue;
 
 	// Store the value of the highest temperature.
-	double highestTemperatureValue;
+	float highestTemperatureValue;
 
 	// Store the value of the lowest temperature.
-	double lowestTemperatureValue;
+	float lowestTemperatureValue;
 
 	// Store the different points of the graph
 	std::vector<ScatterPlotData2D> data;
@@ -46,14 +46,14 @@ public:
 	void Draw();
 	void ReadData();
 
-	void SetHighestSalesValue(double);
-	double GetHighestSale();
+	void SetHighestSalesValue(float);
+	float GetHighestSale();
 
-	void SetHighestTemperatureValue(double);
-	double GetHighestTemperatureValue();
+	void SetHighestTemperatureValue(float);
+	float GetHighestTemperatureValue();
 
-	void SetLowestTemperatureValue(double);
-	double GetLowestTemperatureValue();
+	void SetLowestTemperatureValue(float);
+	float GetLowestTemperatureValue();
 
 	std::string GetTitle();
 

@@ -16,37 +16,37 @@ ScatterPlot2D::ScatterPlot2D()
 	SetLowestTemperatureValue(0);
 }
 
-ScatterPlot2D::ScatterPlot2D(std::string _title)
+ScatterPlot2D::ScatterPlot2D(std::string _title) : ScatterPlot2D::ScatterPlot2D()
 {
 	title = _title;
 }
 
-void ScatterPlot2D::SetHighestSalesValue(double _data)
+void ScatterPlot2D::SetHighestSalesValue(float _data)
 {
 	highestSalesValue = _data;
 }
 
-double ScatterPlot2D::GetHighestSale()
+float ScatterPlot2D::GetHighestSale()
 {
 	return highestSalesValue;
 }
 
-void ScatterPlot2D::SetHighestTemperatureValue(double _data)
+void ScatterPlot2D::SetHighestTemperatureValue(float _data)
 {
 	highestTemperatureValue = _data;
 }
 
-double ScatterPlot2D::GetHighestTemperatureValue()
+float ScatterPlot2D::GetHighestTemperatureValue()
 {
 	return highestTemperatureValue;
 }
 
-void ScatterPlot2D::SetLowestTemperatureValue(double _data)
+void ScatterPlot2D::SetLowestTemperatureValue(float _data)
 {
 	lowestTemperatureValue = _data;
 }
 
-double ScatterPlot2D::GetLowestTemperatureValue()
+float ScatterPlot2D::GetLowestTemperatureValue()
 {
 	return lowestTemperatureValue;
 }
@@ -115,19 +115,19 @@ void ScatterPlot2D::Draw()
 	// Loop through each piece of data
 	for (size_t i = 0; i < data.size(); ++i)
 	{
-		double x = i * WIDTH / data.size() + START_X;
-		double y = data[i].GetSalesData() / GetHighestSale() * HEIGHT + START_Y;
+		float x = i * WIDTH / data.size() + START_X;
+		float y = data[i].GetSalesData() / GetHighestSale() * HEIGHT + START_Y;
 
 		glColor3f(1.0f, 0.5f, 0.5f);
 		// Draw a cross
-		glVertex2d(x, y);
-		glVertex2d(x + 8, y + 8);
-		glVertex2d(x, y);
-		glVertex2d(x - 8, y + 8);
-		glVertex2d(x, y);
-		glVertex2d(x + 8, y - 8);
-		glVertex2d(x, y);
-		glVertex2d(x - 8, y - 8);
+		glVertex2f(x, y);
+		glVertex2f(x + 8, y + 8);
+		glVertex2f(x, y);
+		glVertex2f(x - 8, y + 8);
+		glVertex2f(x, y);
+		glVertex2f(x + 8, y - 8);
+		glVertex2f(x, y);
+		glVertex2f(x - 8, y - 8);
 	}
 
 	glEnd();
@@ -173,8 +173,8 @@ void ScatterPlot2D::ReadData()
 				lineSplit.push_back(linePiece);
 			}
 
-			scatterData.SetTemperatureData(stod(lineSplit[0]));
-			scatterData.SetSalesData(stod(lineSplit[1]));
+			scatterData.SetTemperatureData(stof(lineSplit[0]));
+			scatterData.SetSalesData(stof(lineSplit[1]));
 			data.push_back(scatterData);
 		}
 

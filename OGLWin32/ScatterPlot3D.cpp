@@ -11,13 +11,16 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <cmath>
 
 ScatterPlot3D::ScatterPlot3D()
 {
-
+	highestValueX = 0;
+	highestValueY = 0;
+	highestValueZ = 0;
 }
 
-ScatterPlot3D::ScatterPlot3D(std::string _title)
+ScatterPlot3D::ScatterPlot3D(std::string _title) : ScatterPlot3D::ScatterPlot3D()
 {
 	title = _title;
 }
@@ -70,7 +73,7 @@ void ScatterPlot3D::Draw()
 		double z = data[i].GetZData() * DEPTH / GetHighestValueZ();
 
 		glColor3f(x / WIDTH, y / HEIGHT, z / DEPTH);
-		glVertex3d(x, y, z);
+		glVertex3f(x, y, z);
 	}
 	glEnd();
 
@@ -84,11 +87,6 @@ void ScatterPlot3D::Draw()
 	glRotatef(90.0f, 0.0f, 1.0f, 0.0f);
 	FontRenderer::RenderText("Z", 0.25f, 0.0f, 0.0f, Vector3f(0.0f, 0.0f, 1.0f));
 	glPopMatrix();
-}
-
-void ScatterPlot3D::MouseClick(int mx, int my)
-{
-	
 }
 
 void ScatterPlot3D::SetHighestValueX(double _highestValueX)
@@ -155,9 +153,15 @@ void ScatterPlot3D::ReadData()
 			}
 
 			ScatterPlotData3D scatterData = ScatterPlotData3D();
-			scatterData.SetXData(stod(lineData[0]));
-			scatterData.SetYData(stod(lineData[1]));
-			scatterData.SetZData(stod(lineData[2]));
+			double xData = stod(lineData[0]);
+			xData = round(xData);
+			double yData = stod(lineData[1]);
+			yData = round(yData);
+			double zData = stod(lineData[2]);
+			zData = round(zData);
+			scatterData.SetXData(xData);
+			scatterData.SetYData(yData);
+			scatterData.SetZData(zData);
 			data.push_back(scatterData);
 		}
 		fs.close();
@@ -167,7 +171,6 @@ void ScatterPlot3D::ReadData()
 	{
 		std::cout << "[ScatterPlot3D] Couldn't load csv file: " << fileDir << std::endl;
 	}
-
 
 	for (size_t i = 0; i < data.size(); ++i)
 	{
