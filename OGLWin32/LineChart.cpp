@@ -29,6 +29,14 @@ std::string LineChart::GetTitle()
 	return title;
 }
 
+/*
+* Returns the highest data value read.
+*/
+double LineChart::GetHighestDataValue()
+{
+	return highestDataValue;
+}
+
 void LineChart::DrawAxis(float width, float height)
 {
 	// end points for each axis.
@@ -65,19 +73,11 @@ void LineChart::DrawAxis(float width, float height)
 	FontRenderer::RenderText("Y: " + highestValue.str(), 0.3f, START_X - 120.0f, endY + 15.0f, Vector3f(0.0f, 1.0f, 0.0f));
 
 	// Draw start X value at x 0 for the axis
-	FontRenderer::RenderText("X : " + data[0].GetDataTime(), 0.3f, START_X - 9.0f, START_Y - 7.0f, Vector3f(1.0f, 0.0f, 0.0f));
+	FontRenderer::RenderText("X", 0.3f, START_X - 9.0f, START_Y - 7.0f, Vector3f(1.0f, 0.0f, 0.0f));
 
 	// Draw end X value at end of the x axis
-	FontRenderer::RenderText("X : " + data[data.size() - 1].GetDataTime(), 0.3f, endX - 10.0f, START_Y - 7.0f, Vector3f(1.0f, 0.0f, 0.0f));
+	//FontRenderer::RenderText("X : " + data[data.size() - 1].GetDataTime(), 0.3f, endX - 10.0f, START_Y - 7.0f, Vector3f(1.0f, 0.0f, 0.0f));
 	
-}
-
-/*
-* Returns the highest data value read.
-*/
-double LineChart::GetHighestDataValue()
-{
-	return highestDataValue;
 }
 
 /*
@@ -109,6 +109,18 @@ void LineChart::Draw()
 		glVertex2d(x, y);	
 	}
 	glEnd();
+
+	// Draw times along X axis
+	for (size_t i = 0; i < data.size(); ++i)
+	{
+		double x = i * WIDTH / data.size() + START_X;
+
+		glPushMatrix();
+		glTranslatef(x, START_Y, 0.0f);
+		glRotatef(90.0f, 0.0f, 0.0f, 1.0f);
+		FontRenderer::RenderText(data[i].GetDataTime(), 0.2f, START_X / 2 + 160.0f, endY - HEIGHT / 2 + 10.0f, Vector3f(1.0f, 0.0f, 0.0f));
+		glPopMatrix();
+	}
 }
 
 /*
