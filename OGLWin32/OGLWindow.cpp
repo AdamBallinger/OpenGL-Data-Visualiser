@@ -149,7 +149,7 @@ BOOL OGLWindow::InitWindow(HINSTANCE hInstance, int width, int height)
 	spiderChart->ReadData();
 
 	// Default chart
-	SetChart(BARCHART);
+	SetChart(SCATTERPLOT3D);
 
 	return TRUE;
 }
@@ -243,6 +243,7 @@ void OGLWindow::Resize( int width, int height )
 
 void OGLWindow::Create2DView()
 {
+	std::cout << "Creating 2D view" << std::endl;
 	glViewport(0, 0, m_width, m_height);
 	glMatrixMode( GL_PROJECTION );
 	glLoadIdentity();
@@ -252,6 +253,7 @@ void OGLWindow::Create2DView()
 
 void OGLWindow::Create3DView()
 {
+	std::cout << "Creating 3D view" << std::endl;
 	glViewport(0, 0, m_width, m_height);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
@@ -284,7 +286,6 @@ BOOL OGLWindow::MouseLBDown ( int x, int y )
 
 BOOL OGLWindow::MouseLBUp ( int x, int y )
 {
-	scatterPlot3D->MouseClick(x, y);
 	shouldOffset = FALSE;
 	return TRUE;
 }

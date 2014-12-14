@@ -53,3 +53,5 @@ Release/adult_test_data.csv
 *.exe
 Release/OGLWin32.exe
 *.tlog
+*.diagsession
+*.csv
