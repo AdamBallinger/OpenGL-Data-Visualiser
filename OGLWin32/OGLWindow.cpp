@@ -149,7 +149,7 @@ BOOL OGLWindow::InitWindow(HINSTANCE hInstance, int width, int height)
 	spiderChart->ReadData();
 
 	// Default chart
-	SetChart(SCATTERPLOT3D);
+	SetChart(BARCHART);
 
 	return TRUE;
 }
@@ -276,6 +276,7 @@ void OGLWindow::InitOGLState()
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	FontRenderer::Init();
 	glDisable(GL_TEXTURE_2D);
+	glDisable(GL_BLEND);
 }
 
 BOOL OGLWindow::MouseLBDown ( int x, int y )
