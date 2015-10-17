@@ -1,9 +1,15 @@
-﻿Build started 15/12/2014 20:23:58.
+﻿Build started 01/01/2015 14:38:59.
      1>Project "C:\Users\Adam\Documents\Visual Studio 2013\Projects\OpenGL-Data-Visualiser\OGLWin32\OGLWin32.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt OGLWindow.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt OGLApplication.cpp OGLWindow.cpp ScatterPlot3D.cpp
+         OGLApplication.cpp
+     1>OGLApplication.cpp(117): warning C4101: 'wmId' : unreferenced local variable
+     1>OGLApplication.cpp(117): warning C4101: 'wmEvent' : unreferenced local variable
          OGLWindow.cpp
      1>OGLWindow.cpp(181): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+         ScatterPlot3D.cpp
+     1>ScatterPlot3D.cpp(75): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>ScatterPlot3D.cpp(76): warning C4244: 'argument' : conversion from 'double' to 'GLfloat', possible loss of data
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Adam\Documents\Visual Studio 2013\Projects\OpenGL-Data-Visualiser\Release\OGLWin32.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Adam\Documents\Visual Studio 2013\Projects\OpenGL-Data-Visualiser\Release\OGLWin32.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Adam\Documents\Visual Studio 2013\Projects\OpenGL-Data-Visualiser\Release\OGLWin32.lib" /MACHINE:X86 /SAFESEH Release\OGLWin32.res
          Release\Bar2D.obj
@@ -37,4 +43,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.03
+Time Elapsed 00:00:02.67
